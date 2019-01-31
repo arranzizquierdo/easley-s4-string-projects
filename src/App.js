@@ -4,7 +4,7 @@ import './stylesheets/App.scss';
 class App extends Component {
   render() {
     return (
-      "hola"
+      "WE in process..."
     );
   }
 }
