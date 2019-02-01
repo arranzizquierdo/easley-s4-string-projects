@@ -8,7 +8,9 @@ class LandingPage extends Component {
     render() {
         return (
             <Fragment>
-                <Header />
+                <Header 
+                    showNav={false}
+                />
                 <LogIn />
             </Fragment>
         )

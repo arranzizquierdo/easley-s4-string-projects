@@ -6,8 +6,8 @@ import MainPage from './components/MainPage';
 import ConversationPage from './components/ConversationPage';
 import ConversationThreading from './components/ConversationThreading';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEyeSlash, faPaperPlane, faKey } from '@fortawesome/free-solid-svg-icons';
-library.add(faEyeSlash, faPaperPlane, faKey);
+import { faEllipsisH, faEyeSlash, faPaperPlane, faKey } from '@fortawesome/free-solid-svg-icons';
+library.add(faEllipsisH, faEyeSlash, faPaperPlane, faKey);
 
 class App extends Component {
   constructor(props) {
