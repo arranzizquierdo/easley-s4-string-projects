@@ -36,6 +36,7 @@ class LogIn extends Component {
             Recuérdame
           </label>
         </form>
+        <ErrorMessage />
       </div>
     );
   }
