@@ -5,7 +5,7 @@
 }
 
 .modal__list {
-    width: 450px;
+    width: 50%;
     height: 170px;
     list-style: none;
     position: absolute;
@@ -13,6 +13,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
+    padding: 0;
 }
 
 .modal__item-title, .modal__item {
