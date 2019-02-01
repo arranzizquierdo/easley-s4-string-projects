@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './LogIn.scss';
-import ErrorMessage from '../LogIn';
+import ErrorMessage from '../ErrorMessage';
 
 class LogIn extends Component {
   render() {
@@ -36,6 +36,7 @@ class LogIn extends Component {
             Recuérdame
           </label>
         </form>
+        <ErrorMessage />
       </div>
     );
   }
