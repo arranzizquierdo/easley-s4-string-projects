@@ -5,14 +5,16 @@ import groupImage from '../../images/groupImage.jpg';
 class GroupList extends Component {
     
     render() { 
-        return ( 
-            <ul className = "ul__group">
-                <li className = "li__group">
-                    <img className = "image__group" src={groupImage} alt="Icono grupo"/>
-                    <p className = "title__group">Recetas y menús</p>
-                    <p className = "persons__group">56 personas</p>
+        return (
+            <div className = "group__container">
+            <ul className = "group__ul">
+                <li className = "group__li">
+                    <img className = "group__image" src={groupImage} alt="Icono grupo"/>
+                    <p className = "group__title">Recetas y menús</p>
+                    <p className = "group__persons">56 personas</p>
                 </li>
             </ul>
+            </div> 
          );
     }
 }
