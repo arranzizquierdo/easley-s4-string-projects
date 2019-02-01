@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './landingpage.scss';
+import './LandingPage.scss';
 import LogIn from '../LogIn';
 
 class LandingPage extends Component {

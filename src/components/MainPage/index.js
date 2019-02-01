@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './mainpage.scss';
-import LogIn from '../LogIn';
+import './MainPage.scss';
 
 class MainPage extends Component {
     render() { 

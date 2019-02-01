@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './conversationthreading.scss';
+import './ConversationThreading.scss';
 
 class ConversationThreading extends Component {
     render() { 

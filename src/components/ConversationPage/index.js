@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './conversationpage.scss';
+import './ConversationPage.scss';
 
 class ConversationPage extends Component {
     render() { 
