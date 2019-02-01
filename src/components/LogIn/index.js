@@ -4,7 +4,7 @@ import './LogIn.scss';
 
 class LogIn extends Component {
     render(){
-        return <div>
+        return <div className="logIn__container">
             <h1>Inicia sesión</h1>
             <form action="/signup" method="post">
             <label htmlFor="user-name"/>
@@ -12,7 +12,13 @@ class LogIn extends Component {
             <label htmlFor="password"/>
             <input type="text" id="password" placeholder="Contraseña" name="password"/>
             <FontAwesomeIcon
-            icon="faEyeSlash" />
+            icon="eye-slash" />
+            
+            <label htmlFor="remember">
+            <input type="checkbox" id="remember" name="remember"/>
+            Recuérdame
+            </label>
+            
             </form>
            
         </div>

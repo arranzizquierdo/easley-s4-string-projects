@@ -15,10 +15,11 @@ class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <LogIn />
+     /* <React.Fragment>
         "WE in process..."
         <SendMessage inputSendMessage={this.inputSendMessage}/>
-      </React.Fragment>
+      </React.Fragment>*/
     );
   }
 }
