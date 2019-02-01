@@ -5,6 +5,9 @@ import LandingPage from './components/LandingPage/LandingPage';
 import MainPage from './components/MainPage/MainPage';
 import ConversationPage from './components/ConversationPage/ConversationPage';
 import ConversationThreading from './components/ConversationThreading/ConversationThreading';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPaperPlane, faKey } from '@fortawesome/free-solid-svg-icons';
+library.add(faPaperPlane, faKey);
 
 class App extends Component {
   constructor(props){
@@ -13,6 +16,12 @@ class App extends Component {
 
     }
   }
+
+  inputSendMessage(event) {
+    const sendMessageInputValue = event.target.value;
+    console.log('SendMessage input value:', sendMessageInputValue);
+  }
+  
   render() {
     return (
       <Switch>
@@ -31,13 +40,13 @@ class App extends Component {
         <Route 
           path="/conversationpage"
           render={props => (
-            <ConversationPage/>
+            <ConversationPage inputSendMessage={this.inputSendMessage}/>
           )}
         />
         <Route 
           path="/conversationthreading"
           render={props => (
-            <ConversationThreading/>
+            <ConversationThreading inputSendMessage={this.inputSendMessage}/>
           )}
         />
       </Switch>
