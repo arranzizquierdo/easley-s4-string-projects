@@ -12,7 +12,7 @@ class IndividualMessage extends Component {
                     <h2 className="individualMessage__name">
                         Jojo
                     </h2>
-                    <p className="individualMessage_message">
+                    <p className="individualMessage__message">
                         Me encantan los flamenquines!
                     </p>
                 </div>

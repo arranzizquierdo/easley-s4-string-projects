@@ -15,21 +15,32 @@
 }
 .individualMessage__name {
     font-size: 16px;
-    margin: 0;
+    margin: 5px 0;
 }
-.individualMessage_message {
+.individualMessage__message {
     font-size: 16px;
     margin: 0;
+    width: 100vw;
 }
 
 @media all and (min-width: 1024px){
     .individualMessage__container {
         display: flex;
-        margin: 30px 40px 45px 40px; 
-        width: 50px;
-        height: 50px;
-    }  
+        margin: 20px 40px; 
+        width: 100px;
+        height: 100px;
+    } 
+    .individualMessage__image{
+        width: 80px;
+        height: 80px;
+    } 
     .individualMessage__data {
         padding-left: 20px;   
-    }  
+    } 
+    .individualMessage__name {
+        font-size: 25px;
+    } 
+    .individualMessage__message {
+        font-size: 20px;
+    } 
 }
