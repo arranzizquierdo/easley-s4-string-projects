@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './stylesheets/App.scss';
 import { Route, Switch } from 'react-router-dom';
-import LandingPage from './components/LandingPage/LandingPage';
-import MainPage from './components/MainPage/MainPage';
-import ConversationPage from './components/ConversationPage/ConversationPage';
-import ConversationThreading from './components/ConversationThreading/ConversationThreading';
+import LandingPage from './components/LandingPage/index';
+// import MainPage from './components/MainPage/MainPage';
+// import ConversationPage from './components/ConversationPage/ConversationPage';
+// import ConversationThreading from './components/ConversationThreading/ConversationThreading';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPaperPlane, faKey } from '@fortawesome/free-solid-svg-icons';
 library.add(faPaperPlane, faKey);
@@ -27,11 +27,11 @@ class App extends Component {
       <Switch>
         <Route 
           exact path="/"  
-          render={props => (
+          render={() => (
             <LandingPage/>
           )}
         />
-        <Route 
+        {/* <Route 
           path="/mainpage"
           render={props => (
             <MainPage/>
@@ -48,7 +48,7 @@ class App extends Component {
           render={props => (
             <ConversationThreading inputSendMessage={this.inputSendMessage}/>
           )}
-        />
+        /> */}
       </Switch>
 
     )
