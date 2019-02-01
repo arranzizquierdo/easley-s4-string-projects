@@ -21,7 +21,7 @@ class LogIn extends Component {
             </label>
         
             </form>
-           <ErrorMessage />
+           
         </div>
     }
 }
