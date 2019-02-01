@@ -4,6 +4,9 @@
   "private": true,
   "homepage": "http://beta.adalab.es/string-projects/",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.13",
+    "@fortawesome/free-solid-svg-icons": "^5.7.0",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "gh-pages": "^2.0.1",
     "node-sass": "^4.11.0",
     "prop-types": "^15.6.2",
