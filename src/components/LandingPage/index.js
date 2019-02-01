@@ -1,12 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './LandingPage.scss';
+import Header from '../Header';
 import LogIn from '../LogIn';
 
 class LandingPage extends Component {
-    render() { 
-        return <LogIn />
+    render() {
+        return (
+            <Fragment>
+                <Header />
+                <LogIn />
+            </Fragment>
+        )
     }
 }
- 
+
 export default LandingPage;

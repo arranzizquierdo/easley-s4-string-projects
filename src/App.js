@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './stylesheets/App.scss';
-import Header from './components/Header';
 import { Route, Switch } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import MainPage from './components/MainPage';
@@ -24,9 +23,7 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <Fragment>
-        <Header />
+    return (        
         <Switch>
           <Route
             exact path="/"
@@ -53,7 +50,7 @@ class App extends Component {
             )}
           />
         </Switch>
-      </Fragment>
+
     )
   }
 }
