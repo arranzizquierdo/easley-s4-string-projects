@@ -6,11 +6,17 @@ import { faPaperPlane, faKey } from '@fortawesome/free-solid-svg-icons';
 library.add(faPaperPlane, faKey);
 
 class App extends Component {
+
+  inputSendMessage(event) {
+    const sendMessageInputValue = event.target.value;
+    console.log('SendMessage input value:', sendMessageInputValue);
+  }
+
   render() {
     return (
       <React.Fragment>
         "WE in process..."
-        <SendMessage />
+        <SendMessage inputSendMessage={this.inputSendMessage}/>
       </React.Fragment>
     );
   }

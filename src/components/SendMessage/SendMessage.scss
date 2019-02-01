@@ -3,19 +3,12 @@
   margin-top: 25px;
 }
 
-.input__sendmessage {
+.sendmessage__input {
   border: none;
   border-bottom: 1px solid gray;
   width: 90%;
   outline: none;
   font-size: 20px;
-}
-
-.paperplane__styles {
-  color: blue;
-  font-size: 42px;
-  margin-left: 10px;
-  width: 10%;
 }
 
 .sendmessage_button {
@@ -26,8 +19,15 @@
   cursor: pointer;
 }
 
+.paperplane__styles {
+  color: blue;
+  font-size: 42px;
+  margin-left: 10px;
+  width: 10%;
+}
+
 @media (max-width: 769px) {
-  .input__sendmessage {
+  .sendmessage__input {
     width: 80%;
     font-size: 18px;
   }
