@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './LogIn.scss';
+import ErrorMessage from '../LogIn';
 
 class LogIn extends Component {
     render(){
@@ -18,9 +19,9 @@ class LogIn extends Component {
             <input type="checkbox" id="remember" name="remember"/>
             Recuérdame
             </label>
-            
+        
             </form>
-           
+           <ErrorMessage />
         </div>
     }
 }
