@@ -1,0 +1,38 @@
+.sendmessage_container {
+  width: 100%;
+  margin-top: 25px;
+}
+
+.input__sendmessage {
+  border: none;
+  border-bottom: 1px solid gray;
+  width: 90%;
+  outline: none;
+  font-size: 20px;
+}
+
+.paperplane__styles {
+  color: blue;
+  font-size: 42px;
+  margin-left: 10px;
+  width: 10%;
+}
+
+.sendmessage_button {
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+@media (max-width: 769px) {
+  .input__sendmessage {
+    width: 80%;
+    font-size: 18px;
+  }
+
+  .paperplane__styles {
+    font-size: 34px;
+  }
+}
