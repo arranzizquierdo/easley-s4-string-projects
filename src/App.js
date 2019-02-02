@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './stylesheets/App.scss';
 import { Route, Switch } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
@@ -50,7 +50,6 @@ class App extends Component {
             )}
           />
         </Switch>
-
     )
   }
 }
