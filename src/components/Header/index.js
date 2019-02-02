@@ -13,13 +13,13 @@ class Header extends Component {
                 <div className="header__container-logo">
                     <img className="logo" src={Logo} alt="Logo We." />
                 </div>
+                {children}
                 {showNav && (
                     <FontAwesomeIcon 
                         icon="ellipsis-h" 
                         className="icon__nav"
                     />
                 )}
-                {children}
             </header>
         );
     }

@@ -1,0 +1,12 @@
+.header__tittle {
+    font-weight: bold;
+    font-size: 14px;
+    margin: auto;
+    margin-left: 0;
+}
+
+@media all and (min-width:1024px) {
+    .header__tittle {
+        font-size: 18px;
+    }
+}

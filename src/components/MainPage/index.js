@@ -9,7 +9,7 @@ class MainPage extends Component {
         return (
             <Header>
 
-                <p className="">Grupos</p>
+                <p className="header__tittle">Grupos</p>
                 
             </Header>
   
