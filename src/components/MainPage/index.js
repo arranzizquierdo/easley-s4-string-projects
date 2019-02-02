@@ -8,9 +8,7 @@ class MainPage extends Component {
     render() { 
         return (
             <Header>
-
                 <p className="header__tittle">Grupos</p>
-                
             </Header>
   
         )
