@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-.group__container{
+.header__group__container{
     font-family: 'Heebo', sans-serif;
     display: flex;
     width: 200px;
@@ -12,23 +12,23 @@
     margin-left: 0;
 }
 
-.group__image{
+.header__group__image{
     width: 30px;
     height: 30px;
     border-radius: 10px;
 }
 
-.container__text{
+.header__container__text{
     margin-left: 10px;
 }
 
-.group__title{
+.header__group__title{
     font-weight: 500;
     font-size: 12px;
     margin: 0;
 }
 
-.group__persons{
+.header__group__persons{
     font-weight: 400;
     color: #6b869f;
     font-size: 10px;
@@ -36,20 +36,20 @@
 }
 
 @media all and (min-width: 1024px){
-    .group__container {
+    .header__group__container {
         width: 400px;
     }
-    .group__image {
+    .header__group__image {
         width: 60px;
     height: 60px;    
     }
-    .container__text {
+    .header__container__text {
         margin-left: 12px;
     }
-    .group__title {
+    .header__group__title {
         font-size: 18px;
     }
-    .group__persons {
+    .header__group__persons {
         font-size: 16px;
     }
 }

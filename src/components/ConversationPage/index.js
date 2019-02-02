@@ -8,11 +8,11 @@ class ConversationPage extends Component {
     render() { 
         return  (
             <Header>
-                <div className = "group__container">
-                    <img className = "group__image" src={groupImage} alt="Icono grupo"/>
-                    <span className = "container__text">
-                    <p className = "group__title">Recetas y menús</p>
-                    <p className = "group__persons">56 personas</p>
+                <div className = "header__group__container">
+                    <img className = "header__group__image" src={groupImage} alt="Icono grupo"/>
+                    <span className = "header__container__text">
+                    <p className = "header__group__title">Recetas y menús</p>
+                    <p className = "header__group__persons">56 personas</p>
                     </span>
                 </div>
             </Header>
