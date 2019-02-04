@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import "./MainPage.scss";
 import Header from '../Header';
 import Modal from "../Modal";
+import GroupList from "../GroupList";
 
 
 class MainPage extends Component {
@@ -14,6 +15,7 @@ class MainPage extends Component {
           <h2 className="header__tittle">Grupos</h2>
         </Header>
         <Modal isHidden={isHidden} cancelClickModal={cancelClickModal}/>
+        <GroupList />
       </Fragment>
     );
   }
