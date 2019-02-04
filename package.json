@@ -2,7 +2,7 @@
   "name": "string-projects",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://beta.adalab.es/string-projects/",
+  "homepage": "http://beta.adalab.es/easley-s4-string-projects/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.13",
     "@fortawesome/free-solid-svg-icons": "^5.7.0",
