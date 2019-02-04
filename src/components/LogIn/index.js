@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './LogIn.scss';
-import ErrorMessage from '../ErrorMessage';
+import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./LogIn.scss";
+import ErrorMessage from "../ErrorMessage";
+import ButtonStart from "../ButtonStart";
 
 class LogIn extends Component {
   render() {
@@ -32,9 +33,15 @@ class LogIn extends Component {
           </div>
 
           <label htmlFor="remember" className="remember__label">
-            <input type="checkbox" id="remember" name="remember" />
+            <input
+              className="remember__checkbox"
+              type="checkbox"
+              id="remember"
+              name="remember"
+            />
             Recuérdame
           </label>
+          <ButtonStart />
         </form>
         <ErrorMessage />
       </div>
