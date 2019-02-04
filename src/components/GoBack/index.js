@@ -11,6 +11,8 @@ class GoBack extends Component {
 
         <Link to="/mainpage">
           <button type="button">
+          <FontAwesomeIcon
+          icon = "angle-double-left"/>
             Volver
           </button>
         </Link>

@@ -10,9 +10,10 @@ import {
   faEllipsisH,
   faEyeSlash,
   faPaperPlane,
-  faKey
+  faKey,
+  faAngleDoubleLeft
 } from '@fortawesome/free-solid-svg-icons';
-library.add(faEllipsisH, faEyeSlash, faPaperPlane, faKey);
+library.add(faEllipsisH, faEyeSlash, faPaperPlane, faKey, faAngleDoubleLeft);
 
 class App extends Component {
   constructor(props) {
