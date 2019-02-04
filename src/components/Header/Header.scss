@@ -18,6 +18,7 @@
     font-size: 30px;
     margin: auto;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 @media all and (min-width:1024px) {
@@ -28,8 +29,8 @@
     .logo {
         width: 100px;
         height: 100px;
-    }  
+    }
     .icon__nav{
         font-size: 35px;
-    }  
+    }
 }
