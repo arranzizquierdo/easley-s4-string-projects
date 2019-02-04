@@ -1,23 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './ConversationThreading.scss';
 import Header from '../Header';
-import groupImage from '../../images/groupImage.jpg';
+import IndividualMessage from '../IndividualMessage/index'
+import SendMessage from '../SendMessage';
+import MessageThreading from '../MessageThreading';
 
 class ConversationThreading extends Component {
-    render() { 
-        return  (
-            <Header>
-                <div className = "header__group__container">
-                    <img className = "header__group__image" src={groupImage} alt="Icono grupo"/>
-                    <span className = "header__container__text">
-                    <h2 className = "header__group__title">Recetas y menús</h2>
-                    <p className = "header__group__persons">56 personas</p>
-                    </span>
-                </div>
-            </Header>
-        ) 
-    }
+  render() {
+    return (
+      <Fragment>
+        <Header>
+          <span className="header__container__thread">
+            <h2 className="header__group__title-thread">Hilo</h2>
+            <h3 className="header__group__persons-thread">Recetas y menús</h3>
+          </span>
+        </Header>
+        <main>
+          <IndividualMessage />
+          <div className="answers">Respuestas</div>
+          <MessageThreading />
+          <section className="container__message">
+          <SendMessage />
+          </section>
+
+        </main>
+      </Fragment>
+    )
+  }
 }
 
 export default ConversationThreading;
