@@ -1,7 +1,7 @@
 .logIn__container {
     width: 50%;
     min-width: 310px;
-    margin: 150px auto 0 auto;
+    margin: 130px auto 50px auto;
     font-family: 'Heebo', sans-serif;
 }
 
@@ -53,8 +53,8 @@
   margin-right: 7px;
 }
 
-@media all and (min-width:1024px){
-    .logIn__container{
-        margin-top: 130px;
+@media all and (max-width: 360px){
+    .logIn__container {
+      margin-top: 50px;
     }
 }
