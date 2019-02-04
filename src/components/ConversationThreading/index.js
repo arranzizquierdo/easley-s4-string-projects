@@ -19,7 +19,7 @@ class ConversationThreading extends Component {
           </span>
         </Header>
         <main className="main__conversationThreading">
-          <Link to="/conversationpage">
+          <Link className = "style_link" to="/conversationpage">
             <GoBack />
           </Link>
           <IndividualMessage />

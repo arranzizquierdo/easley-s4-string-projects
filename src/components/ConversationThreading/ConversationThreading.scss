@@ -30,6 +30,11 @@
   position: fixed;
   width: 100%;
 }
+
+.style_link{
+  text-decoration: none;
+}
+
 @media all and (min-width: 1024px) {
   .header__group__title-thread {
     font-weight: bold;

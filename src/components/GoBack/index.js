@@ -9,7 +9,7 @@ class GoBack extends Component {
   render() {
     return (
 
-          <button
+          <div
           className = "button-back"
           type="button">
           <FontAwesomeIcon
@@ -17,7 +17,7 @@ class GoBack extends Component {
           className = "icon_button-back"
           />
             Volver
-          </button>
+          </div>
 
     );
   }
