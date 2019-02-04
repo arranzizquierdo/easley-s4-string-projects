@@ -1,4 +1,55 @@
-.logIn__container{
+.logIn__container {
     width: 50%;
-    margin: 100px auto 0 auto;
+    min-width: 310px;
+    margin: 200px auto 0 auto;
+}
+
+.logIn__title {
+    color: #292e34;
+    text-align: center;
+    margin-bottom: 36px;
+    font-size: 36px;
+    font-family: 'Heebo', sans-serif;
+}
+
+.logIn__form {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logIn__input {
+    border: 0;
+    font-size: 16px;
+    width: 100%;
+}
+
+::placeholder {
+    color: #6b869f;
+}
+
+.input-icon__container {
+    width: 100%;
+    border-bottom: solid 1px #d8d8d8;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: solid 1px #d8d8d8;
+}
+
+.eye__icon {
+    font-size: 16px;
+    color: #6b869f;
+}
+
+.remember__label{
+    font-size: 14px;
+    color: #6b869f;
+}
+
+@media all and (min-width:1024px){
+    .logIn__container{
+        margin-top: 130px;
+    }
 }
