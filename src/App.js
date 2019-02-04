@@ -19,8 +19,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: "",
-      password: ""
+      dataUser : {
+        userName: "",
+        password: ""
+      }
     };
     this.saveData = this.saveData.bind(this);
   }
@@ -29,8 +31,11 @@ class App extends Component {
     const {name, value} = event.target;
     this.setState(prevState => {
       return {
-        ...prevState,
-        [name]: value
+        dataUser: {
+          ...prevState.dataUser,
+          [name]: value
+        }
+
       }
     })
   }
