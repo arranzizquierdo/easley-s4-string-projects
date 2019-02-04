@@ -20,3 +20,9 @@
   font-size: 14px;
   margin: 0;
 }
+
+@media all and (min-width: 1024px) {
+  .messageThreading__container {
+    margin: 20px 40px;
+  }
+}

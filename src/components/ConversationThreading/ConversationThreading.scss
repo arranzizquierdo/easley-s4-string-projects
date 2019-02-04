@@ -22,11 +22,13 @@
   border-bottom: 1px solid #6b869f;
   width: 100%;
   font-size: 10px;
+  margin: 5px;
 }
 .container__message {
-  // bottom: 0;
-  // padding: 10px;
-  // position: absolute;
+  bottom: 0;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
 }
 @media all and (min-width: 1024px) {
   .header__group__title-thread {
