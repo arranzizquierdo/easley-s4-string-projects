@@ -1,13 +1,9 @@
-* {
-    box-sizing: border-box;
-}
-
 .header__group__container{
     font-family: 'Heebo', sans-serif;
     display: flex;
     width: 200px;
     height: 50px;
-    align-items: center; 
+    align-items: center;
     margin: auto;
     margin-left: 0;
 }
@@ -43,7 +39,7 @@
     }
     .header__group__image {
         width: 60px;
-    height: 60px;    
+    height: 60px;
     }
     .header__container__text {
         margin-left: 12px;

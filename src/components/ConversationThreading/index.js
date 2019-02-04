@@ -5,9 +5,10 @@ import Header from '../Header';
 import groupImage from '../../images/groupImage.jpg';
 
 class ConversationThreading extends Component {
-    render() { 
+    render() {
+      const {addModalClick} = this.props;
         return  (
-            <Header>
+            <Header addModalClick={addModalClick}>
                 <div className = "header__group__container">
                     <img className = "header__group__image" src={groupImage} alt="Icono grupo"/>
                     <span className = "header__container__text">
@@ -16,7 +17,7 @@ class ConversationThreading extends Component {
                     </span>
                 </div>
             </Header>
-        ) 
+        )
     }
 }
 

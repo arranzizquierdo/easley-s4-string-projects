@@ -8,9 +8,10 @@ import Modal from "../Modal";
 
 class ConversationPage extends Component {
     render() {
+      const {addModalClick, isHidden, cancelClickModal} = this.props;
         return (
             <Fragment>
-                <Header>
+                <Header addModalClick={addModalClick}>
                     <div className="header__group__container">
                         <img className="header__group__image" src={groupImage} alt="Icono grupo" />
                         <span className="header__container__text">
@@ -20,10 +21,16 @@ class ConversationPage extends Component {
                     </div>
                 </Header>
                 <IndividualMessage />
-                <Modal />
+                <Modal isHidden={isHidden} cancelClickModal={cancelClickModal}/>
             </Fragment>
         )
     }
+}
+
+ConversationPage.propTypes = {
+  addModalClick: PropTypes.func.isRequired,
+  isHidden: PropTypes.bool.isRequired,
+  cancelClickModal: PropTypes.func.isRequired,
 }
 
 export default ConversationPage;
