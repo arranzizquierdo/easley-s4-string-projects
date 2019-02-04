@@ -1,83 +1,79 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-.group__container{
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
+.group__container {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
 }
-.group__ul{
-    font-family: 'Heebo', sans-serif;
+.group__ul {
+  font-family: "Heebo", sans-serif;
 }
 
-.group__li{
-    border-bottom: 1px solid #d2d6df;
+.group__li {
+  border-bottom: 1px solid #d2d6df;
+  display: flex;
+  width: 200px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.group__image {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.container__text-li {
+  margin-left: 16px;
+}
+
+.group__title {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.group__persons {
+  font-weight: 400;
+  color: #6b869f;
+  font-size: 10px;
+}
+
+@media all and (min-width: 768px) {
+  .group__li {
+    width: 500px;
+    height: 100px;
     display: flex;
-    width: 200px;
+    justify-content: flex-start;
+  }
+
+  .group__image {
+    width: 50px;
     height: 50px;
-    justify-content: center;
-    align-items: center;
-    
+    margin-left: 50px;
+  }
+
+  .group__title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  .group__persons {
+    font-size: 13px;
+  }
 }
 
-.group__image{
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-}
-
-.container__text-li{
-    margin-left: 16px;
-}
-
-.group__title{
-    font-weight: 500;
-    font-size: 12px;
-}
-
-.group__persons{
-    font-weight: 400;
-    color: #6b869f;
-    font-size: 10px;
-}
-
-@media all and (min-width: 768px){
-
-    .group__li {
-        width: 500px;
-        height: 100px;
-        display: flex;
-        justify-content: flex-start;
-        }
-
-    .group__image{
-        width: 50px;
-        height: 50px;
-        margin-left: 50px;
+@media all and (min-width: 1200px) {
+  .group__li {
+    width: 660px;
+    height: 130px;
+    &:hover {
+      background-color: #f0f3f6;
     }
-
-    .group__title{
-        margin-top: 5px;
-        margin-bottom: 10px;
-        font-size: 14px;
-    }
-    
-    .group__persons{
-        font-size: 13px;
-    }
-}
-
-@media all and (min-width: 1200px){
-
-    .group__li {
-        width: 660px;
-        height: 130px;
-        &:hover {
-            background-color: #f0f3f6;
-        }
-        }
-    
+  }
 }
