@@ -5,7 +5,7 @@ import Header from './components/Header';
 import { Route, Switch } from 'react-router-dom';
 import LandingPage from './components/LandingPage/index';
 import MainPage from './components/MainPage';
-import ConversationPage from './components/ConversationPage/ConversationPage';
+import ConversationPage from './components/ConversationPage';
 import ConversationThreading from './components/ConversationThreading';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEyeSlash, faPaperPlane, faKey } from '@fortawesome/free-solid-svg-icons';
