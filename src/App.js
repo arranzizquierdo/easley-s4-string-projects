@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './stylesheets/App.scss';
-import GroupList from "./components/GroupList";
 import { Route, Switch } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import MainPage from './components/MainPage';
