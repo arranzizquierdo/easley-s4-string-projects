@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./LogIn.scss";
+import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './LogIn.scss';
+import ErrorMessage from '../ErrorMessage';
 import ButtonStart from "../ButtonStart";
 
 class LogIn extends Component {
@@ -37,6 +38,7 @@ class LogIn extends Component {
           </label>
           <ButtonStart />
         </form>
+        <ErrorMessage />
       </div>
     );
   }
