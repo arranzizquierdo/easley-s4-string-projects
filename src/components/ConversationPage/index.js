@@ -4,7 +4,7 @@ import './ConversationPage.scss';
 import Header from '../Header';
 import groupImage from '../../images/groupImage.jpg';
 import IndividualMessage from '../IndividualMessage';
-//import Modal from "../Modal";
+import Modal from "../Modal";
 import GoBack from "../GoBack";
 import { Link } from 'react-router-dom';
 
@@ -21,11 +21,13 @@ class ConversationPage extends Component {
                         </span>
                     </div>
                 </Header>
+                <main>
                 <Link to="/mainpage">
                 <GoBack />
                 </Link>
                 <IndividualMessage />
-                {/* <Modal /> */}
+                <Modal />
+                </main>
             </Fragment>
         )
     }
