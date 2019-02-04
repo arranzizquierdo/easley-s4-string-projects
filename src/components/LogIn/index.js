@@ -8,7 +8,7 @@ class LogIn extends Component {
 
   render() {
 
-    const {saveData} = this.props;
+    const { saveData, handleButton } = this.props;
     return (
       <div className="logIn__container">
         <h1 className="logIn__title">Inicia sesión</h1>
@@ -19,7 +19,7 @@ class LogIn extends Component {
               type="text"
               id="user-name"
               placeholder="Tu dirección de email o nombre de usuario"
-              name="userName"
+              name="nickname"
               className="logIn__input"
               onChange={saveData}
             />
@@ -46,8 +46,8 @@ class LogIn extends Component {
             />
             Recuérdame
           </label>
-          <ButtonStart />
         </form>
+        <ButtonStart handleButton={handleButton} />
         <ErrorMessage />
       </div>
     );

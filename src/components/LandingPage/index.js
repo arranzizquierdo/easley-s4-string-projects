@@ -5,7 +5,8 @@ import LogIn from '../LogIn';
 
 class LandingPage extends Component {
     render() {
-        return <LogIn saveData = {this.props.saveData}/>
+      const {saveData, handleButton} = this.props;
+        return <LogIn saveData = {saveData} handleButton = {handleButton}/>
     }
 }
 
