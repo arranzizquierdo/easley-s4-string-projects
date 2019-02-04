@@ -5,6 +5,7 @@ import Header from '../Header';
 import groupImage from '../../images/groupImage.jpg';
 import IndividualMessage from '../IndividualMessage';
 import Modal from "../Modal";
+import GoBack from "../GoBack";
 
 class ConversationPage extends Component {
     render() {
@@ -19,8 +20,9 @@ class ConversationPage extends Component {
                         </span>
                     </div>
                 </Header>
+                <GoBack />
                 <IndividualMessage />
-                <Modal />
+                {/* <Modal /> */}
             </Fragment>
         )
     }
