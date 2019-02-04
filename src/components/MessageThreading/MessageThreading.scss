@@ -1,0 +1,28 @@
+.messageThreading__container {
+  margin: 15px 20px 20px 20px;
+  font-family: 'Heebo', sans-serif;
+  display: flex;
+}
+.messageThreading__image {
+  border-radius: 20px;
+    width: 40px;
+    height: 40px;
+}
+.messageThreading__data {
+  padding-left: 10px;
+}
+.messageThreading__name {
+  font-size: 14px;
+  margin: 0;
+  width: 200px;
+}
+.messageThreading__message {
+  font-size: 14px;
+  margin: 0;
+}
+
+@media all and (min-width: 1024px) {
+  .messageThreading__container {
+    margin: 20px 40px;
+  }
+}
