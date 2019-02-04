@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './GoBack.scss'
-import { Link } from 'react-router-dom';
+
 
 
 class GoBack extends Component {
@@ -9,7 +9,6 @@ class GoBack extends Component {
   render() {
     return (
 
-        <Link to="/mainpage">
           <button
           className = "button-back"
           type="button">
@@ -19,7 +18,6 @@ class GoBack extends Component {
           />
             Volver
           </button>
-        </Link>
 
     );
   }
