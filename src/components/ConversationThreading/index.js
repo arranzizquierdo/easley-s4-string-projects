@@ -5,6 +5,8 @@ import Header from '../Header';
 import IndividualMessage from '../IndividualMessage/index'
 import SendMessage from '../SendMessage';
 import MessageThreading from '../MessageThreading';
+import GoBack from "../GoBack";
+import { Link } from 'react-router-dom';
 
 class ConversationThreading extends Component {
   render() {
@@ -17,6 +19,9 @@ class ConversationThreading extends Component {
           </span>
         </Header>
         <main className="main__conversationThreading">
+          <Link to="/conversationpage">
+            <GoBack />
+          </Link>
           <IndividualMessage />
           <div className="answers">Respuestas</div>
           <MessageThreading />
