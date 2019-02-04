@@ -4,6 +4,7 @@ import "./MainPage.scss";
 import Header from '../Header';
 import Modal from "../Modal";
 import image from "../../images/temporal_5.jpg";
+import GroupList from "../GroupList";
 
 
 class MainPage extends Component {
@@ -13,6 +14,7 @@ class MainPage extends Component {
         <Header>
           <h2 className="header__tittle">Grupos</h2>
         </Header>
+        <GroupList />
         <img className="image" src={image} alt="Tom Hanks" />
         <Modal />
       </Fragment>

@@ -7,11 +7,11 @@ import MainPage from './components/MainPage';
 import ConversationPage from './components/ConversationPage';
 import ConversationThreading from './components/ConversationThreading';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { 
-  faEllipsisH, 
-  faEyeSlash, 
-  faPaperPlane, 
-  faKey 
+import {
+  faEllipsisH,
+  faEyeSlash,
+  faPaperPlane,
+  faKey
 } from '@fortawesome/free-solid-svg-icons';
 library.add(faEllipsisH, faEyeSlash, faPaperPlane, faKey);
 
@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   render() {
-    return (        
+    return (
         <Switch>
           <Route exact path="/" render={props => <LandingPage />} />
           <Route path="/mainpage" render={props => <MainPage />} />
@@ -43,7 +43,6 @@ class App extends Component {
               <ConversationThreading inputSendMessage={this.inputSendMessage} />
             )}
           />
-          <Route path="/grouplist" render={props => <GroupList />} />
         </Switch>
     )
   }
