@@ -1,8 +1,9 @@
 .individualMessage__container {
     display: flex;
-    margin: 15px 20px 20px 20px; 
+    margin: 15px 20px 20px 20px;
     width: 50px;
     height: 50px;
+    font-family: 'Heebo', sans-serif;
 }
 .individualMessage__image{
     border-radius: 20px;
@@ -11,7 +12,7 @@
 }
 .individualMessage__data {
     padding-left: 10px;
-    
+
 }
 .individualMessage__name {
     font-size: 16px;
@@ -20,27 +21,33 @@
 .individualMessage__message {
     font-size: 16px;
     margin: 0;
-    width: 100vw;
+    width: 220px;
+}
+
+@media all and (min-width: 768px) {
+  .individualMessage__message {
+    width: 620px;
+  }
 }
 
 @media all and (min-width: 1024px){
     .individualMessage__container {
         display: flex;
-        margin: 20px 40px; 
+        margin: 20px 40px;
         width: 100px;
         height: 100px;
-    } 
+    }
     .individualMessage__image{
         width: 80px;
         height: 80px;
-    } 
+    }
     .individualMessage__data {
-        padding-left: 20px;   
-    } 
+        padding-left: 20px;
+    }
     .individualMessage__name {
         font-size: 25px;
-    } 
+    }
     .individualMessage__message {
         font-size: 20px;
-    } 
+    }
 }
