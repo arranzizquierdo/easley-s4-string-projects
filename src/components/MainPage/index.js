@@ -8,7 +8,7 @@ class MainPage extends Component {
     render() { 
         return (
             <Header>
-                <p className="header__tittle">Grupos</p>
+                <h2 className="header__tittle">Grupos</h2>
             </Header>
   
         )
