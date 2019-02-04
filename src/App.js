@@ -18,7 +18,21 @@ library.add(faEyeSlash, faPaperPlane, faKey);
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      userName: "",
+      password: ""
+    };
+    this.saveData = this.saveData.bind(this);
+  }
+
+  saveData(event){
+    const {name, value} = event.target;
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        [name]: value
+      }
+    })
   }
 
   inputSendMessage(event) {
@@ -31,7 +45,7 @@ class App extends Component {
       <Fragment>
         <Header />
         <Switch>
-          <Route exact path="/" render={props => <LandingPage />} />
+          <Route exact path="/" render={props => <LandingPage saveData={this.saveData}/>} />
           <Route path="/mainpage" render={props => <MainPage />} />
           <Route
             path="/conversationpage"

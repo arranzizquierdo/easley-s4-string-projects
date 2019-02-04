@@ -5,7 +5,10 @@ import ErrorMessage from "../ErrorMessage";
 import ButtonStart from "../ButtonStart";
 
 class LogIn extends Component {
+
   render() {
+
+    const {saveData} = this.props;
     return (
       <div className="logIn__container">
         <h1 className="logIn__title">Inicia sesión</h1>
@@ -16,18 +19,20 @@ class LogIn extends Component {
               type="text"
               id="user-name"
               placeholder="Tu dirección de email o nombre de usuario"
-              name="user-name"
+              name="userName"
               className="logIn__input"
+              onChange={saveData}
             />
           </div>
           <div className="input-icon__container">
             <label htmlFor="password" />
             <input
-              type="text"
+              type="password"
               id="password"
               placeholder="Contraseña"
               name="password"
               className="logIn__input"
+              onChange={saveData}
             />
             <FontAwesomeIcon icon="eye-slash" className="eye__icon" />
           </div>

@@ -4,9 +4,9 @@ import './LandingPage.scss';
 import LogIn from '../LogIn';
 
 class LandingPage extends Component {
-    render() { 
-        return <LogIn />
+    render() {
+        return <LogIn saveData = {this.props.saveData}/>
     }
 }
- 
+
 export default LandingPage;
