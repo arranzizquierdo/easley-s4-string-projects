@@ -3,7 +3,8 @@ import "./ButtonStart.scss";
 
 class ButtonStart extends Component {
   render() {
-    return <button className="button__styles">Inicia sesión</button>;
+    const {handleButton} = this.props;
+    return <button className="button__styles" onClick={handleButton}>Inicia sesión</button>;
   }
 }
 
