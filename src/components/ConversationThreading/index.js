@@ -10,7 +10,7 @@ class ConversationThreading extends Component {
   render() {
     return (
       <Fragment>
-        <Header>
+        <Header showNav={false}>
           <span className="header__container__thread">
             <h2 className="header__group__title-thread">Hilo</h2>
             <h3 className="header__group__persons-thread">Recetas y menús</h3>
