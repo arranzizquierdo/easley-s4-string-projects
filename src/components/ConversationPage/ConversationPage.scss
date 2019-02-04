@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+}
+
+.header__group__container{
+    font-family: 'Heebo', sans-serif;
+    display: flex;
+    width: 200px;
+    height: 50px;
+    align-items: center; 
+    margin: auto;
+    margin-left: 0;
+}
+
+.header__group__image{
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.header__container__text{
+    margin-left: 10px;
+    font-family: 'Heebo', sans-serif;
+}
+
+.header__group__title{
+    color: #0c2c5d;
+    font-weight: 500;
+    font-size: 12px;
+    margin: 0;
+}
+
+.header__group__persons{
+    font-weight: 400;
+    color: #6b869f;
+    font-size: 10px;
+    margin: 0;
+}
+
+@media all and (min-width: 1024px){
+    .header__group__container {
+        width: 400px;
+    }
+    .header__group__image {
+        width: 60px;
+    height: 60px;    
+    }
+    .header__container__text {
+        margin-left: 12px;
+    }
+    .header__group__title {
+        font-size: 18px;
+    }
+    .header__group__persons {
+        font-size: 16px;
+    }
+}
+
