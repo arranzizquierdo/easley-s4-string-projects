@@ -6,7 +6,7 @@ import LogIn from '../LogIn';
 
 class LandingPage extends Component {
   render() {
-    const { saveData, handleButton } = this.props;
+    const { saveData, handleButton, wrongCredentials } = this.props;
 
     return (
       <Fragment>
@@ -15,7 +15,8 @@ class LandingPage extends Component {
         />
         <LogIn
           saveData={saveData}
-          handleButton={handleButton} />
+          handleButton={handleButton}
+          wrongCredentials={wrongCredentials} />
       </Fragment>
     )
   }

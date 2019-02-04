@@ -8,7 +8,7 @@ class LogIn extends Component {
 
   render() {
 
-    const { saveData, handleButton } = this.props;
+    const { saveData, handleButton, wrongCredentials } = this.props;
     return (
       <div className="logIn__container">
         <h1 className="logIn__title">Inicia sesión</h1>
@@ -48,7 +48,7 @@ class LogIn extends Component {
           </label>
         </form>
         <ButtonStart handleButton={handleButton} />
-        <ErrorMessage />
+        <ErrorMessage wrongCredentials={wrongCredentials}/>
       </div>
     );
   }
