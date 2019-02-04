@@ -14,13 +14,20 @@
   color: #464749;
   font-weight: normal;
 }
+.main__conversationThreading {
+  height: 100vh;
+}
 .answers {
   font-family: 'Heebo', sans-serif;
   border-bottom: 1px solid #6b869f;
   width: 100%;
   font-size: 10px;
 }
-
+.container__message {
+  // bottom: 0;
+  // padding: 10px;
+  // position: absolute;
+}
 @media all and (min-width: 1024px) {
   .header__group__title-thread {
     font-weight: bold;

@@ -16,7 +16,7 @@ class ConversationThreading extends Component {
             <h3 className="header__group__persons-thread">Recetas y menús</h3>
           </span>
         </Header>
-        <main>
+        <main className="main__conversationThreading">
           <IndividualMessage />
           <div className="answers">Respuestas</div>
           <MessageThreading />
