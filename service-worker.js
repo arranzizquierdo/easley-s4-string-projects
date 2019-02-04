@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/string-projects/precache-manifest.9df292da5c5e92db8b03b9cb73418703.js"
+  "/easley-s4-string-projects/precache-manifest.d74fe89e6fe0dd78266b7cb245be1416.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/string-projects/index.html", {
+workbox.routing.registerNavigationRoute("/easley-s4-string-projects/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
