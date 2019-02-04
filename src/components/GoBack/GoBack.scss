@@ -10,4 +10,16 @@
   border-radius: 20px;
   background-color: #5271ff;
   color: white;
+  margin-top: 20px;
+  margin-left: 18px;
+}
+
+.icon_button-back {
+  margin-right: 5px;
+}
+
+@media all and (min-width: 1024px) {
+  .button-back {
+    margin-left: 40px;
+  }
 }
