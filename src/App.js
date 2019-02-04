@@ -20,22 +20,23 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataUser : {
+      userInfo: {
         nickname: "",
         password: ""
       },
-      token: ""
+      dataUser: ""
     };
     this.saveData = this.saveData.bind(this);
     this.handleButton = this.handleButton.bind(this);
+    this.getDataInfo = this.getDataInfo.bind(this);
   }
 
-  saveData(event){
-    const {name, value} = event.target;
+  saveData(event) {
+    const { name, value } = event.target;
     this.setState(prevState => {
       return {
-        dataUser: {
-          ...prevState.dataUser,
+        userInfo: {
+          ...prevState.userInfo,
           [name]: value
         }
 
@@ -48,35 +49,48 @@ class App extends Component {
     console.log("SendMessage input value:", sendMessageInputValue);
   }
 
-  handleButton(){
+  getDataInfo(){
     fetch('https://adalab.string-projects.com/api/v1/sessions', {
       method: "POST",
-      body: JSON.stringify(this.state.dataUser),
+      body: JSON.stringify(this.state.userInfo),
       headers: {
-        "content-type" : "application/json"
+        "content-type": "application/json"
       }
     })
-    .then (response => {
-      return response.json()
-    })
-    .then(data => {
-      return (
-        this.setState({
-          token: data.user.auth_token
-
-        })
-      )
-  })
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        return (
+          this.setState({
+            dataUser: data.user
+          })
+        )
+      })
+      .catch(error => {
+        console.log('error', error);
+      })
   }
 
+  handleButton() {
+    this.setState({
+      dataUser: ""
+    })
+   this.getDataInfo();
+    if (this.state.dataUser !== "") {
+      return console.log("next page")
+    } else {
+      return console.log("error message")
+    }
 
+  }
 
   render() {
     return (
       <Fragment>
         <Header />
         <Switch>
-          <Route exact path="/" render={props => <LandingPage saveData={this.saveData} handleButton = {this.handleButton}/>} />
+          <Route exact path="/" render={props => <LandingPage saveData={this.saveData} handleButton={this.handleButton} />} />
           <Route path="/mainpage" render={props => <MainPage />} />
           <Route
             path="/conversationpage"
