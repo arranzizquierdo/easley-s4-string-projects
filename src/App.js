@@ -27,7 +27,7 @@ class App extends Component {
       dataUser: null,
       groups: null,
       logIn: {
-        error: ""
+        error: 0
       }
     };
     this.addModalClick = this.addModalClick.bind(this);
@@ -113,7 +113,7 @@ class App extends Component {
       dataUser: null,
       groups: null,
       logIn: {
-        errorLogIn: ""
+        errorLogIn: 0
       }
     })
 
