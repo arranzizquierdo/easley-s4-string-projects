@@ -13,5 +13,5 @@ class ErrorMessage extends Component {
 export default ErrorMessage;
 
 ErrorMessage.propTypes = {
-  wrongCredentials: PropTypes.string
+  wrongCredentials: PropTypes.number
 }

@@ -27,5 +27,5 @@ export default LandingPage;
 LandingPage.propTypes = {
   saveData: PropTypes.func.isRequired,
   handleButton: PropTypes.func.isRequired,
-  wrongCredentials: PropTypes.string
+  wrongCredentials: PropTypes.number
 }
