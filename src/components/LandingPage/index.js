@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import './LandingPage.scss';
-import Header from '../Header';
-import LogIn from '../LogIn';
+import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
+import "./LandingPage.scss";
+import Header from "../Header";
+import LogIn from "../LogIn";
 
 class LandingPage extends Component {
   render() {
@@ -10,15 +10,14 @@ class LandingPage extends Component {
 
     return (
       <Fragment>
-        <Header
-          showNav={false}
-        />
+        <Header showNav={false} />
         <LogIn
           saveData={saveData}
           handleButton={handleButton}
-          wrongCredentials={wrongCredentials} />
+          wrongCredentials={wrongCredentials}
+        />
       </Fragment>
-    )
+    );
   }
 }
 

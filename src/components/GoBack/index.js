@@ -6,17 +6,15 @@ class GoBack extends Component {
 
   render() {
     return (
-
-          <button
-          className = "button-back"
-          type="button">
-          <FontAwesomeIcon
-          icon = "angle-double-left"
-          className = "icon_button-back"
-          />
-            Volver
-          </button>
-
+      <div
+        className="button-back"
+        type="button">
+        <FontAwesomeIcon
+          icon="angle-double-left"
+          className="icon_button-back"
+        />
+        Volver
+          </div>
     );
   }
 }

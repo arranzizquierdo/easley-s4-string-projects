@@ -6,7 +6,7 @@ import MainPage from './components/MainPage';
 import ConversationPage from './components/ConversationPage';
 import ConversationThreading from './components/ConversationThreading';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { fetchToken } from "./components/services/TokenService";
+import { fetchToken } from './components/services/TokenService';
 import {
   faEllipsisH,
   faEyeSlash,
@@ -106,7 +106,7 @@ class App extends Component {
       }
     })
 
-  this.getDataInfo();
+    this.getDataInfo();
     if (this.state.dataUser !== null) {
       return console.log("siguiente página")
     } else {

@@ -1,6 +1,6 @@
 .logIn__container {
   width: 50%;
-  min-width: 310px;
+  min-width: 320px;
   margin: 50px auto 50px auto;
   font-family: "Heebo", sans-serif;
   display: flex;
@@ -59,7 +59,12 @@
 }
 
 @media all and (max-width: 360px) {
-  .logIn__container {
-    margin-top: 50px;
+  .logIn__container{
+    min-width: 260px;
+  }
+  .logIn__input {
+    font-size: 13px;
   }
 }
+
+
