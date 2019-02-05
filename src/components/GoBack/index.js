@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './GoBack.scss'
 
-
-
 class GoBack extends Component {
 
   render() {
