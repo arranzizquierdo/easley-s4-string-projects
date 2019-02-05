@@ -25,6 +25,7 @@ class App extends Component {
         password: ""
       },
       dataUser: null,
+      groups: null,
       logIn: {
         error: ""
       }
@@ -69,7 +70,8 @@ class App extends Component {
       .then(data => {
         return (
           this.setState({
-            dataUser: data.user
+            dataUser: data.user,
+            groups: data.groups
           })
         )
       })
@@ -88,6 +90,7 @@ class App extends Component {
   handleButton() {
     this.setState({
       dataUser: null,
+      groups: null,
       logIn: {
         errorLogIn: ""
       }

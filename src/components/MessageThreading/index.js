@@ -10,7 +10,7 @@ class MessageThreading extends Component {
         <img
           className="messageThreading__image"
           src={Unicornio}
-          alt="Profile Image"
+          alt="User"
         />
         <div className="messageThreading__data">
           <h2 className="messageThreading__name">Pantera Rosa</h2>

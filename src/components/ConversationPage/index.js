@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import './ConversationPage.scss';
 import Header from '../Header';
 import groupImage from '../../images/groupImage.jpg';
