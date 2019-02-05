@@ -6,6 +6,7 @@ import IndividualMessage from '../IndividualMessage';
 import Modal from "../Modal";
 import GoBack from "../GoBack";
 import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
 
 class ConversationPage extends Component {
     render() {
