@@ -26,7 +26,9 @@ class ConversationPage extends Component {
                 <Link to="/main-page">
                 <GoBack />
                 </Link>
-                <IndividualMessage />
+                <Link to="/conversation-threading">
+                  <IndividualMessage />
+                </Link>
                 <Modal isHidden={isHidden} cancelClickModal={cancelClickModal}/>
                 </main>
             </Fragment>
