@@ -60,5 +60,5 @@ export default LogIn;
 LogIn.propTypes = {
   saveData: PropTypes.func.isRequired,
   handleButton: PropTypes.func.isRequired,
-  wrongCredentials: PropTypes.string
+  wrongCredentials: PropTypes.number
 }
