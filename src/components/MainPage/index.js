@@ -3,23 +3,28 @@ import PropTypes from "prop-types";
 import "./MainPage.scss";
 import Header from '../Header';
 import Modal from "../Modal";
-import image from "../../images/temporal_5.jpg";
 import GroupList from "../GroupList";
 
 
 class MainPage extends Component {
   render() {
+    const {addModalClick, isHidden, cancelClickModal} = this.props;
     return (
       <Fragment>
-        <Header>
+        <Header addModalClick={addModalClick} >
           <h2 className="header__tittle">Grupos</h2>
         </Header>
+        <Modal isHidden={isHidden} cancelClickModal={cancelClickModal}/>
         <GroupList />
-        <img className="image" src={image} alt="Tom Hanks" />
-        <Modal />
       </Fragment>
     );
   }
+}
+
+MainPage.propTypes = {
+  addModalClick: PropTypes.func.isRequired,
+  isHidden: PropTypes.bool.isRequired,
+  cancelClickModal: PropTypes.func.isRequired,
 }
 
 export default MainPage;

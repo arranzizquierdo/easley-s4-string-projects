@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import './ConversationThreading.scss';
 import Header from '../Header';
 import IndividualMessage from '../IndividualMessage/index'
@@ -10,13 +9,18 @@ import { Link } from 'react-router-dom';
 
 class ConversationThreading extends Component {
   render() {
+    const { addModalClick } = this.props;
     return (
-      <Fragment>
-        <Header showNav={false}>
-          <span className="header__container__thread">
-            <h2 className="header__group__title-thread">Hilo</h2>
-            <h3 className="header__group__persons-thread">Recetas y menús</h3>
-          </span>
+      <React.Fragment>
+        <Header
+          addModalClick={addModalClick}
+          showNav={false}>
+          <div className="header__group__container">
+            <span className="header__container__thread">
+              <h2 className="header__group__title-thread">Hilo</h2>
+              <h3 className="header__group__persons-thread">Recetas y menús</h3>
+            </span>
+          </div>
         </Header>
         <main className="main__conversationThreading">
           <Link className = "style_link" to="/conversationpage">
@@ -26,11 +30,10 @@ class ConversationThreading extends Component {
           <div className="answers">Respuestas</div>
           <MessageThreading />
           <section className="container__message">
-          <SendMessage />
+            <SendMessage />
           </section>
-
         </main>
-      </Fragment>
+      </React.Fragment>
     )
   }
 }
