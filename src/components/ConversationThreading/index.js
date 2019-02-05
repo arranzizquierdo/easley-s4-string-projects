@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './ConversationThreading.scss';
 import Header from '../Header';
 import IndividualMessage from '../IndividualMessage/index'
@@ -23,7 +23,7 @@ class ConversationThreading extends Component {
           </div>
         </Header>
         <main className="main__conversationThreading">
-          <Link to="/conversation-page">
+          <Link className="style_link" to="/conversation-page">
             <GoBack />
           </Link>
           <IndividualMessage />

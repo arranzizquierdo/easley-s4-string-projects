@@ -6,7 +6,6 @@ import MainPage from './components/MainPage';
 import ConversationPage from './components/ConversationPage';
 import ConversationThreading from './components/ConversationThreading';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { fetchToken } from "./components/services/TokenService";
 import {
   faEllipsisH,
   faEyeSlash,
@@ -28,7 +27,7 @@ class App extends Component {
       dataUser: null,
       groups: null,
       logIn: {
-        error: ""
+        error: 0
       }
     };
     this.addModalClick = this.addModalClick.bind(this);
@@ -84,7 +83,7 @@ class App extends Component {
       }
     })
       .then(response => {
-          if(!response.ok){
+        if (!response.ok) {
           throw (response);
         }
         return response.json()
@@ -114,11 +113,11 @@ class App extends Component {
       dataUser: null,
       groups: null,
       logIn: {
-        errorLogIn: ""
+        errorLogIn: 0
       }
     })
 
-   this.getDataInfo();
+    this.getDataInfo();
     if (this.state.dataUser !== null) {
       return console.log("siguiente página")
     } else {

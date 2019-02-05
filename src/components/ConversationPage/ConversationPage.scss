@@ -20,7 +20,7 @@
 }
 
 .header__group__title{
-    color: #5271ff;
+    color: #0c2c5d;
     font-weight: 500;
     font-size: 12px;
     margin: 0;
@@ -31,6 +31,11 @@
     color: #6b869f;
     font-size: 10px;
     margin: 0;
+}
+
+.style_link{
+  text-decoration: none;
+  color: black;
 }
 
 @media all and (min-width: 1024px){

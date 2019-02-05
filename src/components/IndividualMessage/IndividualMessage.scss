@@ -6,7 +6,7 @@
     font-family: 'Heebo', sans-serif;
 }
 .individualMessage__image{
-    border-radius: 20px;
+    border-radius: 10px;
     width: 50px;
     height: 50px;
 }
@@ -15,11 +15,11 @@
 
 }
 .individualMessage__name {
-    font-size: 16px;
+    font-size: 14px;
     margin: 5px 0;
 }
 .individualMessage__message {
-    font-size: 16px;
+    font-size: 14px;
     margin: 0;
     width: 220px;
 }
@@ -43,11 +43,12 @@
     }
     .individualMessage__data {
         padding-left: 20px;
+        padding-top: 10px;
     }
     .individualMessage__name {
-        font-size: 25px;
+        font-size: 16px;
     }
     .individualMessage__message {
-        font-size: 20px;
+        font-size: 16px;
     }
 }
