@@ -56,24 +56,6 @@ class App extends Component {
     console.log("SendMessage input value:", sendMessageInputValue);
   }
 
-<<<<<<< HEAD
-  getDataInfo(props){
-    fetchToken(props)
-    // fetch('https://adalab.string-projects.com/api/v1/sessions', {
-    //   method: "POST",
-    //   body: JSON.stringify(this.state.userInfo),
-    //   headers: {
-    //     "content-type": "application/json"
-    //   }
-    // })
-    //   .then(response => {
-    //       if(!response.ok){
-    //       throw (response);
-    //     }
-    //     return response.json()
-    //   })
-    .then(data => {
-=======
   addModalClick(event) {
     this.setState(prevState => {
       return {
@@ -93,22 +75,22 @@ class App extends Component {
     )
   }
 
-  getDataInfo() {
-    fetch('https://adalab.string-projects.com/api/v1/sessions', {
-      method: "POST",
-      body: JSON.stringify(this.state.userInfo),
-      headers: {
-        "content-type": "application/json"
-      }
-    })
-      .then(response => {
-          if(!response.ok){
-          throw (response);
-        }
-        return response.json()
-      })
-      .then(data => {
->>>>>>> 95098e74ab2bfd5536139625fa0718dd1311a046
+  getDataInfo(props){
+    fetchToken(props)
+    // fetch('https://adalab.string-projects.com/api/v1/sessions', {
+    //   method: "POST",
+    //   body: JSON.stringify(this.state.userInfo),
+    //   headers: {
+    //     "content-type": "application/json"
+    //   }
+    // })
+    //   .then(response => {
+    //       if(!response.ok){
+    //       throw (response);
+    //     }
+    //     return response.json()
+    //   })
+    .then(data => {
         return (
           this.setState({
             dataUser: data.user,
@@ -137,7 +119,7 @@ class App extends Component {
       }
     })
 
-   this.getDataInfo();
+  this.getDataInfo();
     if (this.state.dataUser !== null) {
       return console.log("siguiente página")
     } else {
