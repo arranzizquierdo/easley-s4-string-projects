@@ -6,6 +6,7 @@ import MainPage from './components/MainPage';
 import ConversationPage from './components/ConversationPage';
 import ConversationThreading from './components/ConversationThreading';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { fetchToken } from './components/services/TokenService';
 import {
   faEllipsisH,
   faEyeSlash,
@@ -74,21 +75,9 @@ class App extends Component {
     )
   }
 
-  getDataInfo() {
-    fetch('https://adalab.string-projects.com/api/v1/sessions', {
-      method: "POST",
-      body: JSON.stringify(this.state.userInfo),
-      headers: {
-        "content-type": "application/json"
-      }
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw (response);
-        }
-        return response.json()
-      })
-      .then(data => {
+  getDataInfo(){
+    fetchToken(this.state.userInfo)
+    .then(data => {
         return (
           this.setState({
             dataUser: data.user,
