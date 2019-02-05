@@ -2,22 +2,23 @@
     border-bottom: 1px solid #d2d6df;
     display: flex;
 }
-.header__container-logo{
-    width: 60px;
-    height: 50px;
-    border-right: 1px solid #d2d6df;
-    margin: 8px;
-    padding-right: 4px; 
+.header__container-logo {
+  width: 60px;
+  height: 50px;
+  border-right: 1px solid #d2d6df;
+  margin: 8px 8px 8px 12px;
+  padding-right: 4px;
 }
 .logo {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 .icon__nav{
-    color: #1661ff;
+    color: #5271ff;
     font-size: 30px;
     margin: auto;
-    margin-right: 10px;
+    margin-right: 20px;
+    cursor: pointer;
 }
 
 @media all and (min-width:1024px) {
@@ -28,8 +29,8 @@
     .logo {
         width: 100px;
         height: 100px;
-    }  
+    }
     .icon__nav{
         font-size: 35px;
-    }  
+    }
 }
