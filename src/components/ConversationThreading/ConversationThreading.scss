@@ -14,13 +14,10 @@
   color: #464749;
   font-weight: normal;
 }
-.main__conversationThreading {
-  height: 100vh;
-}
+
 .answers {
   font-family: 'Heebo', sans-serif;
   border-bottom: 1px solid #6b869f;
-  width: 100%;
   font-size: 12px;
   margin-left: 20px;
 }
@@ -29,6 +26,7 @@
   padding: 10px;
   position: fixed;
   width: 100%;
+  text-align: center;
 }
 
 .style_link{
