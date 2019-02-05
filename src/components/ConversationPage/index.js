@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from 'react';
-import './ConversationPage.scss';
-import Header from '../Header';
-import groupImage from '../../images/groupImage.jpg';
-import IndividualMessage from '../IndividualMessage';
-import SendMessage from '../SendMessage';
+import React, { Component, Fragment } from "react";
+import "./ConversationPage.scss";
+import Header from "../Header";
+import groupImage from "../../images/groupImage.jpg";
+import IndividualMessage from "../IndividualMessage";
+import SendMessage from "../SendMessage";
 import Modal from "../Modal";
 import GoBack from "../GoBack";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 class ConversationPage extends Component {
@@ -16,7 +16,11 @@ class ConversationPage extends Component {
       <Fragment>
         <Header addModalClick={addModalClick}>
           <div className="header__group__container">
-            <img className="header__group__image" src={groupImage} alt="Icono grupo" />
+            <img
+              className="header__group__image"
+              src={groupImage}
+              alt="Icono grupo"
+            />
             <span className="header__container__text">
               <h2 className="header__group__title">Recetas y menús</h2>
               <p className="header__group__persons">56 personas</p>
@@ -34,14 +38,14 @@ class ConversationPage extends Component {
           <Modal isHidden={isHidden} cancelClickModal={cancelClickModal} />
         </main>
       </Fragment>
-    )
+    );
   }
 }
 
 ConversationPage.propTypes = {
   addModalClick: PropTypes.func.isRequired,
   isHidden: PropTypes.bool.isRequired,
-  cancelClickModal: PropTypes.func.isRequired,
-}
+  cancelClickModal: PropTypes.func.isRequired
+};
 
 export default ConversationPage;

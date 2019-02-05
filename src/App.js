@@ -83,7 +83,7 @@ class App extends Component {
       }
     })
       .then(response => {
-          if(!response.ok){
+        if (!response.ok) {
           throw (response);
         }
         return response.json()
@@ -117,7 +117,7 @@ class App extends Component {
       }
     })
 
-   this.getDataInfo();
+    this.getDataInfo();
     if (this.state.dataUser !== null) {
       return console.log("siguiente página")
     } else {

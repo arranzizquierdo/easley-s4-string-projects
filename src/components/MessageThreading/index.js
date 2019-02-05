@@ -19,7 +19,7 @@ class MessageThreading extends Component {
           </p>
         </div>
       </section>
-     );
+    );
   }
 }
 
