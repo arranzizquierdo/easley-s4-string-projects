@@ -1,13 +1,9 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 .group__container {
   top: 50%;
   left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
+  cursor: pointer;
 }
 .group__ul {
   font-family: "Heebo", sans-serif;
