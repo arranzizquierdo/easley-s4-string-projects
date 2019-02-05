@@ -23,7 +23,7 @@ class ConversationPage extends Component {
                     </div>
                 </Header>
                 <main>
-                <Link to="/main-page">
+                <Link className = "style_link" to="/mainpage">
                 <GoBack />
                 </Link>
                 <IndividualMessage />
