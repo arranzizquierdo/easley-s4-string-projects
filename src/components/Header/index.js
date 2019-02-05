@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 class Header extends Component {
 
     render() {
-        const { showNav, children } = this.props;
+        const { showNav, children, addModalClick } = this.props;
         return (
             <header className="header">
                 <div className="header__container-logo">
@@ -19,6 +19,7 @@ class Header extends Component {
                     <FontAwesomeIcon
                         icon="ellipsis-h"
                         className="icon__nav"
+                        onClick={addModalClick}
                     />
                 )}
             </header>
