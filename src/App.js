@@ -76,7 +76,7 @@ class App extends Component {
   }
 
   getDataInfo(props){
-    fetchToken(props)
+    fetchToken(this.state.userInfo)
     // fetch('https://adalab.string-projects.com/api/v1/sessions', {
     //   method: "POST",
     //   body: JSON.stringify(this.state.userInfo),
