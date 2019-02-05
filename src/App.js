@@ -25,7 +25,10 @@ class App extends Component {
         nickname: "",
         password: ""
       },
-      dataUser: ""
+      dataUser: null,
+      logIn: {
+        error: ""
+      }
     };
     this.addModalClick = this.addModalClick.bind(this);
     this.cancelClickModal = this.cancelClickModal.bind(this);
@@ -80,6 +83,9 @@ class App extends Component {
       }
     })
       .then(response => {
+          if(!response.ok){
+          throw (response);
+        }
         return response.json()
       })
       .then(data => {
@@ -90,19 +96,30 @@ class App extends Component {
         )
       })
       .catch(error => {
-        console.log('error', error);
+        return (
+          this.setState({
+            logIn: {
+              error: error.status
+            }
+          })
+        )
+
       })
   }
 
   handleButton() {
     this.setState({
-      dataUser: ""
+      dataUser: null,
+      logIn: {
+        errorLogIn: ""
+      }
     })
-    this.getDataInfo();
-    if (this.state.dataUser !== "") {
-      return console.log("next page")
+
+   this.getDataInfo();
+    if (this.state.dataUser !== null) {
+      return console.log("siguiente página")
     } else {
-      return console.log("error message")
+      return console.log("mensaje de error")
     }
 
   }
@@ -114,6 +131,7 @@ class App extends Component {
           (<LandingPage
             saveData={this.saveData}
             handleButton={this.handleButton}
+            wrongCredentials={this.state.logIn.error}
           />)} />
         <Route path="/main-page" render={props => (
           <MainPage
