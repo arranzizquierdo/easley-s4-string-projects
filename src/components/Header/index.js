@@ -32,7 +32,7 @@ Header.defaultProps = {
 }
 
 Header.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.object,
   showNav: PropTypes.bool.isRequired
 }
 
