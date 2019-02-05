@@ -118,11 +118,6 @@ class App extends Component {
     })
 
     this.getDataInfo();
-    if (this.state.dataUser !== null) {
-      return console.log("siguiente página")
-    } else {
-      return console.log("mensaje de error")
-    }
 
   }
 
