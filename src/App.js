@@ -52,21 +52,22 @@ class App extends Component {
     console.log("SendMessage input value:", sendMessageInputValue);
   }
 
-  getDataInfo(){
-    fetch('https://adalab.string-projects.com/api/v1/sessions', {
-      method: "POST",
-      body: JSON.stringify(this.state.userInfo),
-      headers: {
-        "content-type": "application/json"
-      }
-    })
-      .then(response => {
-          if(!response.ok){
-          throw (response);
-        }
-        return response.json()
-      })
-      .then(data => {
+  getDataInfo(props){
+    fetchToken(props)
+    // fetch('https://adalab.string-projects.com/api/v1/sessions', {
+    //   method: "POST",
+    //   body: JSON.stringify(this.state.userInfo),
+    //   headers: {
+    //     "content-type": "application/json"
+    //   }
+    // })
+    //   .then(response => {
+    //       if(!response.ok){
+    //       throw (response);
+    //     }
+    //     return response.json()
+    //   })
+    .then(data => {
         return (
           this.setState({
             dataUser: data.user
