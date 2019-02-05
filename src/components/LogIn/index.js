@@ -49,7 +49,7 @@ class LogIn extends Component {
           </label>
         </form>
         <ButtonStart handleButton={handleButton} />
-        <ErrorMessage wrongCredentials={wrongCredentials}/>
+        <ErrorMessage wrongCredentials={wrongCredentials} />
       </div>
     );
   }
