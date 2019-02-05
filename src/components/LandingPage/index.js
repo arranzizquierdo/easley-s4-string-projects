@@ -27,4 +27,4 @@ LandingPage.propTypes = {
   saveData: PropTypes.func.isRequired,
   handleButton: PropTypes.func.isRequired,
   wrongCredentials: PropTypes.number
-};
+}

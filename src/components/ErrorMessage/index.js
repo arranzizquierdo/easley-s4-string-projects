@@ -18,4 +18,4 @@ export default ErrorMessage;
 
 ErrorMessage.propTypes = {
   wrongCredentials: PropTypes.number
-};
+}
