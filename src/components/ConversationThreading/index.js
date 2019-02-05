@@ -10,27 +10,31 @@ import { Link } from 'react-router-dom';
 
 class ConversationThreading extends Component {
   render() {
+    const { addModalClick } = this.props;
     return (
-      <Fragment>
-        <Header showNav={false}>
-          <span className="header__container__thread">
-            <h2 className="header__group__title-thread">Hilo</h2>
-            <h3 className="header__group__persons-thread">Recetas y menús</h3>
-          </span>
+      <React.Fragment>
+        <Header
+          addModalClick={addModalClick}
+          showNav={false}>
+          <div className="header__group__container">
+            <span className="header__container__thread">
+              <h2 className="header__group__title-thread">Hilo</h2>
+              <h3 className="header__group__persons-thread">Recetas y menús</h3>
+            </span>
+          </div>
         </Header>
         <main className="main__conversationThreading">
-          <Link to="/conversationpage">
+          <Link to="/conversation-page">
             <GoBack />
           </Link>
           <IndividualMessage />
           <div className="answers">Respuestas</div>
           <MessageThreading />
           <section className="container__message">
-          <SendMessage />
+            <SendMessage />
           </section>
-
         </main>
-      </Fragment>
+      </React.Fragment>
     )
   }
 }
