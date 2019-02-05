@@ -33,7 +33,7 @@ Header.defaultProps = {
 
 Header.propTypes = {
   children: PropTypes.string,
-  showNav: PropTypes.bool
+  showNav: PropTypes.bool.isRequired
 }
 
 export default Header;

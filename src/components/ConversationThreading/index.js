@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './ConversationThreading.scss';
 import Header from '../Header';
 import IndividualMessage from '../IndividualMessage/index'

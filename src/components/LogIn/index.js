@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./LogIn.scss";
 import ErrorMessage from "../ErrorMessage";
 import ButtonStart from "../ButtonStart";
+import PropTypes from 'prop-types';
 
 class LogIn extends Component {
 
@@ -55,3 +56,9 @@ class LogIn extends Component {
 }
 
 export default LogIn;
+
+LogIn.propTypes = {
+  saveData: PropTypes.func.isRequired,
+  handleButton: PropTypes.func.isRequired,
+  wrongCredentials: PropTypes.string
+}
