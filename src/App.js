@@ -21,10 +21,7 @@ class App extends Component {
     super(props);
     this.state = {
       isHidden: true,
-      userInfo: {
-        nickname: "",
-        password: ""
-      },
+      userInfo: this.getDataFromLocalStorage(),
       dataUser: null,
       token: "",
       groups: null,
@@ -39,7 +36,7 @@ class App extends Component {
     this.handleButton = this.handleButton.bind(this);
     this.getDataInfo = this.getDataInfo.bind(this);
     this.handleChecked = this.handleChecked.bind(this);
-    this.removeLocalStorage();
+    // this.removeLocalStorage();
   }
 
   saveData(event) {
@@ -117,23 +114,19 @@ class App extends Component {
 
   handleChecked (event) {
     if (this.state.isChecked === false){
-      this.setState(prevState => {
-        return {
-          ...prevState,
+      this.setState({
           isChecked:true,
-        }
       })
       localStorage.setItem('userInfo', JSON.stringify(this.state.userInfo))
       localStorage.setItem('token', JSON.stringify(this.state.token))
+      localStorage.setItem('isChecked', JSON.stringify(this.state.isChecked))
     } else {
-      this.setState(prevState => {
-        return {
-          ...prevState,
-          isChecked:false
-        }
+      this.setState({
+        isChecked:false
       })
       localStorage.removeItem('userInfo')
       localStorage.removeItem('token')
+      localStorage.removeItem('isChecked')
     }
   }
 
@@ -144,21 +137,39 @@ class App extends Component {
     }
   }
 
+  getDataFromLocalStorage () {
+    const data = localStorage.getItem('userInfo');
+    if(!data){
+      return (
+        {
+          nickname:"",
+          password:""
+        }
+      )
+
+    } else {
+      return JSON.parse(data)
+    }
+  }
+
   render() {
+    const { userInfo, logIn, isHidden, isChecked } = this.state;
     return (
       <Switch>
         <Route exact path="/" render={props =>
           (<LandingPage
             saveData={this.saveData}
             handleButton={this.handleButton}
-            wrongCredentials={this.state.logIn.error}
+            wrongCredentials={logIn.error}
             handleChecked={this.handleChecked}
+            userInfo={userInfo}
+            isChecked={isChecked}
           />)} />
         <Route path="/main-page" render={props => (
           <MainPage
             addModalClick={this.addModalClick}
             cancelClickModal={this.cancelClickModal}
-            isHidden={this.state.isHidden}
+            isHidden={isHidden}
           />)} />
         <Route
           path="/conversation-page"
@@ -167,7 +178,7 @@ class App extends Component {
               inputSendMessage={this.inputSendMessage}
               addModalClick={this.addModalClick}
               cancelClickModal={this.cancelClickModal}
-              isHidden={this.state.isHidden}
+              isHidden={isHidden}
             />
           )}
         />

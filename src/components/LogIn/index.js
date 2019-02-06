@@ -9,7 +9,7 @@ class LogIn extends Component {
 
   render() {
 
-    const { saveData, handleButton, wrongCredentials, handleChecked } = this.props;
+    const { saveData, handleButton, wrongCredentials, handleChecked, userInfo, isChecked } = this.props;
     return (
       <div className="logIn__container">
         <h1 className="logIn__title">Inicia sesión</h1>
@@ -23,6 +23,7 @@ class LogIn extends Component {
               name="nickname"
               className="logIn__input"
               onChange={saveData}
+              value={userInfo.nickname}
             />
           </div>
           <div className="input-icon__container">
@@ -34,6 +35,7 @@ class LogIn extends Component {
               name="password"
               className="logIn__input"
               onChange={saveData}
+              value={userInfo.password}
             />
             <FontAwesomeIcon icon="eye-slash" className="eye__icon" />
           </div>
@@ -45,6 +47,7 @@ class LogIn extends Component {
               id="remember"
               name="remember"
               onClick={handleChecked}
+              value={isChecked}
             />
             Recuérdame
           </label>
