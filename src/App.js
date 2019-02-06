@@ -27,15 +27,18 @@ class App extends Component {
       },
       dataUser: null,
       groups: null,
+      token:"",
       logIn: {
         error: 0
-      }
+      },
+      isChecked: false
     };
     this.addModalClick = this.addModalClick.bind(this);
     this.cancelClickModal = this.cancelClickModal.bind(this);
     this.saveData = this.saveData.bind(this);
     this.handleButton = this.handleButton.bind(this);
     this.getDataInfo = this.getDataInfo.bind(this);
+    this.handleChecked = this.handleChecked.bind(this);
   }
 
   saveData(event) {
@@ -81,7 +84,8 @@ class App extends Component {
         return (
           this.setState({
             dataUser: data.user,
-            groups: data.groups
+            groups: data.groups,
+            token: data.user.auth_token
           })
         )
       })
@@ -107,23 +111,41 @@ class App extends Component {
     })
 
     this.getDataInfo();
+    if (this.state.isChecked === true) {
+      localStorage.setItem('token', JSON.stringify(this.state.token))
+    } else {
+      localStorage.removeItem('token')
+    }
+  }
 
+  handleChecked (event) {
+    if (this.state.isChecked === false){
+        this.setState ({
+          isChecked: true
+        })
+    } else {
+        this.setState ({
+          isChecked: false
+        })
+    }
   }
 
   render() {
+    const { logIn, isHidden } = this.state;
     return (
       <Switch>
         <Route exact path="/" render={props =>
           (<LandingPage
             saveData={this.saveData}
             handleButton={this.handleButton}
-            wrongCredentials={this.state.logIn.error}
+            wrongCredentials={logIn.error}
+            handleChecked={this.handleChecked}
           />)} />
         <Route path="/main-page" render={props => (
           <MainPage
             addModalClick={this.addModalClick}
             cancelClickModal={this.cancelClickModal}
-            isHidden={this.state.isHidden}
+            isHidden={isHidden}
           />)} />
         <Route
           path="/conversation-page"
@@ -132,7 +154,7 @@ class App extends Component {
               inputSendMessage={this.inputSendMessage}
               addModalClick={this.addModalClick}
               cancelClickModal={this.cancelClickModal}
-              isHidden={this.state.isHidden}
+              isHidden={isHidden}
             />
           )}
         />

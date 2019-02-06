@@ -9,7 +9,7 @@ class LogIn extends Component {
 
   render() {
 
-    const { saveData, handleButton, wrongCredentials } = this.props;
+    const { saveData, handleButton, wrongCredentials, handleChecked } = this.props;
     return (
       <div className="logIn__container">
         <h1 className="logIn__title">Inicia sesión</h1>
@@ -44,6 +44,7 @@ class LogIn extends Component {
               type="checkbox"
               id="remember"
               name="remember"
+              onClick={handleChecked}
             />
             Recuérdame
           </label>
