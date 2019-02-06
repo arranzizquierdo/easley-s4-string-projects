@@ -29,13 +29,16 @@ class App extends Component {
       groups: null,
       logIn: {
         error: 0
-      }
+      },
+      isChecked: false
     };
     this.addModalClick = this.addModalClick.bind(this);
     this.cancelClickModal = this.cancelClickModal.bind(this);
     this.saveData = this.saveData.bind(this);
     this.handleButton = this.handleButton.bind(this);
     this.getDataInfo = this.getDataInfo.bind(this);
+    this.handleChecked = this.handleChecked.bind(this);
+    this.removeLocalStorage();
   }
 
   saveData(event) {
@@ -110,6 +113,32 @@ class App extends Component {
 
   }
 
+  handleChecked (event) {
+    if (this.state.isChecked === false){
+      this.setState(prevState => {
+        return {
+          ...prevState,
+          isChecked:true
+        }
+      })
+      localStorage.setItem('userInfo', JSON.stringify(this.state.userInfo))
+    } else {
+      this.setState(prevState => {
+        return {
+          ...prevState,
+          isChecked:false
+        }
+      })
+      localStorage.removeItem('userInfo')
+    }
+  }
+
+  removeLocalStorage () {
+    if (this.state.isChecked === false){
+      localStorage.removeItem('userInfo')
+    }
+  }
+
   render() {
     return (
       <Switch>
@@ -118,6 +147,7 @@ class App extends Component {
             saveData={this.saveData}
             handleButton={this.handleButton}
             wrongCredentials={this.state.logIn.error}
+            handleChecked={this.handleChecked}
           />)} />
         <Route path="/main-page" render={props => (
           <MainPage
