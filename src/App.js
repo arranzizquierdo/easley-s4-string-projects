@@ -88,7 +88,7 @@ class App extends Component {
             groups: data.groups,
             token: data.user.auth_token
           }),
-          localStorage.setItem('token', JSON.stringify(this.state.token))
+          this.keepInLocalStorage()
         )
       })
       .catch(error => {
@@ -99,8 +99,15 @@ class App extends Component {
             }
           })
         )
-
       })
+  }
+
+  keepInLocalStorage() {
+    if (this.state.isChecked === false){
+      return (localStorage.removeItem('token'))
+    } else {
+      localStorage.setItem('token', JSON.stringify(this.state.token))
+    }
   }
 
   handleButton() {
@@ -124,7 +131,6 @@ class App extends Component {
         this.setState ({
           isChecked: false
         })
-        localStorage.removeItem('token')
     }
   }
 
