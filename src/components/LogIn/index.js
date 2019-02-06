@@ -7,8 +7,25 @@ import PropTypes from 'prop-types';
 
 class LogIn extends Component {
 
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      passwordIsHidden: true
+      }
+    }
 
+  togglePassword = () => {
+    this.setState(prevState => (
+      {
+        passwordIsHidden: !prevState.passwordIsHidden,
+      }
+    )
+    )
+  }
+
+  render() {
+    const hideOrNot = this.state.passwordIsHidden ? "password" : "text";
+    const iconEye = this.state.passwordIsHidden ? "eye-slash" : "eye";
     const { saveData, handleButton, wrongCredentials } = this.props;
     return (
       <div className="logIn__container">
@@ -28,14 +45,14 @@ class LogIn extends Component {
           <div className="input-icon__container">
             <label htmlFor="password" />
             <input
-              type="password"
+              type={hideOrNot}
               id="password"
               placeholder="Contraseña"
               name="password"
               className="logIn__input"
               onChange={saveData}
             />
-            <FontAwesomeIcon icon="eye-slash" className="eye__icon" />
+            <FontAwesomeIcon onClick = {this.togglePassword} icon= {iconEye} className="eye__icon" />
           </div>
 
           <label htmlFor="remember" className="remember__label">
