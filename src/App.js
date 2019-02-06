@@ -31,7 +31,8 @@ class App extends Component {
       logIn: {
         error: 0
       },
-      isChecked: false
+      isChecked: false,
+      isLoading: true
     };
     this.addModalClick = this.addModalClick.bind(this);
     this.cancelClickModal = this.cancelClickModal.bind(this);
@@ -86,7 +87,8 @@ class App extends Component {
             dataUser: data.user,
             groups: data.groups,
             token: data.user.auth_token
-          })
+          }),
+          localStorage.setItem('token', JSON.stringify(this.state.token))
         )
       })
       .catch(error => {
@@ -111,11 +113,6 @@ class App extends Component {
     })
 
     this.getDataInfo();
-    if (this.state.isChecked === true) {
-      localStorage.setItem('token', JSON.stringify(this.state.token))
-    } else {
-      localStorage.removeItem('token')
-    }
   }
 
   handleChecked (event) {
@@ -127,6 +124,7 @@ class App extends Component {
         this.setState ({
           isChecked: false
         })
+        localStorage.removeItem('token')
     }
   }
 
