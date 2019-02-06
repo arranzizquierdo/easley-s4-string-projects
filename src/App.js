@@ -22,10 +22,6 @@ class App extends Component {
     super(props);
     this.state = {
       isHidden: true,
-      userInfo: {
-        nickname: "",
-        password: ""
-      },
       dataUser: null,
       groups: null,
       logIn: {
@@ -40,16 +36,21 @@ class App extends Component {
   }
 
   saveData(event) {
-    const { name, value } = event.target;
-    this.setState(prevState => {
-      return {
-        userInfo: {
-          ...prevState.userInfo,
-          [name]: value
-        }
+    const {name , value} = event.target;
+    let userInfo = {
 
-      }
-    })
+    }
+
+    userInfo = {
+      ...userInfo,
+      [name]: value
+    }
+    //const { name, value } = event.target;
+    //userInfo.nickname =
+    //userInfo.password = event.target.value
+    //return userInfo
+    console.log(userInfo);
+
   }
 
   inputSendMessage(event) {
@@ -76,8 +77,8 @@ class App extends Component {
     )
   }
 
-  getDataInfo(){
-    fetchToken(this.state.userInfo)
+  getDataInfo(event){
+    fetchToken(this.saveData(event))
     .then(data => {
         return (
           this.setState({
