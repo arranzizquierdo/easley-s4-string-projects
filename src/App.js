@@ -26,6 +26,7 @@ class App extends Component {
         password: ""
       },
       dataUser: null,
+      token: "",
       groups: null,
       logIn: {
         error: 0
@@ -84,6 +85,7 @@ class App extends Component {
         return (
           this.setState({
             dataUser: data.user,
+            token: data.user.auth_token,
             groups: data.groups
           })
         )
@@ -118,10 +120,11 @@ class App extends Component {
       this.setState(prevState => {
         return {
           ...prevState,
-          isChecked:true
+          isChecked:true,
         }
       })
       localStorage.setItem('userInfo', JSON.stringify(this.state.userInfo))
+      localStorage.setItem('token', JSON.stringify(this.state.token))
     } else {
       this.setState(prevState => {
         return {
@@ -130,12 +133,14 @@ class App extends Component {
         }
       })
       localStorage.removeItem('userInfo')
+      localStorage.removeItem('token')
     }
   }
 
   removeLocalStorage () {
     if (this.state.isChecked === false){
       localStorage.removeItem('userInfo')
+      localStorage.removeItem('token')
     }
   }
 
