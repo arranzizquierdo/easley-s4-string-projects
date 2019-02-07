@@ -91,14 +91,12 @@ class App extends Component {
           this.setState({
             logIn: {
               error: error.status
-            }
-          })
-        )
-
-      })
+            }})
+        )})
   }
 
-  handleButton() {
+  handleButton(event) {
+    event.preventDefault();
     this.setState({
       dataUser: null,
       groups: null,
@@ -106,9 +104,7 @@ class App extends Component {
         errorLogIn: 0
       }
     })
-
     this.getDataInfo();
-
   }
 
   render() {
