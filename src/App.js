@@ -28,19 +28,15 @@ class App extends Component {
       },
       dataUser: null,
       groups: null,
-      token: "",
       logIn: {
         error: 0
-      },
-      isChecked: false,
-      isLoading: true
+      }
     };
     this.addModalClick = this.addModalClick.bind(this);
     this.cancelClickModal = this.cancelClickModal.bind(this);
     this.saveData = this.saveData.bind(this);
     this.handleButton = this.handleButton.bind(this);
     this.getDataInfo = this.getDataInfo.bind(this);
-    this.handleChecked = this.handleChecked.bind(this);
   }
 
   saveData(event) {
@@ -51,6 +47,7 @@ class App extends Component {
           ...prevState.userInfo,
           [name]: value
         }
+
       }
     })
   }
@@ -79,20 +76,14 @@ class App extends Component {
     )
   }
 
-  getDataInfo() {
+  getDataInfo(){
     fetchToken(this.state.userInfo)
-      .then(data => {
+    .then(data => {
         return (
           this.setState({
             dataUser: data.user,
-            groups: data.groups,
-            token: data.user.auth_token,
-            userInfo: {
-              nickname: "",
-              password: ""
-            }
-          }),
-          this.keepInLocalStorage()
+            groups: data.groups
+          })
         )
       })
       .catch(error => {
@@ -103,19 +94,11 @@ class App extends Component {
             }
           })
         )
+
       })
   }
 
-  keepInLocalStorage() {
-    if (this.state.isChecked === false) {
-      return (localStorage.removeItem('token'))
-    } else {
-      localStorage.setItem('token', JSON.stringify(this.state.token))
-    }
-  }
-
-  handleButton(event) {
-    event.preventDefault();
+  handleButton() {
     this.setState({
       dataUser: null,
       groups: null,
@@ -123,37 +106,25 @@ class App extends Component {
         errorLogIn: 0
       }
     })
-    this.getDataInfo();
-  }
 
-  handleChecked(event) {
-    if (this.state.isChecked === false) {
-      this.setState({
-        isChecked: true
-      })
-    } else {
-      this.setState({
-        isChecked: false
-      })
-    }
+    this.getDataInfo();
+
   }
 
   render() {
-    const { logIn, isHidden } = this.state;
     return (
       <Switch>
         <Route exact path="/" render={props =>
           (<LandingPage
             saveData={this.saveData}
             handleButton={this.handleButton}
-            wrongCredentials={logIn.error}
-            handleChecked={this.handleChecked}
+            wrongCredentials={this.state.logIn.error}
           />)} />
         <Route path="/main-page" render={props => (
           <MainPage
             addModalClick={this.addModalClick}
             cancelClickModal={this.cancelClickModal}
-            isHidden={isHidden}
+            isHidden={this.state.isHidden}
           />)} />
         <Route
           path="/conversation-page"
@@ -162,7 +133,7 @@ class App extends Component {
               inputSendMessage={this.inputSendMessage}
               addModalClick={this.addModalClick}
               cancelClickModal={this.cancelClickModal}
-              isHidden={isHidden}
+              isHidden={this.state.isHidden}
             />
           )}
         />
