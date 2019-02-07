@@ -82,7 +82,11 @@ class App extends Component {
         return (
           this.setState({
             dataUser: data.user,
-            groups: data.groups
+            groups: data.groups,
+            userInfo: {
+              nickname: "",
+              password: ""
+            }
           })
         )
       })
