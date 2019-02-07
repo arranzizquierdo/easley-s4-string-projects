@@ -28,7 +28,7 @@ class App extends Component {
       },
       dataUser: null,
       groups: null,
-      token:"",
+      token: "",
       logIn: {
         error: 0
       },
@@ -51,7 +51,6 @@ class App extends Component {
           ...prevState.userInfo,
           [name]: value
         }
-
       }
     })
   }
@@ -80,9 +79,9 @@ class App extends Component {
     )
   }
 
-  getDataInfo(){
+  getDataInfo() {
     fetchToken(this.state.userInfo)
-    .then(data => {
+      .then(data => {
         return (
           this.setState({
             dataUser: data.user,
@@ -108,14 +107,15 @@ class App extends Component {
   }
 
   keepInLocalStorage() {
-    if (this.state.isChecked === false){
+    if (this.state.isChecked === false) {
       return (localStorage.removeItem('token'))
     } else {
       localStorage.setItem('token', JSON.stringify(this.state.token))
     }
   }
 
-  handleButton() {
+  handleButton(event) {
+    event.preventDefault();
     this.setState({
       dataUser: null,
       groups: null,
@@ -123,19 +123,18 @@ class App extends Component {
         errorLogIn: 0
       }
     })
-
     this.getDataInfo();
   }
 
-  handleChecked (event) {
-    if (this.state.isChecked === false){
-        this.setState ({
-          isChecked: true
-        })
+  handleChecked(event) {
+    if (this.state.isChecked === false) {
+      this.setState({
+        isChecked: true
+      })
     } else {
-        this.setState ({
-          isChecked: false
-        })
+      this.setState({
+        isChecked: false
+      })
     }
   }
 
