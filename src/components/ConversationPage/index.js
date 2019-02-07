@@ -31,7 +31,9 @@ class ConversationPage extends Component {
           <Link className="style_link" to="/main-page">
             <GoBack />
           </Link>
-          <IndividualMessage />
+          <Link className="style_link" to="/conversation-threading">
+            <IndividualMessage />
+          </Link>
           <section className="container__message">
             <SendMessage />
           </section>
