@@ -1,6 +1,7 @@
-const ENDPOINT = "https://adalab.string-projects.com/api/v1/sessions";
+const ENDPOINT = "https://adalab.string-projects.com/api/v1/";
+const sessionsEndpoint = ENDPOINT + "sessions";
 
-const fetchToken = (userInfo) => fetch(ENDPOINT, {
+const fetchToken = (userInfo) => fetch(sessionsEndpoint, {
   method: "POST",
   body: JSON.stringify(userInfo),
   headers: {

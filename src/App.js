@@ -94,7 +94,6 @@ class App extends Component {
             }
           })
         )
-
       })
   }
 
