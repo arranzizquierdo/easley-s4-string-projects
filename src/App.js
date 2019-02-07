@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './stylesheets/App.scss';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import MainPage from './components/MainPage';
 import ConversationPage from './components/ConversationPage';
@@ -142,37 +142,45 @@ class App extends Component {
     const { logIn, isHidden } = this.state;
     return (
       <Switch>
-        <Route exact path="/" render={props =>
+
+        <Route exact path="/login" render={props =>
           (<LandingPage
             saveData={this.saveData}
             handleButton={this.handleButton}
             wrongCredentials={logIn.error}
             handleChecked={this.handleChecked}
           />)} />
-        <Route path="/main-page" render={props => (
+        <Route exact path="/" render={() => (
+          ( false ) ?
           <MainPage
             addModalClick={this.addModalClick}
             cancelClickModal={this.cancelClickModal}
             isHidden={isHidden}
-          />)} />
+          />
+          :<Redirect to="/login"/>
+          )} />
         <Route
           path="/conversation-page"
-          render={props => (
+          render={() => (
+            ( false ) ?
             <ConversationPage
               inputSendMessage={this.inputSendMessage}
               addModalClick={this.addModalClick}
               cancelClickModal={this.cancelClickModal}
               isHidden={isHidden}
             />
+            :<Redirect to="/login"/>
           )}
         />
         <Route
           path="/conversation-threading"
-          render={props => (
+          render={() => (
+            ( false ) ?
             <ConversationThreading
               inputSendMessage={this.inputSendMessage}
               addModalClick={this.addModalClick}
             />
+            :<Redirect to="/login"/>
           )}
         />
       </Switch >
