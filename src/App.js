@@ -87,7 +87,11 @@ class App extends Component {
           this.setState({
             dataUser: data.user,
             groups: data.groups,
-            token: data.user.auth_token
+            token: data.user.auth_token,
+            userInfo: {
+              nickname: "",
+              password: ""
+            }
           }),
           this.keepInLocalStorage()
         )
