@@ -25,6 +25,7 @@ MainPage.propTypes = {
   addModalClick: PropTypes.func.isRequired,
   isHidden: PropTypes.bool.isRequired,
   cancelClickModal: PropTypes.func.isRequired,
+  handleLogOut: PropTypes.func.isRequired
 }
 
 export default MainPage;

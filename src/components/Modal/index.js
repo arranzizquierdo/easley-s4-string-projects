@@ -26,6 +26,7 @@ class Modal extends Component {
 Modal.propTypes = {
   isHidden: PropTypes.bool.isRequired,
   cancelClickModal: PropTypes.func.isRequired,
+  handleLogOut: PropTypes.func.isRequired
 }
 
 

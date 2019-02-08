@@ -172,11 +172,11 @@ class App extends Component {
     }
   }
 
-  handleLogOut () {
+  handleLogOut() {
     console.log('hola')
-    this.setState ({
+    this.setState({
       isAuthenticated: false,
-      token:"",
+      token: "",
       isHidden: true
     })
     localStorage.removeItem('token')
@@ -198,16 +198,16 @@ class App extends Component {
             isLoading={isLoading}
           />)} />
         <Route exact path="/" render={() => {
-          if (this.state.isLoading === true) {
+          if (isLoading === true) {
             return <Loading />
-          } else if (this.state.isLoading === false && this.state.isAuthenticated === true) {
+          } else if (isLoading === false && isAuthenticated === true) {
             return <MainPage
               addModalClick={this.addModalClick}
               cancelClickModal={this.cancelClickModal}
               isHidden={isHidden}
               handleLogOut={this.handleLogOut}
             />
-          } else if (this.state.isLoading === false && this.state.isAuthenticated === false) {
+          } else if (isLoading === false && isAuthenticated === false) {
             return <Redirect to="/login" />
           }
         }} />
@@ -215,9 +215,9 @@ class App extends Component {
         <Route
           path="/conversation-page"
           render={() => {
-            if (this.state.isLoading === true) {
+            if (isLoading === true) {
               return <Loading />
-            } else if (this.state.isLoading === false && this.state.isAuthenticated === true) {
+            } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationPage
                 inputSendMessage={this.inputSendMessage}
                 addModalClick={this.addModalClick}
@@ -232,9 +232,9 @@ class App extends Component {
         <Route
           path="/conversation-threading"
           render={() => {
-            if (this.state.isLoading === true) {
+            if (isLoading === true) {
               return <Loading />
-            } else if (this.state.isLoading === false && this.state.isAuthenticated === true) {
+            } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationThreading
                 inputSendMessage={this.inputSendMessage}
                 addModalClick={this.addModalClick}
