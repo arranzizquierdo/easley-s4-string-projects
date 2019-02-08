@@ -4,6 +4,8 @@ import "./LogIn.scss";
 import ErrorMessage from "../ErrorMessage";
 import ButtonStart from "../ButtonStart";
 import PropTypes from 'prop-types';
+import Redirect from "react-router-dom/Redirect";
+import Loading from "../Loading";
 
 class LogIn extends Component {
 
@@ -24,9 +26,19 @@ class LogIn extends Component {
   }
 
   render() {
+
+
     const hideOrNot = this.state.passwordIsHidden ? "password" : "text";
     const iconEye = this.state.passwordIsHidden ? "eye-slash" : "eye";
-    const { saveData, handleButton, wrongCredentials, handleChecked } = this.props;
+    const { saveData, handleButton, wrongCredentials, handleChecked, token, isAuthenticated, isLoading } = this.props;
+
+    if(isLoading === true){
+      return <Loading />
+    }
+    if(isLoading === false && token && isAuthenticated){
+      return <Redirect to="/" />
+    }else {
+
     return (
       <div className="logIn__container">
         <h1 className="logIn__title">Inicia sesión</h1>
@@ -66,10 +78,11 @@ class LogIn extends Component {
             Recuérdame
           </label>
           <ButtonStart handleButton={handleButton} />
+
         </form>
         <ErrorMessage wrongCredentials={wrongCredentials} />
       </div>
-    );
+    );}
   }
 }
 
