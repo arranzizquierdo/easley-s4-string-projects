@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import "./Modal.scss";
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 class Modal extends Component {
   render() {
-    const {isHidden, cancelClickModal} = this.props;
+    const {isHidden, cancelClickModal, handleLogOut } = this.props;
     let hidden = '';
     (isHidden)
       ? hidden = 'modal__hidden'
@@ -14,10 +13,8 @@ class Modal extends Component {
       <div className={`modal__container ${hidden}`}>
         <ul className="modal__list">
           <li className="modal__item-title">¿Qué quieres hacer?</li>
-          <li className="modal__item modal__item-sesion">
-            <Link className="style_link" to="/">
+          <li className="modal__item modal__item-sesion" onClick={handleLogOut}>
             Cerrar Sesión
-            </Link>
           </li>
           <li className="modal__item modal__item-cancel" onClick={cancelClickModal}>Cancelar</li>
         </ul>
@@ -29,6 +26,7 @@ class Modal extends Component {
 Modal.propTypes = {
   isHidden: PropTypes.bool.isRequired,
   cancelClickModal: PropTypes.func.isRequired,
+  handleLogOut: PropTypes.func.isRequired
 }
 
 

@@ -44,6 +44,7 @@ class App extends Component {
     this.handleButton = this.handleButton.bind(this);
     this.getDataInfo = this.getDataInfo.bind(this);
     this.handleChecked = this.handleChecked.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this);
   }
 
   componentDidMount() {
@@ -171,6 +172,15 @@ class App extends Component {
     }
   }
 
+  handleLogOut() {
+    this.setState({
+      isAuthenticated: false,
+      token: "",
+      isHidden: true
+    })
+    localStorage.removeItem('token')
+  }
+
   render() {
     const { logIn, isHidden, token, isAuthenticated, isLoading } = this.state;
     return (
@@ -187,15 +197,16 @@ class App extends Component {
             isLoading={isLoading}
           />)} />
         <Route exact path="/" render={() => {
-          if (this.state.isLoading === true) {
+          if (isLoading === true) {
             return <Loading />
-          } else if (this.state.isLoading === false && this.state.isAuthenticated === true) {
+          } else if (isLoading === false && isAuthenticated === true) {
             return <MainPage
               addModalClick={this.addModalClick}
               cancelClickModal={this.cancelClickModal}
               isHidden={isHidden}
+              handleLogOut={this.handleLogOut}
             />
-          } else if (this.state.isLoading === false && this.state.isAuthenticated === false) {
+          } else if (isLoading === false && isAuthenticated === false) {
             return <Redirect to="/login" />
           }
         }} />
@@ -203,14 +214,15 @@ class App extends Component {
         <Route
           path="/conversation-page"
           render={() => {
-            if (this.state.isLoading === true) {
+            if (isLoading === true) {
               return <Loading />
-            } else if (this.state.isLoading === false && this.state.isAuthenticated === true) {
+            } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationPage
                 inputSendMessage={this.inputSendMessage}
                 addModalClick={this.addModalClick}
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
+                handleLogOut={this.handleLogOut}
               />
             } else {
               return <Redirect to="/login" />
@@ -219,12 +231,15 @@ class App extends Component {
         <Route
           path="/conversation-threading"
           render={() => {
-            if (this.state.isLoading === true) {
+            if (isLoading === true) {
               return <Loading />
-            } else if (this.state.isLoading === false && this.state.isAuthenticated === true) {
+            } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationThreading
                 inputSendMessage={this.inputSendMessage}
                 addModalClick={this.addModalClick}
+                cancelClickModal={this.cancelClickModal}
+                isHidden={isHidden}
+                handleLogOut={this.handleLogOut}
               />
             } else {
               return <Redirect to="/login" />

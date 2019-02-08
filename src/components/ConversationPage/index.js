@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 
 class ConversationPage extends Component {
   render() {
-    const { addModalClick, isHidden, cancelClickModal } = this.props;
+    const { addModalClick, isHidden, cancelClickModal, handleLogOut } = this.props;
     return (
       <Fragment>
         <Header addModalClick={addModalClick}>
@@ -37,7 +37,7 @@ class ConversationPage extends Component {
           <section className="container__message">
             <SendMessage />
           </section>
-          <Modal isHidden={isHidden} cancelClickModal={cancelClickModal} />
+          <Modal isHidden={isHidden} cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
         </main>
       </Fragment>
     );
@@ -47,7 +47,8 @@ class ConversationPage extends Component {
 ConversationPage.propTypes = {
   addModalClick: PropTypes.func.isRequired,
   isHidden: PropTypes.bool.isRequired,
-  cancelClickModal: PropTypes.func.isRequired
+  cancelClickModal: PropTypes.func.isRequired,
+  handleLogOut: PropTypes.func.isRequired
 };
 
 export default ConversationPage;

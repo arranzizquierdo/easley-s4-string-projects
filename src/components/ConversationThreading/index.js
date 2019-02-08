@@ -4,17 +4,17 @@ import Header from '../Header';
 import IndividualMessage from '../IndividualMessage/index'
 import SendMessage from '../SendMessage';
 import MessageThreading from '../MessageThreading';
+import Modal from "../Modal";
 import GoBack from "../GoBack";
 import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
 
 class ConversationThreading extends Component {
   render() {
-    const { addModalClick } = this.props;
+    const { addModalClick, isHidden, cancelClickModal, handleLogOut } = this.props;
     return (
       <React.Fragment>
-        <Header
-          addModalClick={addModalClick}
-          showNav={false}>
+        <Header addModalClick={addModalClick}>
           <div className="header__group__container">
             <span className="header__container__thread">
               <h2 className="header__group__title-thread">Hilo</h2>
@@ -32,10 +32,18 @@ class ConversationThreading extends Component {
           <section className="container__message">
             <SendMessage />
           </section>
+          <Modal isHidden={isHidden} cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
         </main>
       </React.Fragment>
     )
   }
+}
+
+ConversationThreading.propTypes = {
+  addModalClick: PropTypes.func.isRequired,
+  isHidden: PropTypes.bool.isRequired,
+  cancelClickModal: PropTypes.func.isRequired,
+  handleLogOut: PropTypes.func.isRequired
 }
 
 export default ConversationThreading;
