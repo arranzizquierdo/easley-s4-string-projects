@@ -8,6 +8,7 @@ import ConversationThreading from './components/ConversationThreading';
 import Loading from './components/Loading';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fetchToken } from './components/services/TokenService';
+import { sendTokenFetch } from './components/services/SendToken';
 import {
   faEllipsisH,
   faEyeSlash,
@@ -44,6 +45,38 @@ class App extends Component {
     this.getDataInfo = this.getDataInfo.bind(this);
     this.handleChecked = this.handleChecked.bind(this);
   }
+
+  componentDidMount() {
+    const tokenLs = JSON.parse(localStorage.getItem('token'));
+    if (tokenLs !== ""){
+
+      return (sendTokenFetch(tokenLs))
+      .then(data =>{
+        if(data === true){
+          return (
+            this.setState({
+            isAuthenticated: true,
+            isLoading: false
+          })
+          )
+        }else {
+          return (
+            this.setState({
+            isAuthenticated: false,
+            isLoading: true
+          })
+          )
+        }
+      });
+    }
+  }
+
+  // componentDidUpdate(){
+  //   if(this.state.token !== ""){
+  //   console.log(sendTokenFetch(this.state.token));
+  //   console.log(this.state.token);
+  //   }
+  // }
 
   saveData(event) {
     const { name, value } = event.target;
