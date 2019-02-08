@@ -191,26 +191,11 @@ class App extends Component {
             isAuthenticated={isAuthenticated}
             isLoading={isLoading}
           />)} />
-<<<<<<< HEAD
-        <Route path="/main-page" render={props => (
-          <MainPage
-            addModalClick={this.addModalClick}
-            cancelClickModal={this.cancelClickModal}
-            isHidden={isHidden}
-            handleLogOut={this.handleLogOut}
-          />)} />
-        <Route
-          path="/conversation-page"
-          render={props => (
-            <ConversationPage
-              inputSendMessage={this.inputSendMessage}
-=======
         <Route exact path="/" render={() => {
           if (this.state.isLoading === true) {
             return <Loading />
           } else if (this.state.isLoading === false && this.state.isAuthenticated === true) {
             return <MainPage
->>>>>>> b44fc9544601f0622513295ff399cb5a35abfac1
               addModalClick={this.addModalClick}
               cancelClickModal={this.cancelClickModal}
               isHidden={isHidden}

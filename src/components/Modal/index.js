@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Modal.scss";
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 class Modal extends Component {
   render() {
