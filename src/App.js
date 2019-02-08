@@ -41,6 +41,7 @@ class App extends Component {
     this.handleButton = this.handleButton.bind(this);
     this.getDataInfo = this.getDataInfo.bind(this);
     this.handleChecked = this.handleChecked.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this);
   }
 
   saveData(event) {
@@ -138,6 +139,10 @@ class App extends Component {
     }
   }
 
+  handleLogOut () {
+    console.log('hola')
+  }
+
   render() {
     const { logIn, isHidden } = this.state;
     return (
@@ -154,6 +159,7 @@ class App extends Component {
             addModalClick={this.addModalClick}
             cancelClickModal={this.cancelClickModal}
             isHidden={isHidden}
+            handleLogOut={this.handleLogOut}
           />)} />
         <Route
           path="/conversation-page"
@@ -163,6 +169,7 @@ class App extends Component {
               addModalClick={this.addModalClick}
               cancelClickModal={this.cancelClickModal}
               isHidden={isHidden}
+              handleLogOut={this.handleLogOut}
             />
           )}
         />
