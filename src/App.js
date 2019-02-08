@@ -77,15 +77,6 @@ class App extends Component {
     }
   }
 
- /* componentDidUpdate(prevState) {
-    if (this.state.token !== prevState.token) {
-      this.setState({
-        isAuthenticated: true,
-        isLoading: false
-      })
-    }
-  }*/
-
   saveData(event) {
     const { name, value } = event.target;
     this.setState(prevState => {
@@ -161,9 +152,6 @@ class App extends Component {
   handleButton(event) {
     event.preventDefault();
     this.setState({
-    /*  dataUser: null,
-      groups: null,
-      token: "",*/
       logIn: {
         errorLogIn: 0
       }
