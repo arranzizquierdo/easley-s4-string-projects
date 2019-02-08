@@ -47,6 +47,7 @@
 .eye__icon {
   font-size: 16px;
   color: #6b869f;
+  cursor: pointer;
 }
 
 .remember__label {
@@ -56,6 +57,7 @@
 
 .remember__checkbox {
   margin-right: 7px;
+  cursor: pointer;
 }
 
 @media all and (max-width: 360px) {
