@@ -34,7 +34,8 @@ class App extends Component {
         error: 0
       },
       isChecked: false,
-      isLoading: true
+      isLoading: true,
+      isAuthenticated: false
     };
     this.addModalClick = this.addModalClick.bind(this);
     this.cancelClickModal = this.cancelClickModal.bind(this);
@@ -45,19 +46,41 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const tokenLs = localStorage.getItem('token')
+    const tokenLs = JSON.parse(localStorage.getItem('token'));
     if (tokenLs !== ""){
-      console.log(sendTokenFetch(tokenLs));
-      console.log("hola", tokenLs);
+
+      return (sendTokenFetch(tokenLs))
+      .then(data =>{
+        if(data === true){
+          return (
+            this.setState({
+            isAuthenticated: true,
+            isLoading: false
+          })
+          )
+        }else {
+          return (
+            this.setState({
+            isAuthenticated: false,
+            isLoading: true
+          })
+          )
+
+        }
+
+
+      })
+
+       ;
     }
   }
 
-  componentDidUpdate(){
-    if(this.state.token !== ""){
-    console.log(sendTokenFetch(this.state.token));
-    console.log(this.state.token);
-    }
-  }
+  // componentDidUpdate(){
+  //   if(this.state.token !== ""){
+  //   console.log(sendTokenFetch(this.state.token));
+  //   console.log(this.state.token);
+  //   }
+  // }
 
   saveData(event) {
     const { name, value } = event.target;

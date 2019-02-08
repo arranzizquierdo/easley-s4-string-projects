@@ -8,13 +8,9 @@ const sendTokenFetch = (token) => fetch(sessionsEndpoint, {
    "AUTH-TOKEN": token
  }
 }).then(response => {
-  console.log(response);
-  console.log("token", token);
-  return response.json()
-  // if(!!response.ok){
-  //   //return true;
-  //   return console.log(token);
-  // }
+   if(!!response.ok){
+     return true;
+  }
 })
 
  export  { sendTokenFetch };
