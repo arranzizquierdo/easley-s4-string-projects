@@ -48,35 +48,43 @@ class App extends Component {
 
   componentDidMount() {
     const tokenLs = JSON.parse(localStorage.getItem('token'));
-    if (tokenLs !== ""){
 
+    if (tokenLs) {
       return (sendTokenFetch(tokenLs))
-      .then(data =>{
-        if(data === true){
-          return (
-            this.setState({
-            isAuthenticated: true,
-            isLoading: false
-          })
-          )
-        }else {
-          return (
-            this.setState({
-            isAuthenticated: false,
-            isLoading: true
-          })
-          )
-        }
-      });
+        .then(data => {
+          if (data === true) {
+            return (
+              this.setState({
+                isAuthenticated: true,
+                isLoading: false
+              })
+            )
+          } else {
+            return (
+              this.setState({
+                isAuthenticated: false
+              })
+            )
+          }
+        });
+    } else {
+      return (
+        this.setState({
+          isAuthenticated: false,
+          isLoading: false
+        })
+      )
     }
   }
 
-  // componentDidUpdate(){
-  //   if(this.state.token !== ""){
-  //   console.log(sendTokenFetch(this.state.token));
-  //   console.log(this.state.token);
-  //   }
-  // }
+ /* componentDidUpdate(prevState) {
+    if (this.state.token !== prevState.token) {
+      this.setState({
+        isAuthenticated: true,
+        isLoading: false
+      })
+    }
+  }*/
 
   saveData(event) {
     const { name, value } = event.target;
@@ -125,7 +133,8 @@ class App extends Component {
             userInfo: {
               nickname: "",
               password: ""
-            }
+            },
+            isAuthenticated: true
           }),
           this.keepInLocalStorage()
         )
@@ -152,8 +161,9 @@ class App extends Component {
   handleButton(event) {
     event.preventDefault();
     this.setState({
-      dataUser: null,
+    /*  dataUser: null,
       groups: null,
+      token: "",*/
       logIn: {
         errorLogIn: 0
       }
@@ -184,6 +194,8 @@ class App extends Component {
             handleButton={this.handleButton}
             wrongCredentials={logIn.error}
             handleChecked={this.handleChecked}
+            token={this.state.token}
+            isAuthenticated={this.state.isAuthenticated}
           />)} />
         <Route exact path="/" render={() => {
           if (this.state.isLoading === true) {
@@ -194,7 +206,7 @@ class App extends Component {
               cancelClickModal={this.cancelClickModal}
               isHidden={isHidden}
             />
-          } else {
+          } else if (this.state.isLoading === false && this.state.isAuthenticated === false) {
             return <Redirect to="/login" />
           }
         }} />
