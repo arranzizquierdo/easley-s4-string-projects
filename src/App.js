@@ -65,13 +65,8 @@ class App extends Component {
             isLoading: true
           })
           )
-
         }
-
-
-      })
-
-       ;
+      });
     }
   }
 
