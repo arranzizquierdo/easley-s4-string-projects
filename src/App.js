@@ -168,27 +168,34 @@ class App extends Component {
 
         <Route
           path="/conversation-page"
-          render={() => (
-            (false) ?
-              <ConversationPage
+          render={() => {
+            if (this.state.isLoading === true) {
+              return <Loading />
+            } else if (this.state.isLoading === false && this.state.isAuthenticated === true) {
+              return <ConversationPage
                 inputSendMessage={this.inputSendMessage}
                 addModalClick={this.addModalClick}
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
               />
-              : <Redirect to="/login" />
-          )}
-        />
+            } else {
+              return <Redirect to="/login" />
+            }
+          }} />
         <Route
           path="/conversation-threading"
-          render={() => (
-            (false) ?
-              <ConversationThreading
+          render={() => {
+            if (this.state.isLoading === true) {
+              return <Loading />
+            } else if (this.state.isLoading === false && this.state.isAuthenticated === true) {
+              return <ConversationThreading
                 inputSendMessage={this.inputSendMessage}
                 addModalClick={this.addModalClick}
               />
-              : <Redirect to="/login" />
-          )}
+            } else {
+              return <Redirect to="/login" />
+            }
+          }}
         />
       </Switch >
     )
