@@ -28,7 +28,7 @@ class ConversationPage extends Component {
           </div>
         </Header>
         <main>
-          <Link className="style_link" to="/main-page">
+          <Link className="style_link" to="/">
             <GoBack />
           </Link>
           <Link className="style_link" to="/conversation-threading">

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './stylesheets/App.scss';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import MainPage from './components/MainPage';
 import ConversationPage from './components/ConversationPage';
 import ConversationThreading from './components/ConversationThreading';
+import Loading from './components/Loading';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fetchToken } from './components/services/TokenService';
 import { sendTokenFetch } from './components/services/SendToken';
@@ -47,35 +48,34 @@ class App extends Component {
 
   componentDidMount() {
     const tokenLs = JSON.parse(localStorage.getItem('token'));
-    if (tokenLs !== ""){
 
+    if (tokenLs) {
       return (sendTokenFetch(tokenLs))
-      .then(data =>{
-        if(data === true){
-          return (
-            this.setState({
-            isAuthenticated: true,
-            isLoading: false
-          })
-          )
-        }else {
-          return (
-            this.setState({
-            isAuthenticated: false,
-            isLoading: true
-          })
-          )
-        }
-      });
+        .then(data => {
+          if (data === true) {
+            return (
+              this.setState({
+                isAuthenticated: true,
+                isLoading: false
+              })
+            )
+          } else {
+            return (
+              this.setState({
+                isAuthenticated: false
+              })
+            )
+          }
+        });
+    } else {
+      return (
+        this.setState({
+          isAuthenticated: false,
+          isLoading: false
+        })
+      )
     }
   }
-
-  // componentDidUpdate(){
-  //   if(this.state.token !== ""){
-  //   console.log(sendTokenFetch(this.state.token));
-  //   console.log(this.state.token);
-  //   }
-  // }
 
   saveData(event) {
     const { name, value } = event.target;
@@ -124,7 +124,8 @@ class App extends Component {
             userInfo: {
               nickname: "",
               password: ""
-            }
+            },
+            isAuthenticated: true
           }),
           this.keepInLocalStorage()
         )
@@ -151,8 +152,6 @@ class App extends Component {
   handleButton(event) {
     event.preventDefault();
     this.setState({
-      dataUser: null,
-      groups: null,
       logIn: {
         errorLogIn: 0
       }
@@ -173,41 +172,64 @@ class App extends Component {
   }
 
   render() {
-    const { logIn, isHidden } = this.state;
+    const { logIn, isHidden, token, isAuthenticated, isLoading } = this.state;
     return (
       <Switch>
-        <Route exact path="/" render={props =>
+
+        <Route exact path="/login" render={props =>
           (<LandingPage
             saveData={this.saveData}
             handleButton={this.handleButton}
             wrongCredentials={logIn.error}
             handleChecked={this.handleChecked}
+            token={token}
+            isAuthenticated={isAuthenticated}
+            isLoading={isLoading}
           />)} />
-        <Route path="/main-page" render={props => (
-          <MainPage
-            addModalClick={this.addModalClick}
-            cancelClickModal={this.cancelClickModal}
-            isHidden={isHidden}
-          />)} />
-        <Route
-          path="/conversation-page"
-          render={props => (
-            <ConversationPage
-              inputSendMessage={this.inputSendMessage}
+        <Route exact path="/" render={() => {
+          if (this.state.isLoading === true) {
+            return <Loading />
+          } else if (this.state.isLoading === false && this.state.isAuthenticated === true) {
+            return <MainPage
               addModalClick={this.addModalClick}
               cancelClickModal={this.cancelClickModal}
               isHidden={isHidden}
             />
-          )}
-        />
+          } else if (this.state.isLoading === false && this.state.isAuthenticated === false) {
+            return <Redirect to="/login" />
+          }
+        }} />
+
+        <Route
+          path="/conversation-page"
+          render={() => {
+            if (this.state.isLoading === true) {
+              return <Loading />
+            } else if (this.state.isLoading === false && this.state.isAuthenticated === true) {
+              return <ConversationPage
+                inputSendMessage={this.inputSendMessage}
+                addModalClick={this.addModalClick}
+                cancelClickModal={this.cancelClickModal}
+                isHidden={isHidden}
+              />
+            } else {
+              return <Redirect to="/login" />
+            }
+          }} />
         <Route
           path="/conversation-threading"
-          render={props => (
-            <ConversationThreading
-              inputSendMessage={this.inputSendMessage}
-              addModalClick={this.addModalClick}
-            />
-          )}
+          render={() => {
+            if (this.state.isLoading === true) {
+              return <Loading />
+            } else if (this.state.isLoading === false && this.state.isAuthenticated === true) {
+              return <ConversationThreading
+                inputSendMessage={this.inputSendMessage}
+                addModalClick={this.addModalClick}
+              />
+            } else {
+              return <Redirect to="/login" />
+            }
+          }}
         />
       </Switch >
     )
