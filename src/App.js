@@ -173,7 +173,6 @@ class App extends Component {
   }
 
   handleLogOut() {
-    console.log('hola')
     this.setState({
       isAuthenticated: false,
       token: "",
@@ -238,6 +237,9 @@ class App extends Component {
               return <ConversationThreading
                 inputSendMessage={this.inputSendMessage}
                 addModalClick={this.addModalClick}
+                cancelClickModal={this.cancelClickModal}
+                isHidden={isHidden}
+                handleLogOut={this.handleLogOut}
               />
             } else {
               return <Redirect to="/login" />
