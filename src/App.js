@@ -5,6 +5,7 @@ import LandingPage from './components/LandingPage';
 import MainPage from './components/MainPage';
 import ConversationPage from './components/ConversationPage';
 import ConversationThreading from './components/ConversationThreading';
+import Loading from './components/Loading';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fetchToken } from './components/services/TokenService';
 import {
@@ -33,7 +34,8 @@ class App extends Component {
         error: 0
       },
       isChecked: false,
-      isLoading: true
+      isLoading: true,
+      isAuthenticated: false
     };
     this.addModalClick = this.addModalClick.bind(this);
     this.cancelClickModal = this.cancelClickModal.bind(this);
@@ -150,37 +152,42 @@ class App extends Component {
             wrongCredentials={logIn.error}
             handleChecked={this.handleChecked}
           />)} />
-        <Route exact path="/" render={() => (
-          ( false ) ?
-          <MainPage
-            addModalClick={this.addModalClick}
-            cancelClickModal={this.cancelClickModal}
-            isHidden={isHidden}
-          />
-          :<Redirect to="/login"/>
-          )} />
-        <Route
-          path="/conversation-page"
-          render={() => (
-            ( false ) ?
-            <ConversationPage
-              inputSendMessage={this.inputSendMessage}
+        <Route exact path="/" render={() => {
+          if (this.state.isLoading === true) {
+            return <Loading />
+          } else if (this.state.isLoading === false && this.state.isAuthenticated === true) {
+            return <MainPage
               addModalClick={this.addModalClick}
               cancelClickModal={this.cancelClickModal}
               isHidden={isHidden}
             />
-            :<Redirect to="/login"/>
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
+
+        <Route
+          path="/conversation-page"
+          render={() => (
+            (false) ?
+              <ConversationPage
+                inputSendMessage={this.inputSendMessage}
+                addModalClick={this.addModalClick}
+                cancelClickModal={this.cancelClickModal}
+                isHidden={isHidden}
+              />
+              : <Redirect to="/login" />
           )}
         />
         <Route
           path="/conversation-threading"
           render={() => (
-            ( false ) ?
-            <ConversationThreading
-              inputSendMessage={this.inputSendMessage}
-              addModalClick={this.addModalClick}
-            />
-            :<Redirect to="/login"/>
+            (false) ?
+              <ConversationThreading
+                inputSendMessage={this.inputSendMessage}
+                addModalClick={this.addModalClick}
+              />
+              : <Redirect to="/login" />
           )}
         />
       </Switch >
