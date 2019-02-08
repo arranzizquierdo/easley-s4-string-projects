@@ -5,6 +5,7 @@ import ErrorMessage from "../ErrorMessage";
 import ButtonStart from "../ButtonStart";
 import PropTypes from 'prop-types';
 import Redirect from "react-router-dom/Redirect";
+import Loading from "../Loading";
 
 class LogIn extends Component {
 
@@ -29,8 +30,12 @@ class LogIn extends Component {
 
     const hideOrNot = this.state.passwordIsHidden ? "password" : "text";
     const iconEye = this.state.passwordIsHidden ? "eye-slash" : "eye";
-    const { saveData, handleButton, wrongCredentials, handleChecked, token, isAuthenticated } = this.props;
-    if(token && isAuthenticated){
+    const { saveData, handleButton, wrongCredentials, handleChecked, token, isAuthenticated, isLoading } = this.props;
+
+    if(isLoading === true){
+      return <Loading />
+    }
+    if(isLoading === false && token && isAuthenticated){
       return <Redirect to="/" />
     }else {
 

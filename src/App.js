@@ -184,7 +184,7 @@ class App extends Component {
   }
 
   render() {
-    const { logIn, isHidden } = this.state;
+    const { logIn, isHidden, token, isAuthenticated, isLoading } = this.state;
     return (
       <Switch>
 
@@ -194,8 +194,9 @@ class App extends Component {
             handleButton={this.handleButton}
             wrongCredentials={logIn.error}
             handleChecked={this.handleChecked}
-            token={this.state.token}
-            isAuthenticated={this.state.isAuthenticated}
+            token={token}
+            isAuthenticated={isAuthenticated}
+            isLoading={isLoading}
           />)} />
         <Route exact path="/" render={() => {
           if (this.state.isLoading === true) {
