@@ -174,6 +174,12 @@ class App extends Component {
 
   handleLogOut () {
     console.log('hola')
+    this.setState ({
+      isAuthenticated: false,
+      token:"",
+      isHidden: true
+    })
+    localStorage.removeItem('token')
   }
 
   render() {
@@ -217,6 +223,7 @@ class App extends Component {
                 addModalClick={this.addModalClick}
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
+                handleLogOut={this.handleLogOut}
               />
             } else {
               return <Redirect to="/login" />
