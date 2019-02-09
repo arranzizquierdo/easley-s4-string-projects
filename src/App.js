@@ -182,7 +182,7 @@ class App extends Component {
   }
 
   render() {
-    const { logIn, isHidden, token, isAuthenticated, isLoading } = this.state;
+    const { logIn, isHidden, token, isAuthenticated, isLoading, dataUser } = this.state;
     return (
       <Switch>
 
@@ -223,6 +223,8 @@ class App extends Component {
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
                 handleLogOut={this.handleLogOut}
+                isLoading={isLoading}
+                dataUser={dataUser}
               />
             } else {
               return <Redirect to="/login" />
@@ -240,6 +242,8 @@ class App extends Component {
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
                 handleLogOut={this.handleLogOut}
+                isLoading={isLoading}
+                dataUser={dataUser}
               />
             } else {
               return <Redirect to="/login" />
