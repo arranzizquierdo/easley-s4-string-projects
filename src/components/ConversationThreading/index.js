@@ -26,7 +26,7 @@ class ConversationThreading extends Component {
           <Link className="style_link" to="/conversation-page">
             <GoBack />
           </Link>
-          <IndividualMessage isLoading={isLoading} dataUser={dataUser}/>
+          {/* <IndividualMessage isLoading={isLoading} dataUser={dataUser}/> */}
           <div className="answers">Respuestas</div>
           <MessageThreading />
           <section className="container__message">
