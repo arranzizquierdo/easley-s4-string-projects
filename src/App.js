@@ -236,6 +236,7 @@ class App extends Component {
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
                 handleLogOut={this.handleLogOut}
+                token={this.state.token}
                 isLoading={isLoading}
                 dataUser={dataUser}
                 groups={groups}

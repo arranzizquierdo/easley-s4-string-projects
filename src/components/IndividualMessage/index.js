@@ -4,14 +4,15 @@ import "./IndividualMessage.scss";
 
 class IndividualMessage extends Component {
   render() {
-    const { dataUser } = this.props;
+    const { messageInfo } = this.props;
+
     return (
         <section className="individualMessage__container">
-        <img className="individualMessage__image" src={dataUser.avatar_url} alt={dataUser.nickname} />
+        <img className="individualMessage__image" src={messageInfo.avatar_url} alt={messageInfo.username} />
         <div className="individualMessage__data">
-          <h2 className="individualMessage__name">{dataUser.nickname}</h2>
+          <h2 className="individualMessage__name">{messageInfo.username}</h2>
           <p className="individualMessage__message">
-            Me encantan los flamenquines!
+            {messageInfo.description}
           </p>
         </div>
       </section>
@@ -21,7 +22,7 @@ class IndividualMessage extends Component {
 }
 
 IndividualMessage.propTypes = {
-  dataUser: PropTypes.object.isRequired
+  messageInfo: PropTypes.object.isRequired,
 }
 
 export default IndividualMessage;
