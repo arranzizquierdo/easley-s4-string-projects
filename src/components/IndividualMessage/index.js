@@ -1,15 +1,11 @@
 import React, { Component } from "react";
-// import Image from "../../images/bill-murray.png";
+import PropTypes from 'prop-types';
 import "./IndividualMessage.scss";
-import Loading from "../Loading";
 
 class IndividualMessage extends Component {
   render() {
-    const { isLoading, dataUser } = this.props;
+    const { dataUser } = this.props;
     return (
-      (isLoading === true)
-      ? <Loading />
-      : (
         <section className="individualMessage__container">
         <img className="individualMessage__image" src={dataUser.avatar_url} alt={dataUser.nickname} />
         <div className="individualMessage__data">
@@ -19,9 +15,13 @@ class IndividualMessage extends Component {
           </p>
         </div>
       </section>
-      )
+
     );
   }
+}
+
+IndividualMessage.propTypes = {
+  dataUser: PropTypes.object.isRequired
 }
 
 export default IndividualMessage;

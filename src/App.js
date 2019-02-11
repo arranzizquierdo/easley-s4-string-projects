@@ -55,14 +55,12 @@ class App extends Component {
       return (sendTokenFetch(tokenLs))
         .then(data => {
           if (data === true) {
-            console.log('data1 =>', data)
             return (
               this.setState({
                 isAuthenticated: true
               }),
               tokenDataFetch(tokenLs)
                 .then(data => {
-                  console.log('data2 =>', data)
                   return (
                     this.setState({
                       dataUser: data.user,
@@ -195,7 +193,7 @@ class App extends Component {
   }
 
   render() {
-    const { logIn, isHidden, token, isAuthenticated, isLoading, dataUser } = this.state;
+    const { logIn, isHidden, token, isAuthenticated, isLoading, dataUser, groups } = this.state;
     return (
       <Switch>
 
@@ -218,6 +216,8 @@ class App extends Component {
               cancelClickModal={this.cancelClickModal}
               isHidden={isHidden}
               handleLogOut={this.handleLogOut}
+              dataUser={dataUser}
+              groups={groups}
             />
           } else if (isLoading === false && isAuthenticated === false) {
             return <Redirect to="/login" />
