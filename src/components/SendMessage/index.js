@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./SendMessage.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import PropTypes from "prop-types";
 
 class SendMessage extends Component {
   render() {
@@ -22,10 +21,6 @@ class SendMessage extends Component {
       </div>
     );
   }
-}
-
-SendMessage.propTypes = {
-  inputSendMessage: PropTypes.func.isRequired
 }
 
 export default SendMessage;

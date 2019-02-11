@@ -33,7 +33,7 @@ MainPage.propTypes = {
   isHidden: PropTypes.bool.isRequired,
   cancelClickModal: PropTypes.func.isRequired,
   handleLogOut: PropTypes.func.isRequired,
-  groups: PropTypes.object.isRequired,
+  groups: PropTypes.array.isRequired,
 }
 
 export default MainPage;
