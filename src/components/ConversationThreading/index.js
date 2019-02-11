@@ -23,7 +23,7 @@ class ConversationThreading extends Component {
           </div>
         </Header>
         <main className="main__conversationThreading">
-          <Link className="style_link" to="/conversation-page">
+          <Link className="style_link" to="/conversation-page/:id">
             <GoBack />
           </Link>
           <IndividualMessage isLoading={isLoading} dataUser={dataUser}/>
