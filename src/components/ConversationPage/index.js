@@ -45,7 +45,8 @@ class ConversationPage extends Component {
     } else {
       return (
         <Fragment>
-          <Header addModalClick={addModalClick}>
+          <Header
+          addModalClick={addModalClick}>
             <div className="header__group__container">
               <img
                 className="header__group__image"
@@ -59,22 +60,31 @@ class ConversationPage extends Component {
             </div>
           </Header>
           <main>
-            <Link className="style_link" to="/">
+            <Link
+            className="style_link"
+            to="/">
               <GoBack />
             </Link>
             <ul>
             {infoConversation.map(message => {
               return (
-                <Link key={message.id} className="style_link" to="/conversation-threading">
-                <IndividualMessage messageInfo={message} />
+                <Link
+                key={message.id} className="style_link"
+                to="/conversation-threading">
+                <IndividualMessage
+                messageInfo={message}
+                />
               </Link>
               )
             })}
             </ul>
-            <section className="container__message">
+            <section
+            className="container__message">
               <SendMessage />
             </section>
-            <Modal isHidden={isHidden} cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
+            <Modal
+            isHidden={isHidden}
+            cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
           </main>
         </Fragment>
       );

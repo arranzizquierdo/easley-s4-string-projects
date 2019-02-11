@@ -26,8 +26,6 @@ class LogIn extends Component {
   }
 
   render() {
-
-
     const hideOrNot = this.state.passwordIsHidden ? "password" : "text";
     const iconEye = this.state.passwordIsHidden ? "eye-slash" : "eye";
     const { saveData, handleButton, wrongCredentials, handleChecked, token, isAuthenticated, isLoading } = this.props;
@@ -64,7 +62,11 @@ class LogIn extends Component {
               className="logIn__input"
               onChange={saveData}
             />
-            <FontAwesomeIcon onClick = {this.togglePassword} icon= {iconEye} className="eye__icon" />
+            <FontAwesomeIcon
+            onClick = {this.togglePassword}
+            icon= {iconEye}
+            className="eye__icon"
+            />
           </div>
 
           <label htmlFor="remember" className="remember__label">
@@ -77,10 +79,14 @@ class LogIn extends Component {
             />
             Recuérdame
           </label>
-          <ButtonStart handleButton={handleButton} />
+          <ButtonStart
+          handleButton={handleButton}
+          />
 
         </form>
-        <ErrorMessage wrongCredentials={wrongCredentials} />
+        <ErrorMessage
+        wrongCredentials={wrongCredentials}
+        />
       </div>
     );}
   }
@@ -91,5 +97,9 @@ export default LogIn;
 LogIn.propTypes = {
   saveData: PropTypes.func.isRequired,
   handleButton: PropTypes.func.isRequired,
-  wrongCredentials: PropTypes.number
+  wrongCredentials: PropTypes.number,
+  handleChecked: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired
 }

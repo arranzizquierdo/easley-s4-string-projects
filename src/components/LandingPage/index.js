@@ -10,7 +10,9 @@ class LandingPage extends Component {
 
     return (
       <Fragment>
-        <Header showNav={false} />
+        <Header
+        showNav={false}
+        />
         <LogIn
           saveData={saveData}
           handleButton={handleButton}
@@ -30,5 +32,9 @@ export default LandingPage;
 LandingPage.propTypes = {
   saveData: PropTypes.func.isRequired,
   handleButton: PropTypes.func.isRequired,
-  wrongCredentials: PropTypes.number
+  wrongCredentials: PropTypes.number,
+  handleChecked: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired
 }

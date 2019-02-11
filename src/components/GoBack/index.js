@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './GoBack.scss'
 
 class GoBack extends Component {
-
   render() {
     return (
       <div
