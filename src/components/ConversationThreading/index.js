@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 
 class ConversationThreading extends Component {
   render() {
-    const { addModalClick, isHidden, cancelClickModal, handleLogOut } = this.props;
+    const { addModalClick, isHidden, cancelClickModal, handleLogOut, isLoading, dataUser } = this.props;
     return (
       <React.Fragment>
         <Header addModalClick={addModalClick}>
@@ -26,7 +26,7 @@ class ConversationThreading extends Component {
           <Link className="style_link" to="/conversation-page">
             <GoBack />
           </Link>
-          <IndividualMessage />
+          <IndividualMessage isLoading={isLoading} dataUser={dataUser}/>
           <div className="answers">Respuestas</div>
           <MessageThreading />
           <section className="container__message">

@@ -9,6 +9,7 @@ import Loading from './components/Loading';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fetchToken } from './components/services/TokenService';
 import { sendTokenFetch } from './components/services/SendToken';
+import { tokenDataFetch } from './components/services/TokenData';
 import {
   faEllipsisH,
   faEyeSlash,
@@ -56,9 +57,19 @@ class App extends Component {
           if (data === true) {
             return (
               this.setState({
-                isAuthenticated: true,
-                isLoading: false
-              })
+                isAuthenticated: true
+              }),
+              tokenDataFetch(tokenLs)
+                .then(data => {
+                  return (
+                    this.setState({
+                      dataUser: data.user,
+                      groups: data.groups,
+                      token: data.user.auth_token,
+                      isLoading: false
+                    })
+                  )
+                })
             )
           } else {
             return (
@@ -182,7 +193,7 @@ class App extends Component {
   }
 
   render() {
-    const { logIn, isHidden, token, isAuthenticated, isLoading } = this.state;
+    const { logIn, isHidden, token, isAuthenticated, isLoading, dataUser, groups } = this.state;
     return (
       <Switch>
 
@@ -205,6 +216,8 @@ class App extends Component {
               cancelClickModal={this.cancelClickModal}
               isHidden={isHidden}
               handleLogOut={this.handleLogOut}
+              dataUser={dataUser}
+              groups={groups}
             />
           } else if (isLoading === false && isAuthenticated === false) {
             return <Redirect to="/login" />
@@ -224,8 +237,11 @@ class App extends Component {
                 isHidden={isHidden}
                 handleLogOut={this.handleLogOut}
                 token={this.state.token}
+                isLoading={isLoading}
+                dataUser={dataUser}
+                groups={groups}
               />
-            } else {
+            } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />
             }
           }} />
@@ -241,8 +257,10 @@ class App extends Component {
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
                 handleLogOut={this.handleLogOut}
+                isLoading={isLoading}
+                dataUser={dataUser}
               />
-            } else {
+            } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />
             }
           }}
