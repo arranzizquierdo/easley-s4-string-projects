@@ -234,7 +234,8 @@ class App extends Component {
         }} />
 
         <Route
-          path="/conversation-page/:id"
+          exact
+          path="/conversation-page/:groupId"
           render={props => {
             if (isLoading === true) {
               return <Loading />
@@ -257,8 +258,9 @@ class App extends Component {
             }
           }} />
         <Route
-          path="/conversation-threading"
-          render={() => {
+          path="/conversation-page/:groupId/conversation-threading/:threadId"
+          render={(routeProps) => {
+            console.log(routeProps);
             if (isLoading === true) {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {

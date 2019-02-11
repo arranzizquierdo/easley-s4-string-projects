@@ -40,7 +40,7 @@ class ConversationPage extends Component {
   render() {
     const { addModalClick, isHidden, cancelClickModal, handleLogOut, groups } = this.props;
     const { infoConversation } = this.state;
-    const groupId = parseInt(this.props.match.params.id);
+    const groupId = parseInt(this.props.match.params.groupId);
     const currentGroup = groups.find(item =>{
       return item.id === groupId;
     });
