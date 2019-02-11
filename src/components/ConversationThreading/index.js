@@ -26,13 +26,18 @@ class ConversationThreading extends Component {
           <Link className="style_link" to="/conversation-page">
             <GoBack />
           </Link>
-          {/* <IndividualMessage isLoading={isLoading} dataUser={dataUser}/> */}
+          <IndividualMessage
+          isLoading={isLoading}
+          dataUser={dataUser}
+          />
           <div className="answers">Respuestas</div>
           <MessageThreading />
           <section className="container__message">
             <SendMessage />
           </section>
-          <Modal isHidden={isHidden} cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
+          <Modal
+          isHidden={isHidden}
+          cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
         </main>
       </React.Fragment>
     )
@@ -43,7 +48,9 @@ ConversationThreading.propTypes = {
   addModalClick: PropTypes.func.isRequired,
   isHidden: PropTypes.bool.isRequired,
   cancelClickModal: PropTypes.func.isRequired,
-  handleLogOut: PropTypes.func.isRequired
+  handleLogOut: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  dataUser: PropTypes.object.isRequired
 }
 
 export default ConversationThreading;

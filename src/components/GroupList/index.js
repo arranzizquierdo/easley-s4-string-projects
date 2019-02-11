@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import "./GroupList.scss";
 import groupImage from "../../images/groupImage.jpg";
 import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
 
 class GroupList extends Component {
-
   render() {
     const { groups } = this.props;
     return (
@@ -27,6 +27,10 @@ class GroupList extends Component {
       </div>
     );
   }
+}
+
+GroupList.propTypes = {
+  groups: PropTypes.array.isRequired,
 }
 
 export default GroupList;

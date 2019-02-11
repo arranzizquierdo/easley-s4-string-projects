@@ -13,10 +13,14 @@ class Modal extends Component {
       <div className={`modal__container ${hidden}`}>
         <ul className="modal__list">
           <li className="modal__item-title">¿Qué quieres hacer?</li>
-          <li className="modal__item modal__item-sesion" onClick={handleLogOut}>
+          <li
+          className="modal__item modal__item-sesion"
+          onClick={handleLogOut}>
             Cerrar Sesión
           </li>
-          <li className="modal__item modal__item-cancel" onClick={cancelClickModal}>Cancelar</li>
+          <li
+          className="modal__item modal__item-cancel"
+          onClick={cancelClickModal}>Cancelar</li>
         </ul>
       </div>
     );

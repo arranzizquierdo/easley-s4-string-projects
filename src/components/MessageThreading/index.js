@@ -3,7 +3,6 @@ import Unicornio from "../../images/unicornio.jpeg";
 import './MessageThreading.scss';
 
 class MessageThreading extends Component {
-
   render() {
     return (
       <section className="messageThreading__container">
