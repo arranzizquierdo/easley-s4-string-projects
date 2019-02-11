@@ -55,18 +55,20 @@ class App extends Component {
       return (sendTokenFetch(tokenLs))
         .then(data => {
           if (data === true) {
+            console.log('data1 =>', data)
             return (
               this.setState({
-                isAuthenticated: true,
-                isLoading: false
+                isAuthenticated: true
               }),
               tokenDataFetch(tokenLs)
                 .then(data => {
+                  console.log('data2 =>', data)
                   return (
                     this.setState({
                       dataUser: data.user,
                       groups: data.groups,
-                      token: data.user.auth_token
+                      token: data.user.auth_token,
+                      isLoading: false
                     })
                   )
                 })
