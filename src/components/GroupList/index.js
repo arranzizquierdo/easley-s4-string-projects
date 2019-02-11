@@ -7,7 +7,6 @@ class GroupList extends Component {
 
   render() {
     const { groups } = this.props;
-    // console.log(groups)
     return (
       <div className="group__container">
         <ul className="group__ul">
