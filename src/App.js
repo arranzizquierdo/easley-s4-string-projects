@@ -225,8 +225,8 @@ class App extends Component {
         }} />
 
         <Route
-          path="/conversation-page"
-          render={() => {
+          path="/conversation-page/:id"
+          render={props => {
             if (isLoading === true) {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
@@ -239,6 +239,8 @@ class App extends Component {
                 isLoading={isLoading}
                 dataUser={dataUser}
                 groups={groups}
+                match={props.match}
+
               />
             } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />

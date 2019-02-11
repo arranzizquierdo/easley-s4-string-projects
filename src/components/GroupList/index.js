@@ -12,7 +12,7 @@ class GroupList extends Component {
         <ul className="group__ul">
           {groups.map(group => {
             return (
-              <Link className="style_link" to="/conversation-page" key={group.id}>
+              <Link className="style_link" to= {`/conversation-page/${group.id}`} key={group.id}>
                 <li className="group__li" key={group.id}>
                   <img className="group__image" src={groupImage} alt="Icono grupo" />
                   <span className="container__text-li">
