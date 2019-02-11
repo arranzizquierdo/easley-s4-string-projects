@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/easley-s4-string-projects/precache-manifest.b1ad3457e3f5756119a9603d149bc161.js"
+  "/easley-s4-string-projects/precache-manifest.8936ecb6fd3a66b729b91cafbb3d03f6.js"
 );
 
 workbox.clientsClaim();
