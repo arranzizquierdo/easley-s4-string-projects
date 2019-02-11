@@ -9,6 +9,7 @@ import Loading from './components/Loading';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fetchToken } from './components/services/TokenService';
 import { sendTokenFetch } from './components/services/SendToken';
+import { tokenDataFetch } from './components/services/TokenData';
 import {
   faEllipsisH,
   faEyeSlash,
@@ -58,7 +59,17 @@ class App extends Component {
               this.setState({
                 isAuthenticated: true,
                 isLoading: false
-              })
+              }),
+              tokenDataFetch(tokenLs)
+                .then(data => {
+                  return (
+                    this.setState({
+                      dataUser: data.user,
+                      groups: data.groups,
+                      token: data.user.auth_token
+                    })
+                  )
+                })
             )
           } else {
             return (
@@ -226,7 +237,7 @@ class App extends Component {
                 isLoading={isLoading}
                 dataUser={dataUser}
               />
-            } else {
+            } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />
             }
           }} />
@@ -245,7 +256,7 @@ class App extends Component {
                 isLoading={isLoading}
                 dataUser={dataUser}
               />
-            } else {
+            } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />
             }
           }}

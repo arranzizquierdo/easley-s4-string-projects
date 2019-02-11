@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Image from "../../images/bill-murray.png";
+// import Image from "../../images/bill-murray.png";
 import "./IndividualMessage.scss";
 import Loading from "../Loading";
 
