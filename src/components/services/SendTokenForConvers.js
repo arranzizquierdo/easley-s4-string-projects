@@ -8,7 +8,6 @@ const postConversFetch = (token) => fetch (postsEndpoint, {
     "AUTH-TOKEN": token
   }
 }).then(response => {
-  console.log(response);
   if(!response.ok){
     throw (response);
   }
