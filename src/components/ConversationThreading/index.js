@@ -11,14 +11,17 @@ import PropTypes from "prop-types";
 
 class ConversationThreading extends Component {
   render() {
-    const { addModalClick, isHidden, cancelClickModal, handleLogOut, isLoading, dataUser } = this.props;
+    const { addModalClick, isHidden, cancelClickModal, handleLogOut, isLoading, infoConversation } = this.props;
+    const threadId = parseInt(this.props.match.params.threadId);
+    const currentMessage = infoConversation.find(item =>{
+      return item.id === threadId;})
     return (
       <React.Fragment>
         <Header addModalClick={addModalClick}>
           <div className="header__group__container">
             <span className="header__container__thread">
               <h2 className="header__group__title-thread">Hilo</h2>
-              <h3 className="header__group__persons-thread">Recetas y menús</h3>
+              <h3 className="header__group__persons-thread">{currentMessage.name}</h3>
             </span>
           </div>
         </Header>
@@ -26,7 +29,7 @@ class ConversationThreading extends Component {
           <Link className="style_link" to="/conversation-page/id">
             <GoBack />
           </Link>
-          <IndividualMessage isLoading={isLoading} dataUser={dataUser}/>
+          <IndividualMessage isLoading={isLoading} messageInfo={infoConversation}/>
           <div className="answers">Respuestas</div>
           <MessageThreading />
           <section className="container__message">

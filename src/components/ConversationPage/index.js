@@ -6,10 +6,11 @@ import IndividualMessage from "../IndividualMessage";
 import SendMessage from "../SendMessage";
 import Modal from "../Modal";
 import GoBack from "../GoBack";
-import { Link } from "react-router-dom";
+import { Link, Switch, Route, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { postConversFetch } from '../services/SendTokenForConvers';
 import Loading from "../Loading";
+import ConversationThreading from '../MessageThreading';
 
 class ConversationPage extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class ConversationPage extends Component {
   }
 
   render() {
-    const { addModalClick, isHidden, cancelClickModal, handleLogOut, groups } = this.props;
+    const { addModalClick, isHidden, cancelClickModal, handleLogOut, groups, isLoading, isAuthenticated } = this.props;
     const { infoConversation } = this.state;
     const groupId = parseInt(this.props.match.params.groupId);
     const currentGroup = groups.find(item =>{
@@ -72,7 +73,7 @@ class ConversationPage extends Component {
             <ul>
             {infoConversation.map(message => {
               return (
-                <Link key={message.id} className="style_link" to="/conversation-threading">
+                <Link key={message.id} className="style_link" to={`/conversation-page/${groupId}/conversation-threading/${message.id}`}>
                 <IndividualMessage messageInfo={message} />
               </Link>
               )
@@ -83,7 +84,30 @@ class ConversationPage extends Component {
             </section>
             <Modal isHidden={isHidden} cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
           </main>
+          {/* <Switch>
+          <Route
+          path="/conversation-page/:groupId/conversation-threading/:threadId"
+          render={() => {
+            if (isLoading === true) {
+              return <Loading />
+            } else if (isLoading === false && isAuthenticated === true) {
+              return <ConversationThreading
+                inputSendMessage={this.inputSendMessage}
+                addModalClick={this.addModalClick}
+                cancelClickModal={this.cancelClickModal}
+                isHidden={isHidden}
+                handleLogOut={this.handleLogOut}
+                isLoading={isLoading}
+                infoConversation={infoConversation}
+              />
+            } else if (isLoading === false && isAuthenticated === false) {
+              return <Redirect to="/login" />
+            }
+          }}
+        />
+        </Switch> */}
         </Fragment>
+
       );
 
     }
