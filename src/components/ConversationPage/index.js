@@ -22,7 +22,11 @@ class ConversationPage extends Component {
     const { token }= this.props;
     postConversFetch(token)
     .then(data => {
-      console.log(data);
+      return (
+        this.setState({
+          infoConversation: data,
+        })
+      )
     })
   }
 
