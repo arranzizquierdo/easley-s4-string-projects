@@ -8,8 +8,24 @@ import Modal from "../Modal";
 import GoBack from "../GoBack";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { postConversFetch } from '../services/SendTokenForConvers';
 
 class ConversationPage extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      infoConversation: null,
+    }
+  }
+
+  componentDidMount(){
+    const { token }= this.props;
+    postConversFetch(token)
+    .then(data => {
+      console.log(data);
+    })
+  }
+
   render() {
     const { addModalClick, isHidden, cancelClickModal, handleLogOut } = this.props;
     return (

@@ -223,6 +223,7 @@ class App extends Component {
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
                 handleLogOut={this.handleLogOut}
+                token={this.state.token}
               />
             } else {
               return <Redirect to="/login" />
