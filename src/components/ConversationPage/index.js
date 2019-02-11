@@ -25,23 +25,20 @@ class ConversationPage extends Component {
       .then(data => {
         return (
           this.setState({
-            infoConversation: data,
+            infoConversation: this.filterConversations(data),
           })
         )
       })
   }
 
-  componentDidUpdate() {
-    // const { isLoading, dataUser } = this.props;
-    // return (
-    //   <Link className="style_link" to="/conversation-threading">
-    //     <IndividualMessage isLoading={isLoading} dataUser={dataUser} />
-    //   </Link>
-    // )
+  filterConversations(data){
+    const { groups } = this.props;
+    const filteredMessages = data.filter(message => message.post_id === groups[0].id)
+    return filteredMessages;
   }
 
   render() {
-    const { addModalClick, isHidden, cancelClickModal, handleLogOut, isLoading, dataUser } = this.props;
+    const { addModalClick, isHidden, cancelClickModal, handleLogOut } = this.props;
     const { infoConversation } = this.state;
     if (!infoConversation) {
       return (<Loading/>)
@@ -69,7 +66,7 @@ class ConversationPage extends Component {
             {infoConversation.map(message => {
               return (
                 <Link key={message.id} className="style_link" to="/conversation-threading">
-                <IndividualMessage isLoading={isLoading} dataUser={dataUser} messageInfo={message} />
+                <IndividualMessage messageInfo={message} />
               </Link>
               )
             })}
@@ -90,7 +87,9 @@ ConversationPage.propTypes = {
   addModalClick: PropTypes.func.isRequired,
   isHidden: PropTypes.bool.isRequired,
   cancelClickModal: PropTypes.func.isRequired,
-  handleLogOut: PropTypes.func.isRequired
+  handleLogOut: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
+  groups: PropTypes.array.isRequired
 };
 
 export default ConversationPage;

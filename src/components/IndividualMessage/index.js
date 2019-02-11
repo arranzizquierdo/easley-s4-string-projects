@@ -5,7 +5,7 @@ import "./IndividualMessage.scss";
 class IndividualMessage extends Component {
   render() {
     const { messageInfo } = this.props;
-    console.log(messageInfo);
+
     return (
         <section className="individualMessage__container">
         <img className="individualMessage__image" src={messageInfo.avatar_url} alt={messageInfo.username} />
@@ -22,7 +22,7 @@ class IndividualMessage extends Component {
 }
 
 IndividualMessage.propTypes = {
-  dataUser: PropTypes.object.isRequired
+  messageInfo: PropTypes.object.isRequired,
 }
 
 export default IndividualMessage;
