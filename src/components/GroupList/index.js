@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 class GroupList extends Component {
 
   render() {
-    const { groups } = this.props;
+    const { groups, getCurrentGroup } = this.props;
     return (
       <div className="group__container">
         <ul className="group__ul">
           {groups.map(group => {
             return (
-              <Link className="style_link" to= {`/conversation-page/${group.id}`} key={group.id}>
+              <Link className="style_link" to= {`/conversation-page/${group.id}`} key={group.id} onClick={getCurrentGroup}>
                 <li className="group__li" key={group.id}>
                   <img className="group__image" src={groupImage} alt="Icono grupo" />
                   <span className="container__text-li">

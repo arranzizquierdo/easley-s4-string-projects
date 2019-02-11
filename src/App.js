@@ -27,8 +27,9 @@ class App extends Component {
       isHidden: true,
       userInfo: {
         nickname: "",
-        password: ""
+        password: "",
       },
+      currentGroup:"",
       dataUser: null,
       groups: null,
       token: "",
@@ -46,6 +47,7 @@ class App extends Component {
     this.getDataInfo = this.getDataInfo.bind(this);
     this.handleChecked = this.handleChecked.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
+    this.getCurrentGroup = this.getCurrentGroup.bind(this);
   }
 
   componentDidMount() {
@@ -192,6 +194,12 @@ class App extends Component {
     localStorage.removeItem('token')
   }
 
+  getCurrentGroup(e){
+    this.setState({
+      currentGroup: e.currentTarget.key
+    })
+  }
+
   render() {
     const { logIn, isHidden, token, isAuthenticated, isLoading, dataUser, groups } = this.state;
     return (
@@ -212,6 +220,7 @@ class App extends Component {
             return <Loading />
           } else if (isLoading === false && isAuthenticated === true) {
             return <MainPage
+              getCurrentGroup={this.getCurrentGroup}
               addModalClick={this.addModalClick}
               cancelClickModal={this.cancelClickModal}
               isHidden={isHidden}
