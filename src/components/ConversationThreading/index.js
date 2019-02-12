@@ -59,7 +59,9 @@ class ConversationThreading extends Component {
             />
             <div className="answers">Respuestas</div>
             <ul>
-              {infoThread.map(message =>{
+              {infoThread
+              .filter(message=> message.post_id !== null)
+              .map(message =>{
                 return(
                   <li>
                     <MessageThreading

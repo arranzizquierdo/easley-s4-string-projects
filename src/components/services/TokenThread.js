@@ -1,5 +1,5 @@
 const ENDPOINT = "https://adalab.string-projects.com/api/v1/";
-const postsEndpoint = ENDPOINT + "posts/7";
+const postsEndpoint = ENDPOINT + "posts/10";
 
 
 const tokenThreadFetch = (token) => fetch(postsEndpoint,{
