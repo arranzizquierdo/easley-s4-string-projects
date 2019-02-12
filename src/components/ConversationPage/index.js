@@ -24,7 +24,6 @@ class ConversationPage extends Component {
     postConversFetch(token)
       .then(data => {
         return (
-          console.log(data),
           this.setState({
             infoConversation: data,
           })
