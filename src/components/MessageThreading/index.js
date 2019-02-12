@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Unicornio from "../../images/unicornio.jpeg";
 import './MessageThreading.scss';
 
 class MessageThreading extends Component {
