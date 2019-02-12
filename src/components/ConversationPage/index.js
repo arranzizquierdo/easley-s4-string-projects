@@ -35,6 +35,7 @@ class ConversationPage extends Component {
   render() {
     const { addModalClick, isHidden, cancelClickModal, handleLogOut } = this.props;
     const { infoConversation } = this.state;
+    console.log(infoConversation);
     if (!infoConversation) {
       return (<Loading/>)
     } else {
@@ -64,8 +65,9 @@ class ConversationPage extends Component {
             {infoConversation.map(message => {
               return (
                 <Link
-                key={message.id} className="style_link"
-                to="/conversation-threading">
+                key={message.id}
+                className="style_link"
+                to={`/conversation-page/${message.post_id}`}>
                 <IndividualMessage
                 messageInfo={message}
                 />
