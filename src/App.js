@@ -229,6 +229,7 @@ class App extends Component {
         }} />
 
         <Route
+          exact
           path="/conversation-page"
           render={() => {
             if (isLoading === true) {
@@ -252,7 +253,7 @@ class App extends Component {
             }
           }} />
         <Route
-          path="/conversation-threading"
+          path="/conversation-page/:id"
           render={() => {
             if (isLoading === true) {
               return <Loading />
