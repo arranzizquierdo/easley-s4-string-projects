@@ -53,10 +53,10 @@ class ConversationThreading extends Component {
             <Link className="style_link" to="/conversation-page">
               <GoBack />
             </Link>
-            {/* <IndividualMessage
+            <IndividualMessage
             isLoading={isLoading}
-            dataUser={dataUser}
-            /> */}
+            messageInfo={infoThread[0]}
+            />
             <div className="answers">Respuestas</div>
             <ul>
               {infoThread.map(message =>{
