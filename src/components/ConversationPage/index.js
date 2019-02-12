@@ -33,8 +33,9 @@ class ConversationPage extends Component {
   }
 
   render() {
-    const { addModalClick, isHidden, cancelClickModal, handleLogOut } = this.props;
+    const { addModalClick, isHidden, cancelClickModal, handleLogOut, currentGroup } = this.props;
     const { infoConversation } = this.state;
+
     if (!infoConversation) {
       return (<Loading/>)
     } else {
@@ -49,7 +50,7 @@ class ConversationPage extends Component {
                 alt="Icono grupo"
               />
               <span className="header__container__text">
-                <h2 className="header__group__title">Recetas y menús</h2>
+                <h2 className="header__group__title">{currentGroup.name}</h2>
                 <p className="header__group__persons">56 personas</p>
               </span>
             </div>
