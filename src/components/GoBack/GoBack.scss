@@ -1,0 +1,31 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.button-back{
+  width: 80px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #5271ff;
+  color: white;
+  margin-top: 20px;
+  margin-left: 18px;
+  cursor: pointer;
+  font-family: "Heebo", sans-serif;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon_button-back {
+  margin-right: 5px;
+}
+
+@media all and (min-width: 1024px) {
+  .button-back {
+    margin-left: 40px;
+  }
+}

@@ -1,0 +1,45 @@
+.sendmessage__container {
+  width: 100%;
+  margin-top: 25px;
+  font-family: 'Heebo', sans-serif;
+}
+
+.sendmessage__input {
+  border: none;
+  border-bottom: 1px solid gray;
+  width: 90%;
+  outline: none;
+  font-size: 14px;
+}
+
+.sendmessage__button {
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.paperplane__styles {
+  color: #5271ff;
+  font-size: 20px;
+  margin-left: 10px;
+  width: 10%;
+}
+
+@media all and (min-width: 768px) {
+  .sendmessage__input {
+    width: 80%;
+    font-size: 16px;
+  }
+
+  .paperplane__styles {
+    font-size: 30px;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .paperplane__styles {
+    font-size: 35px;
+  }
+}

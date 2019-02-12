@@ -1,0 +1,72 @@
+.logIn__container {
+  width: 50%;
+  min-width: 320px;
+  margin: 50px auto 50px auto;
+  font-family: "Heebo", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.logIn__title {
+  color: #292e34;
+  text-align: center;
+  margin-bottom: 36px;
+  font-size: 36px;
+}
+
+.logIn__form {
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logIn__input {
+  border: 0;
+  font-size: 16px;
+  width: 100%;
+  padding-bottom: 8px;
+  outline: none;
+}
+
+::placeholder {
+  color: #6b869f;
+}
+
+.input-icon__container {
+  width: 100%;
+  border-bottom: solid 1px #d8d8d8;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: solid 1px #d8d8d8;
+}
+
+.eye__icon {
+  font-size: 16px;
+  color: #6b869f;
+  cursor: pointer;
+}
+
+.remember__label {
+  font-size: 14px;
+  color: #6b869f;
+}
+
+.remember__checkbox {
+  margin-right: 7px;
+  cursor: pointer;
+}
+
+@media all and (max-width: 360px) {
+  .logIn__container{
+    min-width: 260px;
+  }
+  .logIn__input {
+    font-size: 13px;
+  }
+}
+
+
