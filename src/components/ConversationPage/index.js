@@ -24,17 +24,13 @@ class ConversationPage extends Component {
     postConversFetch(token)
       .then(data => {
         return (
+          console.log(data),
           this.setState({
-            infoConversation: this.filterConversations(data),
+            infoConversation: data,
           })
+
         )
       })
-  }
-
-  filterConversations(data){
-    const { groups } = this.props;
-    const filteredMessages = data.filter(message => message.post_id === groups[0].id)
-    return filteredMessages;
   }
 
   render() {
