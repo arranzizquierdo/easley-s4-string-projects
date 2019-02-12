@@ -74,7 +74,8 @@ class App extends Component {
           } else {
             return (
               this.setState({
-                isAuthenticated: false
+                isAuthenticated: false,
+                isLoading: false
               })
             )
           }
