@@ -68,7 +68,7 @@ class ConversationPage extends Component {
                 <Link
                 key={message.id}
                 className="style_link"
-                to={`/conversation-page/${message.post_id}`}>
+                to={`/conversation-page/${message.id}`}>
                 <IndividualMessage
                 messageInfo={message}
                 />
