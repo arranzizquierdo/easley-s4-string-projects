@@ -265,6 +265,7 @@ class App extends Component {
                 handleLogOut={this.handleLogOut}
                 isLoading={isLoading}
                 dataUser={dataUser}
+                token={this.state.token}
               />
             } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />

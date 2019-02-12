@@ -35,6 +35,7 @@ class ConversationPage extends Component {
   render() {
     const { addModalClick, isHidden, cancelClickModal, handleLogOut, currentGroup } = this.props;
     const { infoConversation } = this.state;
+    console.log("holi", infoConversation);
 
     if (!infoConversation) {
       return (<Loading/>)
