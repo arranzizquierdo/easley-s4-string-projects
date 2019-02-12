@@ -8,10 +8,10 @@ const fetchToken = (userInfo) => fetch(sessionEndpoit, {
     "content-type": "application/json"
   }
 }).then(response => {
-  if(!response.ok){
-  throw (response);
-}
-return response.json()
+  if (!response.ok) {
+    throw (response);
+  }
+  return response.json()
 })
 
-export {fetchToken};
+export { fetchToken };

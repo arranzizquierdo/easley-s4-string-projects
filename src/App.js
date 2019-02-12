@@ -72,6 +72,7 @@ class App extends Component {
                     })
                   )
                 })
+                .catch(this.errorCatch())
             )
           } else {
             return (
@@ -81,7 +82,8 @@ class App extends Component {
               })
             )
           }
-        });
+        })
+        .catch(this.errorCatch());
     } else {
       return (
         this.setState({
@@ -155,6 +157,16 @@ class App extends Component {
           })
         )
       })
+  }
+
+  errorCatch(error){
+    console.log(error);
+      return (
+        this.setState({
+          isLoading: false,
+          isAuthenticated: false
+        })
+      )
   }
 
   keepInLocalStorage() {
