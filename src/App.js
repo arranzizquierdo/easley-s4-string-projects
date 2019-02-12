@@ -37,7 +37,8 @@ class App extends Component {
       },
       isChecked: false,
       isLoading: true,
-      isAuthenticated: false
+      isAuthenticated: false,
+      currentGroup:""
     };
     this.addModalClick = this.addModalClick.bind(this);
     this.cancelClickModal = this.cancelClickModal.bind(this);
@@ -66,7 +67,8 @@ class App extends Component {
                       dataUser: data.user,
                       groups: data.groups,
                       token: data.user.auth_token,
-                      isLoading: false
+                      isLoading: false,
+                      currentGroup: data.current_group
                     })
                   )
                 })
@@ -138,7 +140,8 @@ class App extends Component {
               nickname: "",
               password: ""
             },
-            isAuthenticated: true
+            isAuthenticated: true,
+            currentGroup: data.current_group
           }),
           this.keepInLocalStorage()
         )
@@ -194,7 +197,7 @@ class App extends Component {
   }
 
   render() {
-    const { logIn, isHidden, token, isAuthenticated, isLoading, dataUser, groups } = this.state;
+    const { logIn, isHidden, token, isAuthenticated, isLoading, dataUser, groups, currentGroup } = this.state;
     return (
       <Switch>
 
@@ -242,6 +245,8 @@ class App extends Component {
                 isLoading={isLoading}
                 dataUser={dataUser}
                 groups={groups}
+                currentGroup={currentGroup}
+
               />
             } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />
