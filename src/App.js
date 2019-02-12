@@ -226,6 +226,7 @@ class App extends Component {
         }} />
 
         <Route
+          exact
           path="/conversation-page"
           render={() => {
             if (isLoading === true) {

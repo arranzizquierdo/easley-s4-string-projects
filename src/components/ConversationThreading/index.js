@@ -12,8 +12,6 @@ import PropTypes from "prop-types";
 class ConversationThreading extends Component {
   render() {
     const { addModalClick, isHidden, cancelClickModal, handleLogOut, isLoading, dataUser } = this.props;
-    const messageId = parseInt(this.props.match.params.id);
-    console.log(messageId);
     return (
       <React.Fragment>
         <Header addModalClick={addModalClick}>
