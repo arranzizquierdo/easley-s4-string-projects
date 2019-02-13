@@ -23,7 +23,6 @@ class ConversationThreading extends Component {
     const { token } = this.props;
     tokenThreadFetch(token)
       .then(data =>{
-        console.log(data)
         return(
           this.setState({
             infoThread: data
@@ -35,7 +34,6 @@ class ConversationThreading extends Component {
   render() {
     const { addModalClick, isHidden, cancelClickModal, handleLogOut, isLoading, dataUser } = this.props;
     const { infoThread } = this.state;
-    console.log("Laura", infoThread);
     if(!infoThread){
       return (<Loading />)
     }else{
