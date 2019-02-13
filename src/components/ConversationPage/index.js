@@ -31,9 +31,9 @@ class ConversationPage extends Component {
 
         )
       })
-      .catch(error => {
+    /*  .catch(error => {
         console.log(error.status)
-      })
+      })*/
   }
 
   render() {

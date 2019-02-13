@@ -47,17 +47,18 @@ class App extends Component {
     this.getDataInfo = this.getDataInfo.bind(this);
     this.handleChecked = this.handleChecked.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
-      }
+  }
 
   componentDidMount() {
     const tokenLs = JSON.parse(localStorage.getItem('token'));
 
     if (tokenLs) {
+
       sendTokenFetch(tokenLs)
         .then(data => {
           if (data === true) {
             return (
-                this.setState({
+              this.setState({
                 isAuthenticated: true
               }),
               tokenDataFetch(tokenLs)
@@ -84,6 +85,7 @@ class App extends Component {
           }
         })
         .catch(this.errorCatch());
+
     } else {
       return (
         this.setState({
@@ -160,12 +162,11 @@ class App extends Component {
   }
 
   errorCatch(error) {
-    console.log("aquí el error", error)
-    if (error !== undefined) {
+    if (error && error.status === 401) {
       return (
-          this.setState({
-          isLoading: false,
-          isAuthenticated: false
+        this.setState({
+          isAuthenticated: false,
+          isLoading: false
         })
       )
     }
