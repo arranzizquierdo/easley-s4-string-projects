@@ -38,7 +38,7 @@ class App extends Component {
       isChecked: false,
       isLoading: true,
       isAuthenticated: false,
-      currentGroup:""
+      currentGroup: ""
     };
     this.addModalClick = this.addModalClick.bind(this);
     this.cancelClickModal = this.cancelClickModal.bind(this);
@@ -53,7 +53,7 @@ class App extends Component {
     const tokenLs = JSON.parse(localStorage.getItem('token'));
 
     if (tokenLs) {
-      return (sendTokenFetch(tokenLs))
+      sendTokenFetch(tokenLs)
         .then(data => {
           if (data === true) {
             return (
@@ -83,6 +83,13 @@ class App extends Component {
             )
           }
         })
+        /*  .catch(error => {
+            this.setState({
+              isLoading: false,
+              isAuthenticated: false
+            })
+
+          })*/
         .catch(this.errorCatch());
     } else {
       return (
@@ -159,14 +166,13 @@ class App extends Component {
       })
   }
 
-  errorCatch(error){
-    console.log(error);
-      return (
-        this.setState({
-          isLoading: false,
-          isAuthenticated: false
-        })
-      )
+  errorCatch() {
+    return (
+      this.setState({
+        isLoading: false,
+        isAuthenticated: false
+      })
+    )
   }
 
   keepInLocalStorage() {
@@ -213,8 +219,8 @@ class App extends Component {
     return (
       <Switch>
 
-        <Route exact path="/login" render={props =>
-          (<LandingPage
+        <Route exact path="/login" render={() => {
+          return <LandingPage
             saveData={this.saveData}
             handleButton={this.handleButton}
             wrongCredentials={logIn.error}
@@ -222,7 +228,10 @@ class App extends Component {
             token={token}
             isAuthenticated={isAuthenticated}
             isLoading={isLoading}
-          />)} />
+          />
+
+        }
+        } />
         <Route exact path="/" render={() => {
           if (isLoading === true) {
             return <Loading />

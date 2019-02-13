@@ -8,7 +8,7 @@ const tokenDataFetch = (token) => fetch(sessionsEndpoint, {
     "AUTH-TOKEN": token
   }
 }).then(response => {
-  if (!response.ok) {
+  if(!response.ok) {
     throw (response);
   }
   return response.json()

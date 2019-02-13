@@ -6,7 +6,7 @@ import IndividualMessage from "../IndividualMessage";
 import SendMessage from "../SendMessage";
 import Modal from "../Modal";
 import GoBack from "../GoBack";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { postConversFetch } from '../services/SendTokenForConvers';
 import Loading from "../Loading";
@@ -30,20 +30,26 @@ class ConversationPage extends Component {
 
         )
       })
+      .catch(error => {
+        if (error.status === 401){
+
+         console.log("venga hombre")
+        }
+
+      })
   }
 
   render() {
     const { addModalClick, isHidden, cancelClickModal, handleLogOut, currentGroup } = this.props;
     const { infoConversation } = this.state;
-    console.log("holi", infoConversation);
 
     if (!infoConversation) {
-      return (<Loading/>)
+      return (<Loading />)
     } else {
       return (
         <Fragment>
           <Header
-          addModalClick={addModalClick}>
+            addModalClick={addModalClick}>
             <div className="header__group__container">
               <img
                 className="header__group__image"
@@ -58,31 +64,31 @@ class ConversationPage extends Component {
           </Header>
           <main>
             <Link
-            className="style_link"
-            to="/">
+              className="style_link"
+              to="/">
               <GoBack />
             </Link>
             <ul>
-            {infoConversation.map(message => {
-              return (
-                <Link
-                key={message.id}
-                className="style_link"
-                to={`/conversation-page/${message.id}`}>
-                <IndividualMessage
-                messageInfo={message}
-                />
-              </Link>
-              )
-            })}
+              {infoConversation.map(message => {
+                return (
+                  <Link
+                    key={message.id}
+                    className="style_link"
+                    to={`/conversation-page/${message.id}`}>
+                    <IndividualMessage
+                      messageInfo={message}
+                    />
+                  </Link>
+                )
+              })}
             </ul>
             <section
-            className="container__message">
+              className="container__message">
               <SendMessage />
             </section>
             <Modal
-            isHidden={isHidden}
-            cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
+              isHidden={isHidden}
+              cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
           </main>
         </Fragment>
       );
