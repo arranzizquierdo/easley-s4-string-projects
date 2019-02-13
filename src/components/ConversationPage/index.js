@@ -63,7 +63,9 @@ class ConversationPage extends Component {
               <GoBack />
             </Link>
             <ul>
-            {infoConversation.map(message => {
+            {infoConversation
+            .filter(message => message.post_id === null)
+            .map(message => {
               return (
                 <Link
                 key={message.id}
