@@ -201,7 +201,7 @@ class App extends Component {
     return (
       <Switch>
 
-        <Route exact path="/login" render={props =>
+        <Route exact path="/login" render={() =>
           (<LandingPage
             saveData={this.saveData}
             handleButton={this.handleButton}
@@ -254,7 +254,7 @@ class App extends Component {
           }} />
         <Route
           path="/conversation-page/:id"
-          render={() => {
+          render={props => {
             if (isLoading === true) {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
@@ -267,6 +267,7 @@ class App extends Component {
                 isLoading={isLoading}
                 dataUser={dataUser}
                 token={this.state.token}
+                match={props.match}
               />
             } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />

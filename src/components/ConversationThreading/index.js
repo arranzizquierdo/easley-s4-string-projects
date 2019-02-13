@@ -11,6 +11,8 @@ import PropTypes from "prop-types";
 import { tokenThreadFetch } from '../services/TokenThread';
 import Loading from '../Loading';
 
+
+
 class ConversationThreading extends Component {
   constructor(props){
     super(props);
@@ -20,8 +22,10 @@ class ConversationThreading extends Component {
   }
 
   componentDidMount(){
+    const { idMessage } = this.props.match.params.id;
+    console.log(idMessage);
     const { token } = this.props;
-    tokenThreadFetch(token)
+    tokenThreadFetch(token, idMessage)
       .then(data =>{
         return(
           this.setState({
@@ -34,6 +38,7 @@ class ConversationThreading extends Component {
   render() {
     const { addModalClick, isHidden, cancelClickModal, handleLogOut, isLoading } = this.props;
     const { infoThread } = this.state;
+
     if(!infoThread){
       return (<Loading />)
     }else{
