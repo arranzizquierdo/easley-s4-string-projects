@@ -32,7 +32,7 @@ class ConversationThreading extends Component {
   }
 
   render() {
-    const { addModalClick, isHidden, cancelClickModal, handleLogOut, isLoading, dataUser } = this.props;
+    const { addModalClick, isHidden, cancelClickModal, handleLogOut, isLoading } = this.props;
     const { infoThread } = this.state;
     if(!infoThread){
       return (<Loading />)
