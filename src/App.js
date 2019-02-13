@@ -241,6 +241,7 @@ class App extends Component {
         }} />
 
         <Route
+          exact
           path="/conversation-page"
           render={() => {
             if (isLoading === true) {
@@ -264,7 +265,7 @@ class App extends Component {
             }
           }} />
         <Route
-          path="/conversation-threading"
+          path="/conversation-page/:id"
           render={() => {
             if (isLoading === true) {
               return <Loading />
@@ -277,6 +278,7 @@ class App extends Component {
                 handleLogOut={this.handleLogOut}
                 isLoading={isLoading}
                 dataUser={dataUser}
+                token={this.state.token}
               />
             } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />
