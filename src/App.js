@@ -47,7 +47,7 @@ class App extends Component {
     this.getDataInfo = this.getDataInfo.bind(this);
     this.handleChecked = this.handleChecked.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
-  }
+      }
 
   componentDidMount() {
     const tokenLs = JSON.parse(localStorage.getItem('token'));
@@ -57,7 +57,7 @@ class App extends Component {
         .then(data => {
           if (data === true) {
             return (
-              this.setState({
+                this.setState({
                 isAuthenticated: true
               }),
               tokenDataFetch(tokenLs)
@@ -83,13 +83,6 @@ class App extends Component {
             )
           }
         })
-        /*  .catch(error => {
-            this.setState({
-              isLoading: false,
-              isAuthenticated: false
-            })
-
-          })*/
         .catch(this.errorCatch());
     } else {
       return (
@@ -166,13 +159,16 @@ class App extends Component {
       })
   }
 
-  errorCatch() {
-    return (
-      this.setState({
-        isLoading: false,
-        isAuthenticated: false
-      })
-    )
+  errorCatch(error) {
+    console.log("aquí el error", error)
+    if (error !== undefined) {
+      return (
+          this.setState({
+          isLoading: false,
+          isAuthenticated: false
+        })
+      )
+    }
   }
 
   keepInLocalStorage() {
@@ -218,7 +214,6 @@ class App extends Component {
     const { logIn, isHidden, token, isAuthenticated, isLoading, dataUser, groups, currentGroup } = this.state;
     return (
       <Switch>
-
         <Route exact path="/login" render={() => {
           return <LandingPage
             saveData={this.saveData}
@@ -263,11 +258,9 @@ class App extends Component {
                 isHidden={isHidden}
                 handleLogOut={this.handleLogOut}
                 token={this.state.token}
-                isLoading={isLoading}
                 dataUser={dataUser}
                 groups={groups}
                 currentGroup={currentGroup}
-
               />
             } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />
@@ -285,7 +278,6 @@ class App extends Component {
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
                 handleLogOut={this.handleLogOut}
-                isLoading={isLoading}
                 dataUser={dataUser}
                 token={this.state.token}
               />

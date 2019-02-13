@@ -23,19 +23,19 @@ class ConversationThreading extends Component {
     const { token } = this.props;
     tokenThreadFetch(token)
       .then(data =>{
-        console.log(data)
         return(
           this.setState({
             infoThread: data
           })
         )
       })
+
   }
 
   render() {
     const { addModalClick, isHidden, cancelClickModal, handleLogOut, isLoading, dataUser } = this.props;
     const { infoThread } = this.state;
-    console.log("Laura", infoThread);
+
     if(!infoThread){
       return (<Loading />)
     }else{
@@ -81,8 +81,6 @@ class ConversationThreading extends Component {
         </React.Fragment>
       )
     }
-
-
   }
 }
 
@@ -91,7 +89,6 @@ ConversationThreading.propTypes = {
   isHidden: PropTypes.bool.isRequired,
   cancelClickModal: PropTypes.func.isRequired,
   handleLogOut: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
   dataUser: PropTypes.object.isRequired
 }
 

@@ -6,7 +6,7 @@ import IndividualMessage from "../IndividualMessage";
 import SendMessage from "../SendMessage";
 import Modal from "../Modal";
 import GoBack from "../GoBack";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { postConversFetch } from '../services/SendTokenForConvers';
 import Loading from "../Loading";
@@ -15,7 +15,8 @@ class ConversationPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      infoConversation: null,
+      infoConversation: null
+
     }
   }
 
@@ -25,17 +26,13 @@ class ConversationPage extends Component {
       .then(data => {
         return (
           this.setState({
-            infoConversation: data,
+            infoConversation: data
           })
 
         )
       })
       .catch(error => {
-        if (error.status === 401){
-
-         console.log("venga hombre")
-        }
-
+        console.log(error.status)
       })
   }
 
