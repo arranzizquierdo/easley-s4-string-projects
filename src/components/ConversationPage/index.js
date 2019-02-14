@@ -15,21 +15,23 @@ class ConversationPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      infoConversation: null,
+      infoConversation: null
+
     }
   }
 
   componentDidMount() {
-    const { token } = this.props;
+    const { token , errorCatch } = this.props;
     postConversFetch(token)
       .then(data => {
         return (
           this.setState({
-            infoConversation: data,
+            infoConversation: data
           })
 
         )
       })
+      .catch(error => errorCatch(error))
   }
 
   render() {
@@ -37,12 +39,12 @@ class ConversationPage extends Component {
     const { infoConversation } = this.state;
 
     if (!infoConversation) {
-      return (<Loading/>)
+      return (<Loading />)
     } else {
       return (
         <Fragment>
           <Header
-          addModalClick={addModalClick}>
+            addModalClick={addModalClick}>
             <div className="header__group__container">
               <img
                 className="header__group__image"
@@ -57,8 +59,8 @@ class ConversationPage extends Component {
           </Header>
           <main>
             <Link
-            className="style_link"
-            to="/">
+              className="style_link"
+              to="/">
               <GoBack />
             </Link>
             <ul>
@@ -78,12 +80,12 @@ class ConversationPage extends Component {
             })}
             </ul>
             <section
-            className="container__message">
+              className="container__message">
               <SendMessage />
             </section>
             <Modal
-            isHidden={isHidden}
-            cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
+              isHidden={isHidden}
+              cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
           </main>
         </Fragment>
       );
