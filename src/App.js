@@ -53,10 +53,8 @@ class App extends Component {
     const tokenLs = JSON.parse(localStorage.getItem('token'));
 
     if (tokenLs) {
-
       sendTokenFetch(tokenLs)
-        .then(data => {
-          if (data === true) {
+        .then(() => {
             return (
               this.setState({
                 isAuthenticated: true
@@ -73,18 +71,10 @@ class App extends Component {
                     })
                   )
                 })
-                .catch(this.errorCatch())
+                .catch(error => this.errorCatch(error))
             )
-          } else {
-            return (
-              this.setState({
-                isAuthenticated: false,
-                isLoading: false
-              })
-            )
-          }
         })
-        .catch(this.errorCatch());
+        .catch(error => this.errorCatch(error))
 
     } else {
       return (
@@ -164,6 +154,7 @@ class App extends Component {
   errorCatch(error) {
     if (error && error.status === 401) {
       return (
+        localStorage.removeItem('token'),
         this.setState({
           isAuthenticated: false,
           isLoading: false

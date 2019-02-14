@@ -1,3 +1,5 @@
+import manageRes from './ManageResponse';
+
 const ENDPOINT = "https://adalab.string-projects.com/api/v1/";
 const postsEndpoint = ENDPOINT + "posts";
 
@@ -7,12 +9,7 @@ const postConversFetch = (token) => fetch (postsEndpoint, {
     "content-type": "application/json",
     "AUTH-TOKEN": token
   }
-}).then(response => {
-  if(!response.ok){
-    throw (response);
-  }
-  return response.json()
-})
+}).then(manageRes)
 
 export { postConversFetch };
 
