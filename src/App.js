@@ -47,6 +47,7 @@ class App extends Component {
     this.getDataInfo = this.getDataInfo.bind(this);
     this.handleChecked = this.handleChecked.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
+    this.errorCatch = this.errorCatch.bind(this);
   }
 
   componentDidMount() {
@@ -253,6 +254,7 @@ class App extends Component {
                 dataUser={dataUser}
                 groups={groups}
                 currentGroup={currentGroup}
+                errorCatch={this.errorCatch}
               />
             } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />
@@ -272,6 +274,7 @@ class App extends Component {
                 handleLogOut={this.handleLogOut}
                 dataUser={dataUser}
                 token={this.state.token}
+                errorCatch={this.errorCatch}
               />
             } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />

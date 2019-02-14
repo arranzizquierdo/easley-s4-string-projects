@@ -21,7 +21,7 @@ class ConversationPage extends Component {
   }
 
   componentDidMount() {
-    const { token } = this.props;
+    const { token , errorCatch } = this.props;
     postConversFetch(token)
       .then(data => {
         return (
@@ -31,9 +31,7 @@ class ConversationPage extends Component {
 
         )
       })
-    /*  .catch(error => {
-        console.log(error.status)
-      })*/
+      .catch(error => errorCatch(error))
   }
 
   render() {
