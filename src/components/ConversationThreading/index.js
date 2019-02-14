@@ -22,7 +22,7 @@ class ConversationThreading extends Component {
   }
 
   componentDidMount(){
-    const { idMessage } = this.props.match.params.id;
+    const  idMessage  = this.props.match.params.id;
     console.log(idMessage);
     const { token } = this.props;
     tokenThreadFetch(token, idMessage)
