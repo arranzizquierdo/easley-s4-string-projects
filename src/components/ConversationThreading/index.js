@@ -22,9 +22,9 @@ class ConversationThreading extends Component {
   }
 
   componentDidMount(){
-    const  idMessage  = this.props.match.params.id;
-    console.log(idMessage);
     const { token } = this.props;
+    const idMessage = this.props.match.params.id;
+
     tokenThreadFetch(token, idMessage)
       .then(data =>{
         return(
@@ -66,7 +66,7 @@ class ConversationThreading extends Component {
               .filter(message=> message.post_id !== null)
               .map(message =>{
                 return(
-                  <li>
+                  <li key={message.id}>
                     <MessageThreading
                     messageInfo = {message}
                     />
