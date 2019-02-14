@@ -1,10 +1,8 @@
 const ENDPOINT = "https://adalab.string-projects.com/api/v1/";
+const postsEndpoint = ENDPOINT + "posts/7";
 
 
-
- function tokenThreadFetch(token, idMessage){
-  const postsEndpoint = ENDPOINT + "posts" + idMessage;
-  fetch(postsEndpoint,{
+const tokenThreadFetch = (token) => fetch(postsEndpoint,{
   method: "GET",
   headers: {
     "Accept": "application/json",
@@ -16,5 +14,4 @@ const ENDPOINT = "https://adalab.string-projects.com/api/v1/";
   }
   return response.json()
 })
- }
 export { tokenThreadFetch }

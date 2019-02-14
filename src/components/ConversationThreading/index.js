@@ -22,10 +22,8 @@ class ConversationThreading extends Component {
   }
 
   componentDidMount(){
-    const { idMessage } = this.props.match.params.id;
-    console.log(idMessage);
     const { token } = this.props;
-    tokenThreadFetch(token, idMessage)
+    tokenThreadFetch(token)
       .then(data =>{
         return(
           this.setState({
@@ -38,6 +36,8 @@ class ConversationThreading extends Component {
   render() {
     const { addModalClick, isHidden, cancelClickModal, handleLogOut, isLoading } = this.props;
     const { infoThread } = this.state;
+    const idMessage = this.props.match.params.id;
+    console.log('id=>', idMessage);
 
     if(!infoThread){
       return (<Loading />)
@@ -66,7 +66,7 @@ class ConversationThreading extends Component {
               .filter(message=> message.post_id !== null)
               .map(message =>{
                 return(
-                  <li>
+                  <li key={message.id}>
                     <MessageThreading
                     messageInfo = {message}
                     />
