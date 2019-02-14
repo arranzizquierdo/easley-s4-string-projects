@@ -64,18 +64,20 @@ class ConversationPage extends Component {
               <GoBack />
             </Link>
             <ul>
-              {infoConversation.map(message => {
-                return (
-                  <Link
-                    key={message.id}
-                    className="style_link"
-                    to={`/conversation-page/${message.id}`}>
-                    <IndividualMessage
-                      messageInfo={message}
-                    />
-                  </Link>
-                )
-              })}
+            {infoConversation
+            .filter(message => message.post_id === null)
+            .map(message => {
+              return (
+                <Link
+                key={message.id}
+                className="style_link"
+                to={`/conversation-page/${message.id}`}>
+                <IndividualMessage
+                messageInfo={message}
+                />
+              </Link>
+              )
+            })}
             </ul>
             <section
               className="container__message">
