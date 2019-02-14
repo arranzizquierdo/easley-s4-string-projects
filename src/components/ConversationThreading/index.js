@@ -12,31 +12,34 @@ import { tokenThreadFetch } from '../services/TokenThread';
 import Loading from '../Loading';
 
 class ConversationThreading extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state= {
+    this.state = {
       infoThread: null
     }
   }
 
-  componentDidMount(){
-    const { token } = this.props;
+  componentDidMount() {
+    const { token, errorCatch } = this.props;
     tokenThreadFetch(token)
-      .then(data =>{
-        return(
+      .then(data => {
+        return (
           this.setState({
             infoThread: data
           })
         )
       })
+      .catch(error => errorCatch(error))
+
   }
 
   render() {
-    const { addModalClick, isHidden, cancelClickModal, handleLogOut, isLoading } = this.props;
+    const { addModalClick, isHidden, cancelClickModal, handleLogOut } = this.props;
     const { infoThread } = this.state;
-    if(!infoThread){
+
+    if (!infoThread) {
       return (<Loading />)
-    }else{
+    } else {
       return (
         <React.Fragment>
           <Header addModalClick={addModalClick}>
@@ -52,35 +55,32 @@ class ConversationThreading extends Component {
               <GoBack />
             </Link>
             <IndividualMessage
-            isLoading={isLoading}
-            messageInfo={infoThread[0]}
+              messageInfo={infoThread[0]}
             />
             <div className="answers">Respuestas</div>
             <ul>
               {infoThread
-              .filter(message=> message.post_id !== null)
-              .map(message =>{
-                return(
-                  <li>
-                    <MessageThreading
-                    messageInfo = {message}
-                    />
-                  </li>
-                )
-              })}
+                .filter(message => message.post_id !== null)
+                .map(message => {
+                  return (
+                    <li>
+                      <MessageThreading
+                        messageInfo={message}
+                      />
+                    </li>
+                  )
+                })}
             </ul>
             <section className="container__message">
               <SendMessage />
             </section>
             <Modal
-            isHidden={isHidden}
-            cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
+              isHidden={isHidden}
+              cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
           </main>
         </React.Fragment>
       )
     }
-
-
   }
 }
 
@@ -89,7 +89,6 @@ ConversationThreading.propTypes = {
   isHidden: PropTypes.bool.isRequired,
   cancelClickModal: PropTypes.func.isRequired,
   handleLogOut: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
   dataUser: PropTypes.object.isRequired
 }
 

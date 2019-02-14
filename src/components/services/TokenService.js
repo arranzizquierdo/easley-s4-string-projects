@@ -1,3 +1,5 @@
+import manageRes from './ManageResponse';
+
 const ENDPOINT = "https://adalab.string-projects.com/api/v1/";
 const sessionEndpoit = ENDPOINT + "sessions"
 
@@ -7,11 +9,6 @@ const fetchToken = (userInfo) => fetch(sessionEndpoit, {
   headers: {
     "content-type": "application/json"
   }
-}).then(response => {
-  if(!response.ok){
-  throw (response);
-}
-return response.json()
-})
+}).then(manageRes)
 
-export {fetchToken};
+export { fetchToken };
