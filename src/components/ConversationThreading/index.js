@@ -41,7 +41,7 @@ class ConversationThreading extends Component {
   }
 
   render() {
-    const { addModalClick, isHidden, cancelClickModal, handleLogOut, inputGetMessage, inputSendGeneralMessage, textInput } = this.props;
+    const { addModalClick, isHidden, cancelClickModal, handleLogOut, inputGetMessage, inputSendMessage, textInput } = this.props;
     const { infoThread } = this.state;
 
     if(!infoThread){
@@ -81,7 +81,7 @@ class ConversationThreading extends Component {
             <section className="container__message">
               <SendMessage
               inputGetMessage={inputGetMessage}
-              inputSendGeneralMessage={inputSendGeneralMessage}
+              inputSendMessage={inputSendMessage}
               textInput={textInput} />
             </section>
             <Modal

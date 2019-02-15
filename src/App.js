@@ -10,7 +10,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fetchToken } from './components/services/TokenService';
 import { sendTokenFetch } from './components/services/SendToken';
 import { tokenDataFetch } from './components/services/TokenData';
-import { sendGeneralMessageFetch } from './components/services/SendMessage';
+import { sendMessageFetch } from './components/services/SendMessage';
 import {
   faEllipsisH,
   faEyeSlash,
@@ -51,7 +51,7 @@ class App extends Component {
     this.handleChecked = this.handleChecked.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
     this.errorCatch = this.errorCatch.bind(this);
-    this.inputSendGeneralMessage = this.inputSendGeneralMessage.bind(this);
+    this.inputSendMessage = this.inputSendMessage.bind(this);
     this.inputGetMessage = this.inputGetMessage.bind(this);
     this.getThreadId = this.getThreadId.bind(this);
     this.deleteThreadId = this.deleteThreadId.bind(this);
@@ -113,9 +113,9 @@ class App extends Component {
     })
   }
 
-  inputSendGeneralMessage(event) {
+  inputSendMessage(event) {
     const {token, textInput, threadId } = this.state;
-    sendGeneralMessageFetch(token, textInput, threadId)
+    sendMessageFetch(token, textInput, threadId)
     .then(() => {
       return (
         this.setState({
@@ -282,7 +282,7 @@ class App extends Component {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationPage
-                inputSendGeneralMessage={this.inputSendGeneralMessage}
+                inputSendMessage={this.inputSendMessage}
                 addModalClick={this.addModalClick}
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
@@ -307,7 +307,7 @@ class App extends Component {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationThreading
-                inputSendGeneralMessage={this.inputSendGeneralMessage}
+                inputSendMessage={this.inputSendMessage}
                 addModalClick={this.addModalClick}
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}

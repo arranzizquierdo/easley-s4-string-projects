@@ -3,7 +3,7 @@ import manageRes from './ManageResponse';
 const ENDPOINT = "https://adalab.string-projects.com/api/v1/";
 const postEndpoint = ENDPOINT + "posts";
 
-const sendGeneralMessageFetch = ((token, textInput, threadId) => {
+const sendMessageFetch = ((token, textInput, threadId) => {
   let description;
   if (threadId) {
     description = {"post": {
@@ -27,4 +27,4 @@ const sendGeneralMessageFetch = ((token, textInput, threadId) => {
   .then(manageRes)
 })
 
-export { sendGeneralMessageFetch };
+export { sendMessageFetch };
