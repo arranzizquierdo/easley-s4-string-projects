@@ -4,6 +4,7 @@ import './MessageThreading.scss';
 class MessageThreading extends Component {
   render() {
     const { messageInfo } = this.props;
+    console.log(messageInfo)
 
     return (
       <section className="messageThreading__container">
@@ -13,7 +14,7 @@ class MessageThreading extends Component {
           alt="User"
         />
         <div className="messageThreading__data">
-          <h2 className="messageThreading__name">{messageInfo.name}</h2>
+          <h2 className="messageThreading__name">{messageInfo.username}</h2>
           <p className="messageThreading__message">
             {messageInfo.description}
           </p>

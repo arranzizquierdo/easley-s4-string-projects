@@ -10,8 +10,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { tokenThreadFetch } from '../services/TokenThread';
 import Loading from '../Loading';
-
-
+import {sendGeneralMessageFetch} from '../services/SendMessage'
 
 class ConversationThreading extends Component {
   constructor(props) {
@@ -22,8 +21,9 @@ class ConversationThreading extends Component {
   }
 
   componentDidMount() {
-    const { token, errorCatch } = this.props;
+    const { token, errorCatch, getThreadId } = this.props;
     const idMessage = this.props.match.params.id;
+    getThreadId(idMessage);
     tokenThreadFetch(token, idMessage)
       .then(data => {
         return (
@@ -32,12 +32,16 @@ class ConversationThreading extends Component {
           })
         )
       })
-      .catch(error => errorCatch(error))
+      .catch(error => errorCatch(error));
+  }
 
+  componentWillUnmount(){
+    const { deleteThreadId }= this.props;
+    deleteThreadId();
   }
 
   render() {
-    const { addModalClick, isHidden, cancelClickModal, handleLogOut } = this.props;
+    const { addModalClick, isHidden, cancelClickModal, handleLogOut, inputGetMessage, inputSendGeneralMessage } = this.props;
     const { infoThread } = this.state;
 
     if(!infoThread){
@@ -75,7 +79,9 @@ class ConversationThreading extends Component {
               })}
             </ul>
             <section className="container__message">
-              <SendMessage />
+              <SendMessage
+              inputGetMessage={inputGetMessage}
+              inputSendGeneralMessage={inputSendGeneralMessage} />
             </section>
             <Modal
               isHidden={isHidden}

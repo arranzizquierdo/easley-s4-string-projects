@@ -40,7 +40,8 @@ class App extends Component {
       isLoading: true,
       isAuthenticated: false,
       currentGroup: "",
-      textInput: ""
+      textInput: "",
+      threadId: ""
     };
     this.addModalClick = this.addModalClick.bind(this);
     this.cancelClickModal = this.cancelClickModal.bind(this);
@@ -52,6 +53,8 @@ class App extends Component {
     this.errorCatch = this.errorCatch.bind(this);
     this.inputSendGeneralMessage = this.inputSendGeneralMessage.bind(this);
     this.inputGetMessage = this.inputGetMessage.bind(this);
+    this.getThreadId = this.getThreadId.bind(this);
+    this.deleteThreadId = this.deleteThreadId.bind(this);
   }
 
   componentDidMount() {
@@ -111,8 +114,8 @@ class App extends Component {
   }
 
   inputSendGeneralMessage(event) {
-    const {token, textInput} = this.state;
-    sendGeneralMessageFetch(token, textInput)
+    const {token, textInput, threadId } = this.state;
+    sendGeneralMessageFetch(token, textInput, threadId)
     .then(data=>{
       console.log(data)
     })
@@ -224,6 +227,18 @@ class App extends Component {
     localStorage.removeItem('token')
   }
 
+  getThreadId(threadId){
+    this.setState({
+      threadId: threadId,
+    })
+  }
+
+  deleteThreadId(){
+    this.setState({
+      threadId: "",
+    })
+  }
+
   render() {
     const { logIn, isHidden, token, isAuthenticated, isLoading, dataUser, groups, currentGroup, textInput } = this.state;
     return (
@@ -291,7 +306,7 @@ class App extends Component {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationThreading
-                inputSendThreadMessage={this.inputSendThreadMessage}
+                inputSendGeneralMessage={this.inputSendGeneralMessage}
                 addModalClick={this.addModalClick}
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
@@ -302,6 +317,8 @@ class App extends Component {
                 errorCatch={this.errorCatch}
                 inputGetMessage={this.inputGetMessage}
                 textInput={textInput}
+                getThreadId={this.getThreadId}
+                deleteThreadId={this.deleteThreadId}
               />
             } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />

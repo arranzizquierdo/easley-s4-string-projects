@@ -15,7 +15,8 @@ class SendMessage extends Component {
           value={textInput}
         />
         <button
-        className="sendmessage__button" onClick={inputSendGeneralMessage}>
+        className="sendmessage__button"
+        onClick={inputSendGeneralMessage}>
           <FontAwesomeIcon
           icon="paper-plane" className="paperplane__styles" />
         </button>
