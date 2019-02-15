@@ -32,7 +32,6 @@ class ConversationThreading extends Component {
   bringMessagesThread(){
     const { token, errorCatch } = this.props;
     const idMessage = this.props.match.params.id;
-    console.log("holi, funciono!!!")
     tokenThreadFetch(token, idMessage)
       .then(data => {
         return (
