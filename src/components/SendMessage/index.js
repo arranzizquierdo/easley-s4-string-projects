@@ -4,17 +4,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class SendMessage extends Component {
   render() {
-    const { inputSendMessage } = this.props;
+    const { inputSendGeneralMessage, inputGetMessage, textInput } = this.props;
     return (
       <div className="sendmessage__container">
         <label htmlFor="input" />
         <input
           id="input"
           className="sendmessage__input"
-          onChange={inputSendMessage}
+          onChange={inputGetMessage}
+          value={textInput}
         />
         <button
-        className="sendmessage__button">
+        className="sendmessage__button" onClick={inputSendGeneralMessage}>
           <FontAwesomeIcon
           icon="paper-plane" className="paperplane__styles" />
         </button>
