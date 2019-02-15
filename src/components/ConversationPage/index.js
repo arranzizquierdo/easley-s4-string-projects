@@ -21,6 +21,7 @@ class ConversationPage extends Component {
   }
 
   componentDidMount() {
+  this.bringMessages();
    this.interval = setInterval(() => this.bringMessages(), 2000);
   }
 

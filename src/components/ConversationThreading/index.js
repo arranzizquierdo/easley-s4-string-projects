@@ -21,6 +21,7 @@ class ConversationThreading extends Component {
   }
 
   componentDidMount() {
+    this.bringMessagesThread();
     this.interval = setInterval(() => this.bringMessagesThread(), 2000);
   }
 
