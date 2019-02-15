@@ -10,6 +10,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fetchToken } from './components/services/TokenService';
 import { sendTokenFetch } from './components/services/SendToken';
 import { tokenDataFetch } from './components/services/TokenData';
+import { sendGeneralMessageFetch } from './components/services/SendMessage';
 import {
   faEllipsisH,
   faEyeSlash,
@@ -38,7 +39,8 @@ class App extends Component {
       isChecked: false,
       isLoading: true,
       isAuthenticated: false,
-      currentGroup: ""
+      currentGroup: "",
+      textInput: ""
     };
     this.addModalClick = this.addModalClick.bind(this);
     this.cancelClickModal = this.cancelClickModal.bind(this);
@@ -48,6 +50,8 @@ class App extends Component {
     this.handleChecked = this.handleChecked.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
     this.errorCatch = this.errorCatch.bind(this);
+    this.inputSendGeneralMessage = this.inputSendGeneralMessage.bind(this);
+    this.inputGetMessage = this.inputGetMessage.bind(this);
   }
 
   componentDidMount() {
@@ -56,24 +60,24 @@ class App extends Component {
     if (tokenLs) {
       sendTokenFetch(tokenLs)
         .then(() => {
-            return (
-              this.setState({
-                isAuthenticated: true
-              }),
-              tokenDataFetch(tokenLs)
-                .then(data => {
-                  return (
-                    this.setState({
-                      dataUser: data.user,
-                      groups: data.groups,
-                      token: data.user.auth_token,
-                      isLoading: false,
-                      currentGroup: data.current_group
-                    })
-                  )
-                })
-                .catch(error => this.errorCatch(error))
-            )
+          return (
+            this.setState({
+              isAuthenticated: true
+            }),
+            tokenDataFetch(tokenLs)
+              .then(data => {
+                return (
+                  this.setState({
+                    dataUser: data.user,
+                    groups: data.groups,
+                    token: data.user.auth_token,
+                    isLoading: false,
+                    currentGroup: data.current_group
+                  })
+                )
+              })
+              .catch(error => this.errorCatch(error))
+          )
         })
         .catch(error => this.errorCatch(error))
 
@@ -99,9 +103,26 @@ class App extends Component {
     })
   }
 
-  inputSendMessage(event) {
-    const sendMessageInputValue = event.target.value;
-    console.log("SendMessage input value:", sendMessageInputValue);
+  inputGetMessage(event) {
+    const description = event.target.value;
+    this.setState({
+      textInput: description
+    })
+  }
+
+  inputSendGeneralMessage(event) {
+    const {token, textInput} = this.state;
+    sendGeneralMessageFetch(token, textInput)
+    .then(data=>{
+      console.log(data)
+    })
+    this.setState({
+      textInput: ""
+    })
+    /*.catch(error => {
+      console.log(error)
+    })*/
+
   }
 
   addModalClick(event) {
@@ -204,7 +225,7 @@ class App extends Component {
   }
 
   render() {
-    const { logIn, isHidden, token, isAuthenticated, isLoading, dataUser, groups, currentGroup } = this.state;
+    const { logIn, isHidden, token, isAuthenticated, isLoading, dataUser, groups, currentGroup, textInput } = this.state;
     return (
       <Switch>
         <Route exact path="/login" render={() => {
@@ -245,7 +266,7 @@ class App extends Component {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationPage
-                inputSendMessage={this.inputSendMessage}
+                inputSendGeneralMessage={this.inputSendGeneralMessage}
                 addModalClick={this.addModalClick}
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
@@ -255,6 +276,9 @@ class App extends Component {
                 groups={groups}
                 currentGroup={currentGroup}
                 errorCatch={this.errorCatch}
+                inputGetMessage={this.inputGetMessage}
+                textInput={textInput}
+
               />
             } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />
@@ -267,7 +291,7 @@ class App extends Component {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationThreading
-                inputSendMessage={this.inputSendMessage}
+                inputSendThreadMessage={this.inputSendThreadMessage}
                 addModalClick={this.addModalClick}
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
@@ -276,6 +300,8 @@ class App extends Component {
                 token={this.state.token}
                 match={props.match}
                 errorCatch={this.errorCatch}
+                inputGetMessage={this.inputGetMessage}
+                textInput={textInput}
               />
             } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />
