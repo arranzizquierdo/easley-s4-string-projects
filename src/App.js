@@ -122,10 +122,7 @@ class App extends Component {
           textInput: ""
         })
       )})
-
-    /*.catch(error => {
-      console.log(error)
-    })*/
+    .catch(error => this.errorCatch(error))
 
   }
 
