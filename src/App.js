@@ -11,6 +11,7 @@ import { fetchToken } from './components/services/TokenService';
 import { sendTokenFetch } from './components/services/SendToken';
 import { tokenDataFetch } from './components/services/TokenData';
 import { sendMessageFetch } from './components/services/SendMessage';
+import ErrorPage from './components/ErrorPage';
 import {
   faEllipsisH,
   faEyeSlash,
@@ -173,10 +174,19 @@ class App extends Component {
   }
 
   errorCatch(error) {
-    if (error && error.status === 401) {
+    if (error.status === 401) {
       return (
         localStorage.removeItem('token'),
         this.setState({
+          isAuthenticated: false,
+          isLoading: false
+        })
+      )
+    } else {
+      return (
+        localStorage.removeItem('token'),
+          this.setState({
+          error: error.status,
           isAuthenticated: false,
           isLoading: false
         })
@@ -251,7 +261,9 @@ class App extends Component {
         }
         } />
         <Route exact path="/" render={() => {
-          if (isLoading === true) {
+          if(error !== 0){
+          return <ErrorPage />
+          } else if (isLoading === true) {
             return <Loading />
           } else if (isLoading === false && isAuthenticated === true) {
             return <MainPage
@@ -271,7 +283,9 @@ class App extends Component {
           exact
           path="/conversation-page"
           render={() => {
-            if (isLoading === true) {
+            if(error !== 0){
+              return <ErrorPage />
+              } else if (isLoading === true) {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationPage
@@ -296,7 +310,9 @@ class App extends Component {
         <Route
           path="/conversation-page/:id"
           render={props => {
-            if (isLoading === true) {
+            if(error !== 0){
+              return <ErrorPage />
+              } else if (isLoading === true) {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationThreading
