@@ -33,9 +33,7 @@ class App extends Component {
       dataUser: null,
       groups: null,
       token: "",
-      logIn: {
-        error: 0
-      },
+      error: 0,
       isChecked: false,
       isLoading: true,
       isAuthenticated: false,
@@ -114,15 +112,16 @@ class App extends Component {
   }
 
   inputSendMessage(event) {
-    const {token, textInput, threadId } = this.state;
+    const { token, textInput, threadId } = this.state;
     sendMessageFetch(token, textInput, threadId)
-    .then(() => {
-      return (
-        this.setState({
-          textInput: ""
-        })
-      )})
-    .catch(error => this.errorCatch(error))
+      .then(() => {
+        return (
+          this.setState({
+            textInput: ""
+          })
+        )
+      })
+      .catch(error => this.errorCatch(error))
 
   }
 
@@ -166,9 +165,7 @@ class App extends Component {
       .catch(error => {
         return (
           this.setState({
-            logIn: {
-              error: error.status
-            }
+            error: error.status
           })
         )
       })
@@ -197,9 +194,7 @@ class App extends Component {
   handleButton(event) {
     event.preventDefault();
     this.setState({
-      logIn: {
-        errorLogIn: 0
-      }
+      error: 0
     })
     this.getDataInfo();
   }
@@ -225,27 +220,27 @@ class App extends Component {
     localStorage.removeItem('token')
   }
 
-  getThreadId(threadId){
+  getThreadId(threadId) {
     this.setState({
       threadId: threadId,
     })
   }
 
-  deleteThreadId(){
+  deleteThreadId() {
     this.setState({
       threadId: "",
     })
   }
 
   render() {
-    const { logIn, isHidden, token, isAuthenticated, isLoading, dataUser, groups, currentGroup, textInput } = this.state;
+    const { error, isHidden, token, isAuthenticated, isLoading, dataUser, groups, currentGroup, textInput } = this.state;
     return (
       <Switch>
         <Route exact path="/login" render={() => {
           return <LandingPage
             saveData={this.saveData}
             handleButton={this.handleButton}
-            wrongCredentials={logIn.error}
+            wrongCredentials={error}
             handleChecked={this.handleChecked}
             token={token}
             isAuthenticated={isAuthenticated}
