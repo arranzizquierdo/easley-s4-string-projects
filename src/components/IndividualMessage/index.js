@@ -5,7 +5,7 @@ import "./IndividualMessage.scss";
 class IndividualMessage extends Component {
   render() {
     const { messageInfo } = this.props;
-    console.log('message data =>',messageInfo)
+
     return (
         <section className="individualMessage__container">
         <img className="individualMessage__image" src={messageInfo.avatar_url} alt={messageInfo.username} />
