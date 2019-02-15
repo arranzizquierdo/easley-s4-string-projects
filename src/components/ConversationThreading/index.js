@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { tokenThreadFetch } from '../services/TokenThread';
 import Loading from '../Loading';
-import {sendGeneralMessageFetch} from '../services/SendMessage'
+
 
 class ConversationThreading extends Component {
   constructor(props) {
@@ -41,7 +41,7 @@ class ConversationThreading extends Component {
   }
 
   render() {
-    const { addModalClick, isHidden, cancelClickModal, handleLogOut, inputGetMessage, inputSendGeneralMessage } = this.props;
+    const { addModalClick, isHidden, cancelClickModal, handleLogOut, inputGetMessage, inputSendGeneralMessage, textInput } = this.props;
     const { infoThread } = this.state;
 
     if(!infoThread){
@@ -81,11 +81,13 @@ class ConversationThreading extends Component {
             <section className="container__message">
               <SendMessage
               inputGetMessage={inputGetMessage}
-              inputSendGeneralMessage={inputSendGeneralMessage} />
+              inputSendGeneralMessage={inputSendGeneralMessage}
+              textInput={textInput} />
             </section>
             <Modal
               isHidden={isHidden}
-              cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
+              cancelClickModal={cancelClickModal}
+              handleLogOut={handleLogOut} />
           </main>
         </React.Fragment>
       )
