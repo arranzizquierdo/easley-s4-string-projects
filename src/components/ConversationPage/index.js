@@ -21,7 +21,16 @@ class ConversationPage extends Component {
   }
 
   componentDidMount() {
+   this.interval = setInterval(() => this.bringMessages(), 2000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  bringMessages(){
     const { token , errorCatch } = this.props;
+    console.log("holi, funciono!!!")
     postConversFetch(token)
       .then(data => {
         return (

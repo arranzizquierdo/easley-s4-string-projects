@@ -22,8 +22,17 @@ class ConversationThreading extends Component {
   }
 
   componentDidMount() {
+    this.interval = setInterval(() => this.bringMessagesThread(), 2000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  bringMessagesThread(){
     const { token, errorCatch } = this.props;
     const idMessage = this.props.match.params.id;
+    console.log("holi, funciono!!!")
     tokenThreadFetch(token, idMessage)
       .then(data => {
         return (
@@ -33,7 +42,6 @@ class ConversationThreading extends Component {
         )
       })
       .catch(error => errorCatch(error))
-
   }
 
   render() {
