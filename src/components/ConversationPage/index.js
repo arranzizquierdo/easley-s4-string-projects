@@ -62,7 +62,7 @@ class ConversationPage extends Component {
               />
               <span className="header__container__text">
                 <h2 className="header__group__title">{currentGroup.name}</h2>
-                <p className="header__group__persons">56 personas</p>
+                <p className="header__group__persons">5 personas</p>
               </span>
             </div>
           </Header>

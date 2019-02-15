@@ -5,9 +5,9 @@
 }
 
 .button-back{
-  width: 80px;
+  width: 30px;
   height: 30px;
-  border-radius: 10px;
+  border-radius: 80px;
   background-color: #5271ff;
   color: white;
   margin-top: 20px;
@@ -21,11 +21,13 @@
 }
 
 .icon_button-back {
-  margin-right: 5px;
+  font-size: 15px;
 }
 
 @media all and (min-width: 1024px) {
   .button-back {
     margin-left: 40px;
+    width: 35px;
+    height: 35px;
   }
 }

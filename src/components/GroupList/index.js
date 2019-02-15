@@ -17,7 +17,7 @@ class GroupList extends Component {
                   <img className="group__image" src={groupImage} alt="Icono grupo" />
                   <span className="container__text-li">
                     <p className="group__title">{group.name}</p>
-                    <p className="group__persons">56 personas</p>
+                    <p className="group__persons">5 personas</p>
                   </span>
                 </li>
               </Link>
