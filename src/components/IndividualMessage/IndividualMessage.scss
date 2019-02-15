@@ -7,22 +7,25 @@
 }
 .individualMessage__image{
     border-radius: 10px;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     display: block;
 }
 .individualMessage__data {
     padding-left: 10px;
-
 }
 .individualMessage__name {
     font-size: 14px;
-    margin: 5px 0;
+    // margin: 5px 0;
+    margin: 0;
 }
 .individualMessage__message {
     font-size: 14px;
     margin: 0;
     width: 220px;
+}
+.individualMessage__date {
+  font-size: 10px;
 }
 
 @media all and (min-width: 768px) {
@@ -44,12 +47,15 @@
     }
     .individualMessage__data {
         padding-left: 20px;
-        padding-top: 10px;
     }
     .individualMessage__name {
-        font-size: 16px;
+        font-size: 19px;
     }
     .individualMessage__message {
-        font-size: 16px;
+        font-size: 19px;
     }
+    .individualMessage__date {
+      font-size: 13px;
+    }
+
 }
