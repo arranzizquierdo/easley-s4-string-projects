@@ -61,7 +61,7 @@ class ConversationThreading extends Component {
             <div className="header__group__container">
               <span className="header__container__thread">
                 <h2 className="header__group__title-thread">Hilo</h2>
-                <h3 className="header__group__persons-thread">Recetas y menús</h3>
+                <h3 className="header__group__persons-thread">Adalab Easley Group</h3>
               </span>
             </div>
           </Header>
