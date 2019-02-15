@@ -116,12 +116,13 @@ class App extends Component {
   inputSendGeneralMessage(event) {
     const {token, textInput, threadId } = this.state;
     sendGeneralMessageFetch(token, textInput, threadId)
-    .then(data=>{
-      console.log(data)
-    })
-    this.setState({
-      textInput: ""
-    })
+    .then(() => {
+      return (
+        this.setState({
+          textInput: ""
+        })
+      )})
+
     /*.catch(error => {
       console.log(error)
     })*/
