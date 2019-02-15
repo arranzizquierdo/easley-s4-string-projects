@@ -11,6 +11,7 @@ import { fetchToken } from './components/services/TokenService';
 import { sendTokenFetch } from './components/services/SendToken';
 import { tokenDataFetch } from './components/services/TokenData';
 import { sendMessageFetch } from './components/services/SendMessage';
+import ErrorPage from './components/ErrorPage';
 import {
   faEllipsisH,
   faEyeSlash,
@@ -33,9 +34,7 @@ class App extends Component {
       dataUser: null,
       groups: null,
       token: "",
-      logIn: {
-        error: 0
-      },
+      error: 0,
       isChecked: false,
       isLoading: true,
       isAuthenticated: false,
@@ -114,15 +113,17 @@ class App extends Component {
   }
 
   inputSendMessage(event) {
-    const {token, textInput, threadId } = this.state;
+    event.preventDefault();
+    const { token, textInput, threadId } = this.state;
     sendMessageFetch(token, textInput, threadId)
-    .then(() => {
-      return (
-        this.setState({
-          textInput: ""
-        })
-      )})
-    .catch(error => this.errorCatch(error))
+      .then(() => {
+        return (
+          this.setState({
+            textInput: ""
+          })
+        )
+      })
+      .catch(error => this.errorCatch(error))
 
   }
 
@@ -166,19 +167,26 @@ class App extends Component {
       .catch(error => {
         return (
           this.setState({
-            logIn: {
-              error: error.status
-            }
+            error: error.status
           })
         )
       })
   }
 
   errorCatch(error) {
-    if (error && error.status === 401) {
+    if (error.status === 401) {
       return (
         localStorage.removeItem('token'),
         this.setState({
+          isAuthenticated: false,
+          isLoading: false
+        })
+      )
+    } else {
+      return (
+        localStorage.removeItem('token'),
+          this.setState({
+          error: error.status,
           isAuthenticated: false,
           isLoading: false
         })
@@ -197,9 +205,7 @@ class App extends Component {
   handleButton(event) {
     event.preventDefault();
     this.setState({
-      logIn: {
-        errorLogIn: 0
-      }
+      error: 0
     })
     this.getDataInfo();
   }
@@ -225,27 +231,27 @@ class App extends Component {
     localStorage.removeItem('token')
   }
 
-  getThreadId(threadId){
+  getThreadId(threadId) {
     this.setState({
       threadId: threadId,
     })
   }
 
-  deleteThreadId(){
+  deleteThreadId() {
     this.setState({
       threadId: "",
     })
   }
 
   render() {
-    const { logIn, isHidden, token, isAuthenticated, isLoading, dataUser, groups, currentGroup, textInput } = this.state;
+    const { error, isHidden, token, isAuthenticated, isLoading, dataUser, groups, currentGroup, textInput } = this.state;
     return (
       <Switch>
         <Route exact path="/login" render={() => {
           return <LandingPage
             saveData={this.saveData}
             handleButton={this.handleButton}
-            wrongCredentials={logIn.error}
+            wrongCredentials={error}
             handleChecked={this.handleChecked}
             token={token}
             isAuthenticated={isAuthenticated}
@@ -255,7 +261,9 @@ class App extends Component {
         }
         } />
         <Route exact path="/" render={() => {
-          if (isLoading === true) {
+          if(error !== 0){
+          return <ErrorPage />
+          } else if (isLoading === true) {
             return <Loading />
           } else if (isLoading === false && isAuthenticated === true) {
             return <MainPage
@@ -275,7 +283,9 @@ class App extends Component {
           exact
           path="/conversation-page"
           render={() => {
-            if (isLoading === true) {
+            if(error !== 0){
+              return <ErrorPage />
+              } else if (isLoading === true) {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationPage
@@ -300,7 +310,9 @@ class App extends Component {
         <Route
           path="/conversation-page/:id"
           render={props => {
-            if (isLoading === true) {
+            if(error !== 0){
+              return <ErrorPage />
+              } else if (isLoading === true) {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationThreading

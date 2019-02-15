@@ -6,7 +6,7 @@ class SendMessage extends Component {
   render() {
     const { inputSendMessage, inputGetMessage, textInput } = this.props;
     return (
-      <div className="sendmessage__container">
+      <form className="sendmessage__container">
         <label htmlFor="input" />
         <input
           id="input"
@@ -20,7 +20,7 @@ class SendMessage extends Component {
           <FontAwesomeIcon
           icon="paper-plane" className="paperplane__styles" />
         </button>
-      </div>
+      </form>
     );
   }
 }
