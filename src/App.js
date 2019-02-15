@@ -112,6 +112,7 @@ class App extends Component {
   }
 
   inputSendMessage(event) {
+    event.preventDefault();
     const { token, textInput, threadId } = this.state;
     sendMessageFetch(token, textInput, threadId)
       .then(() => {
