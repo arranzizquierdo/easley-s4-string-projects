@@ -1,15 +1,20 @@
 import manageRes from './ManageResponse';
 
 const ENDPOINT = "https://adalab.string-projects.com/api/v1/";
-const postEndpoint = ENDPOINT + "posts"
+const postEndpoint = ENDPOINT + "posts";
 
-
-
-const sendGeneralMessageFetch = ((token, textInput) => {
-
-  const description = {"post": {
-    "description": `${textInput}`
-  }};
+const sendMessageFetch = ((token, textInput, threadId) => {
+  let description;
+  if (threadId) {
+    description = {"post": {
+      "description": `${textInput}`,
+      "post_id": `${threadId}`
+    }};
+  } else {
+    description = {"post": {
+      "description": `${textInput}`
+    }};
+  }
 
   return fetch(postEndpoint, {
     method: "POST",
@@ -22,4 +27,4 @@ const sendGeneralMessageFetch = ((token, textInput) => {
   .then(manageRes)
 })
 
-export { sendGeneralMessageFetch };
+export { sendMessageFetch };

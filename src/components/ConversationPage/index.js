@@ -43,7 +43,7 @@ class ConversationPage extends Component {
   }
 
   render() {
-    const { addModalClick, isHidden, cancelClickModal, handleLogOut, currentGroup, inputSendGeneralMessage, inputGetMessage, textInput } = this.props;
+    const { addModalClick, isHidden, cancelClickModal, handleLogOut, currentGroup, inputSendMessage, inputGetMessage, textInput } = this.props;
     const { infoConversation } = this.state;
 
     if (!infoConversation) {
@@ -89,7 +89,7 @@ class ConversationPage extends Component {
             </ul>
             <section
               className="container__message">
-              <SendMessage inputSendGeneralMessage={inputSendGeneralMessage} inputGetMessage={inputGetMessage} textInput={textInput}/>
+              <SendMessage inputSendMessage={inputSendMessage} inputGetMessage={inputGetMessage} textInput={textInput}/>
             </section>
             <Modal
               isHidden={isHidden}

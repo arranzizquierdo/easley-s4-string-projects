@@ -12,7 +12,6 @@ import { tokenThreadFetch } from '../services/TokenThread';
 import Loading from '../Loading';
 
 
-
 class ConversationThreading extends Component {
   constructor(props) {
     super(props);
@@ -27,11 +26,14 @@ class ConversationThreading extends Component {
 
   componentWillUnmount() {
     clearInterval(this.interval);
+    const { deleteThreadId }= this.props;
+    deleteThreadId();
   }
 
   bringMessagesThread(){
-    const { token, errorCatch } = this.props;
+    const { token, errorCatch, getThreadId } = this.props;
     const idMessage = this.props.match.params.id;
+    getThreadId(idMessage);
     tokenThreadFetch(token, idMessage)
       .then(data => {
         return (
@@ -40,11 +42,11 @@ class ConversationThreading extends Component {
           })
         )
       })
-      .catch(error => errorCatch(error))
+    .catch(error => errorCatch(error))
   }
 
   render() {
-    const { addModalClick, isHidden, cancelClickModal, handleLogOut } = this.props;
+    const { addModalClick, isHidden, cancelClickModal, handleLogOut, inputGetMessage, inputSendMessage, textInput } = this.props;
     const { infoThread } = this.state;
 
     if(!infoThread){
@@ -82,11 +84,15 @@ class ConversationThreading extends Component {
               })}
             </ul>
             <section className="container__message">
-              <SendMessage />
+              <SendMessage
+              inputGetMessage={inputGetMessage}
+              inputSendMessage={inputSendMessage}
+              textInput={textInput} />
             </section>
             <Modal
               isHidden={isHidden}
-              cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
+              cancelClickModal={cancelClickModal}
+              handleLogOut={handleLogOut} />
           </main>
         </React.Fragment>
       )
