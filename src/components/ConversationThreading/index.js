@@ -21,6 +21,16 @@ class ConversationThreading extends Component {
   }
 
   componentDidMount() {
+    this.interval = setInterval(() => this.bringMessagesThread(), 2000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+    const { deleteThreadId }= this.props;
+    deleteThreadId();
+  }
+
+  bringMessagesThread(){
     const { token, errorCatch, getThreadId } = this.props;
     const idMessage = this.props.match.params.id;
     getThreadId(idMessage);
@@ -32,12 +42,7 @@ class ConversationThreading extends Component {
           })
         )
       })
-      .catch(error => errorCatch(error));
-  }
-
-  componentWillUnmount(){
-    const { deleteThreadId }= this.props;
-    deleteThreadId();
+    .catch(error => errorCatch(error))
   }
 
   render() {
