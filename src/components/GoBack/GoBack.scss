@@ -13,11 +13,13 @@
   margin-top: 20px;
   margin-left: 18px;
   cursor: pointer;
-  font-family: "Heebo", sans-serif;
-  font-size: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: color ease 1s;
+    &:hover {
+        color: #8ccbea;
+    }
 }
 
 .icon_button-back {
