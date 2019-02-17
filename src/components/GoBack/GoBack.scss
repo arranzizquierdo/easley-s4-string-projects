@@ -19,10 +19,10 @@
 }
 
 .icon_button-back {
-  font-size: 15px;
-  transition: font-size;
-    &:hover {
-       font-size: 20px;
+  font-size: 18px;
+  transition:  all 0.5s ease-in-out;
+    &:hover{
+      transform: translate(-2px,0);
     }
 }
 
