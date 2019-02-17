@@ -71,6 +71,7 @@ class ConversationThreading extends Component {
               messageInfo={infoThread[0]}
             />
             <div className="answers">Respuestas</div>
+            <main className = "container_main">
             <ul>
               {infoThread
               .filter(message=> message.post_id !== null)
@@ -84,6 +85,7 @@ class ConversationThreading extends Component {
                 )
               })}
             </ul>
+            </main>
             <section className="container__message">
               <SendMessage
               inputGetMessage={inputGetMessage}

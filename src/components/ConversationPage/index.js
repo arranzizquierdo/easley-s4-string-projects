@@ -66,7 +66,7 @@ class ConversationPage extends Component {
               </span>
             </div>
           </Header>
-          <main>
+          <main className = "container_main">
             <Link
               className="style_link"
               to="/">
