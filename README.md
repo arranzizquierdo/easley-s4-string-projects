@@ -39,9 +39,15 @@ La estrucutura del proyecto se basa en componentes englobados en dos grandes blo
 
   Una vez el usuario ha metido sus credenciales y han sido autenticadas accede a su zona privada. En ella dispondrá de un listado de grupos a los que pertenece, a los cuales puede acceder clickando en ellos para visualizar todos los mensajes que se han enviado a dicho grupo.
 
+![Converasción de grupo](/src/images/Page-conversation.png)
+
   Existe una segunda página a la que el usuario accede cuando clicka en un mensaja para contestar sobre ese mismo; se abre la página del hilo de ese mensaje.
 
+![Converasción de hilo](/src/images/Page-thread.png)
+
   El usuario puede cerrar su sesión en cualquiera de las páginas a través de un menu en la esquina superior derecha.
+
+  ![modal-logOut](/src/images/Modal.png)
 
 **Componentes:**
 
