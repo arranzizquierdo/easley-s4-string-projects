@@ -328,6 +328,8 @@ class App extends Component {
                 currentGroup={currentGroup}
                 inputGetMessage={this.inputGetMessage}
                 textInput={textInput}
+                errorCatch={this.errorCatch}
+                token={this.state.token}
 
               />
             } else if (isLoading === false && isAuthenticated === false) {
@@ -352,6 +354,9 @@ class App extends Component {
                 textInput={textInput}
                 getThreadId={this.getThreadId}
                 deleteThreadId={this.deleteThreadId}
+                errorCatch={this.errorCatch}
+                token={this.state.token}
+                match = {props.match}
               />
             } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />
