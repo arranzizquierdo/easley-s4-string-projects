@@ -185,7 +185,7 @@ class App extends Component {
     } else {
       return (
         localStorage.removeItem('token'),
-          this.setState({
+        this.setState({
           error: error.status,
           isAuthenticated: false,
           isLoading: false
@@ -195,11 +195,9 @@ class App extends Component {
   }
 
   keepInLocalStorage() {
-    if (this.state.isChecked === false) {
-      return (localStorage.removeItem('token'))
-    } else {
-      localStorage.setItem('token', JSON.stringify(this.state.token))
-    }
+    this.state.isChecked === false
+      ? localStorage.removeItem('token')
+      : localStorage.setItem('token', JSON.stringify(this.state.token))
   }
 
   handleButton(event) {
@@ -233,59 +231,92 @@ class App extends Component {
 
   getThreadId(threadId) {
     this.setState({
-      threadId: threadId,
+      threadId: threadId
     })
   }
 
   deleteThreadId() {
     this.setState({
-      threadId: "",
+      threadId: ""
     })
   }
 
   render() {
-    const { error, isHidden, token, isAuthenticated, isLoading, dataUser, groups, currentGroup, textInput } = this.state;
+    const {
+      error,
+      isHidden,
+      token,
+      isAuthenticated,
+      isLoading,
+      dataUser,
+      groups,
+      currentGroup,
+      textInput
+    } = this.state;
     return (
       <Switch>
-        <Route exact path="/login" render={() => {
-          return <LandingPage
-            saveData={this.saveData}
-            handleButton={this.handleButton}
-            wrongCredentials={error}
-            handleChecked={this.handleChecked}
-            token={token}
-            isAuthenticated={isAuthenticated}
-            isLoading={isLoading}
-          />
-
-        }
-        } />
-        <Route exact path="/" render={() => {
-          if(error !== 0){
-          return <ErrorPage />
-          } else if (isLoading === true) {
-            return <Loading />
-          } else if (isLoading === false && isAuthenticated === true) {
-            return <MainPage
-              addModalClick={this.addModalClick}
-              cancelClickModal={this.cancelClickModal}
-              isHidden={isHidden}
-              handleLogOut={this.handleLogOut}
-              dataUser={dataUser}
-              groups={groups}
+        <Route
+          exact
+          path="/login"
+          render={() => {
+            return <LandingPage
+              saveData={this.saveData}
+              handleButton={this.handleButton}
+              wrongCredentials={error}
+              handleChecked={this.handleChecked}
+              token={token}
+              isAuthenticated={isAuthenticated}
+              isLoading={isLoading}
             />
-          } else if (isLoading === false && isAuthenticated === false) {
-            return <Redirect to="/login" />
           }
-        }} />
+          } />
+        <Route
+          exact
+          path="/"
+          render={() => {
+            if (error !== 0) {
+              return <ErrorPage />
+            } else if (isLoading === true) {
+              return <Loading />
+            } else if (isLoading === false && isAuthenticated === true) {
+              return <MainPage
+                addModalClick={this.addModalClick}
+                cancelClickModal={this.cancelClickModal}
+                isHidden={isHidden}
+                handleLogOut={this.handleLogOut}
+                dataUser={dataUser}
+                groups={groups}
+              />
+
+            }
+          }} />
+        <Route
+          exact
+          path="/"
+          render={() => {
+            if (isLoading === true) {
+              return <Loading />
+            } else if (isLoading === false && isAuthenticated === true) {
+              return <MainPage
+                addModalClick={this.addModalClick}
+                cancelClickModal={this.cancelClickModal}
+                isHidden={isHidden}
+                handleLogOut={this.handleLogOut}
+                dataUser={dataUser}
+                groups={groups}
+              />
+            } else if (isLoading === false && isAuthenticated === false) {
+              return <Redirect to="/login" />
+            }
+          }} />
 
         <Route
           exact
           path="/conversation-page"
           render={() => {
-            if(error !== 0){
+            if (error !== 0) {
               return <ErrorPage />
-              } else if (isLoading === true) {
+            } else if (isLoading === true) {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationPage
@@ -294,13 +325,11 @@ class App extends Component {
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
                 handleLogOut={this.handleLogOut}
-                token={this.state.token}
-                dataUser={dataUser}
-                groups={groups}
                 currentGroup={currentGroup}
-                errorCatch={this.errorCatch}
                 inputGetMessage={this.inputGetMessage}
                 textInput={textInput}
+                errorCatch={this.errorCatch}
+                token={this.state.token}
 
               />
             } else if (isLoading === false && isAuthenticated === false) {
@@ -310,9 +339,9 @@ class App extends Component {
         <Route
           path="/conversation-page/:id"
           render={props => {
-            if(error !== 0){
+            if (error !== 0) {
               return <ErrorPage />
-              } else if (isLoading === true) {
+            } else if (isLoading === true) {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationThreading
@@ -321,14 +350,13 @@ class App extends Component {
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
                 handleLogOut={this.handleLogOut}
-                dataUser={dataUser}
-                token={this.state.token}
-                match={props.match}
-                errorCatch={this.errorCatch}
                 inputGetMessage={this.inputGetMessage}
                 textInput={textInput}
                 getThreadId={this.getThreadId}
                 deleteThreadId={this.deleteThreadId}
+                errorCatch={this.errorCatch}
+                token={this.state.token}
+                match = {props.match}
               />
             } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />

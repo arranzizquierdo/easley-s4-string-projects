@@ -8,13 +8,20 @@ import { Link } from "react-router-dom";
 class Header extends Component {
 
   render() {
-    const { showNav, children, addModalClick } = this.props;
+    const {
+      showNav,
+      children,
+      addModalClick
+    } = this.props;
     return (
       <header className="header">
         <Link
           className="header__container-logo"
           to="/">
-          <img className="logo" src={Logo} alt="We." />
+          <img
+          className="logo"
+          src={Logo}
+          alt="We." />
         </Link>
         {children}
         {showNav && (
@@ -35,7 +42,8 @@ Header.defaultProps = {
 
 Header.propTypes = {
   children: PropTypes.object,
-  showNav: PropTypes.bool.isRequired
+  showNav: PropTypes.bool.isRequired,
+  addModalClick: PropTypes.func,
 }
 
 export default Header;

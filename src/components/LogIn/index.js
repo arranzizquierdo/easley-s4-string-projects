@@ -13,8 +13,8 @@ class LogIn extends Component {
     super(props);
     this.state = {
       passwordIsHidden: true
-      }
     }
+  }
 
   togglePassword = () => {
     this.setState(prevState => (
@@ -28,18 +28,30 @@ class LogIn extends Component {
   render() {
     const hideOrNot = this.state.passwordIsHidden ? "password" : "text";
     const iconEye = this.state.passwordIsHidden ? "eye-slash" : "eye";
-    const { saveData, handleButton, wrongCredentials, handleChecked, token, isAuthenticated, isLoading } = this.props;
+    const {
+      saveData,
+      handleButton,
+      wrongCredentials,
+      handleChecked,
+      token,
+      isAuthenticated,
+      isLoading
+    } = this.props;
 
-    if(isLoading === true){
+    if (isLoading === true) {
       return <Loading />
     }
-    if(isLoading === false && token && isAuthenticated){
+
+    if (isLoading === false && token && isAuthenticated) {
       return <Redirect to="/" />
     } else {
-    return (
-      <div className="logIn__container">
+      return (
+        <div className="logIn__container">
         <h1 className="logIn__title">Inicia sesión</h1>
-        <form className="logIn__form" action="/signup" method="post">
+        <form
+        className="logIn__form"
+        action="/signup"
+        method="post">
           <div className="input-icon__container">
             <label htmlFor="user-name" />
             <input
@@ -68,7 +80,9 @@ class LogIn extends Component {
             />
           </div>
 
-          <label htmlFor="remember" className="remember__label">
+          <label
+          htmlFor="remember"
+          className="remember__label">
             <input
               className="remember__checkbox"
               type="checkbox"
@@ -91,14 +105,12 @@ class LogIn extends Component {
   }
 }
 
-export default LogIn;
-
 LogIn.propTypes = {
   saveData: PropTypes.func.isRequired,
-  handleButton: PropTypes.func.isRequired,
-  wrongCredentials: PropTypes.number,
   handleChecked: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired
 }
+
+export default LogIn;
