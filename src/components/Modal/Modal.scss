@@ -27,16 +27,17 @@
 .modal__item-title,
 .modal__item {
   text-align: center;
-  border: 1px solid #b4bbc1;
+  //border: 1px solid #b4bbc1;
   background-color: white;
 }
 
 .modal__item-title {
-  color: #62666b;
+  color: white;
   font-size: 14px;
   padding: 14px 0;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  background-color:  #5271ff;
 }
 
 .modal__item {
