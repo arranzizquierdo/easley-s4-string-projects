@@ -12,12 +12,23 @@ class GroupList extends Component {
         <ul className="group__ul">
           {groups.map(group => {
             return (
-              <Link className="style_link" to="/conversation-page" key={group.id}>
-                <li className="group__li" key={group.id}>
-                  <img className="group__image" src={groupImage} alt="Icono grupo" />
+              <Link
+                className="style_link"
+                to="/conversation-page"
+                key={group.id}
+              >
+                <li
+                  className="group__li"
+                  key={group.id}
+                >
+                  <img
+                    className="group__image"
+                    src={groupImage}
+                    alt="Icono grupo"
+                  />
                   <span className="container__text-li">
                     <p className="group__title">{group.name}</p>
-                    <p className="group__persons">56 personas</p>
+                    <p className="group__persons">5 personas</p>
                   </span>
                 </li>
               </Link>

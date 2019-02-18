@@ -1,26 +1,40 @@
 import React, { Component } from "react";
 import "./SendMessage.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PropTypes from "prop-types";
 
 class SendMessage extends Component {
   render() {
-    const { inputSendMessage } = this.props;
+    const {
+      inputSendMessage,
+      inputGetMessage,
+      textInput
+    } = this.props;
     return (
-      <div className="sendmessage__container">
+      <form className="sendmessage__container">
         <label htmlFor="input" />
         <input
           id="input"
           className="sendmessage__input"
-          onChange={inputSendMessage}
+          onChange={inputGetMessage}
+          value={textInput}
         />
         <button
-        className="sendmessage__button">
+          className="sendmessage__button"
+          onClick={inputSendMessage}>
           <FontAwesomeIcon
-          icon="paper-plane" className="paperplane__styles" />
+            icon="paper-plane"
+            className="paperplane__styles" />
         </button>
-      </div>
+      </form>
     );
   }
+}
+
+SendMessage.propTypes = {
+  inputGetMessage: PropTypes.func.isRequired,
+  inputSendMessage: PropTypes.func.isRequired,
+  textInput: PropTypes.string.isRequired
 }
 
 export default SendMessage;

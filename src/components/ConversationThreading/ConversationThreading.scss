@@ -22,15 +22,22 @@
   margin-left: 20px;
 }
 .container__message {
-  bottom: 15px;
-  padding: 10px;
+  bottom: 0;
+  padding: 0 10px 0 10px;
   position: fixed;
   width: 100%;
   text-align: center;
+  background-color: white;
 }
 
 .style_link{
   text-decoration: none;
+}
+
+@media all and (min-width: 768px){
+  .container__message{
+    padding: 0;
+  }
 }
 
 @media all and (min-width: 1024px) {

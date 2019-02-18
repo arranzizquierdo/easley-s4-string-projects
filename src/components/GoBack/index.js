@@ -12,8 +12,7 @@ class GoBack extends Component {
           icon="angle-double-left"
           className="icon_button-back"
         />
-        Volver
-          </div>
+      </div>
     );
   }
 }

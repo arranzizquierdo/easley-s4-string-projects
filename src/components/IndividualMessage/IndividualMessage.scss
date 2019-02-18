@@ -1,27 +1,28 @@
 .individualMessage__container {
     display: flex;
     margin: 15px 20px 20px 20px;
-    width: 50px;
-    height: 50px;
     font-family: 'Heebo', sans-serif;
 }
 .individualMessage__image{
     border-radius: 10px;
     width: 50px;
     height: 50px;
+    flex: 0 0 50px;
 }
 .individualMessage__data {
     padding-left: 10px;
-
 }
 .individualMessage__name {
     font-size: 14px;
-    margin: 5px 0;
+    margin: 0;
 }
 .individualMessage__message {
     font-size: 14px;
     margin: 0;
     width: 220px;
+}
+.individualMessage__date {
+  font-size: 10px;
 }
 
 @media all and (min-width: 768px) {
@@ -34,21 +35,25 @@
     .individualMessage__container {
         display: flex;
         margin: 20px 40px;
-        width: 100px;
+        max-width: 100px;
         height: 100px;
     }
     .individualMessage__image{
         width: 80px;
         height: 80px;
+        flex-basis: 80px;
     }
     .individualMessage__data {
         padding-left: 20px;
-        padding-top: 10px;
     }
     .individualMessage__name {
-        font-size: 16px;
+        font-size: 19px;
     }
     .individualMessage__message {
-        font-size: 16px;
+        font-size: 19px;
     }
+    .individualMessage__date {
+      font-size: 13px;
+    }
+
 }

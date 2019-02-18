@@ -7,13 +7,18 @@ class IndividualMessage extends Component {
     const { messageInfo } = this.props;
 
     return (
-        <section className="individualMessage__container">
-        <img className="individualMessage__image" src={messageInfo.avatar_url} alt={messageInfo.username} />
+      <section className="individualMessage__container">
+        <img
+          className="individualMessage__image"
+          src={messageInfo.avatar_url || ""}
+          alt={messageInfo.username}
+        />
         <div className="individualMessage__data">
           <h2 className="individualMessage__name">{messageInfo.username}</h2>
           <p className="individualMessage__message">
             {messageInfo.description}
           </p>
+          <small className="individualMessage__date">{messageInfo.date}</small>
         </div>
       </section>
 

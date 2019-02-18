@@ -1,68 +1,76 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Logo We](/src/images/We..png)
 
-## Available Scripts
+## Aplicación de mensajería para empresas
 
-In the project directory, you can run:
+Proyecto desarrollado para la empresa String-Projects.
 
-### `npm start`
+El proyecto se basa en el desarrollo de una aplicación de mensajería para la
+comunicación entre los integrantes de canales o grupos privados. Esta aplicación nos
+permitirá logearnos como usuarios, acceder a un grupo privado en el que poder mandar
+mensajes en general o como respuesta a otro mensaje, generando hilos.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Autoras:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- **Aroa Tato** => [aroatdlt](https://github.com/aroatdlt)
+- **Laura Arranz** => [arranzizquierdo](https://github.com/arranzizquierdo)
+- **Laura Santiago** => [laurasanra](https://github.com/laurasanra)
+- **Raquel Dacosta** => [rdfornieles](https://github.com/rdfornieles)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ESTRUCTURA
 
-### `npm run build`
+El proyecta ha sido desarrollado con las siguientes herramientas:
+  1. JavaScript
+  2. React
+  3. HTML5
+  4. SASS
+  5. Consumo de datos a través de una API REST
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+La estrucutura del proyecto se basa en componentes englobados en dos grandes bloques:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+  ### Público
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  Página inicial en la que el usuario debe meter sus credenciales (nombre y contraseña) para poder acceder a su zona privada.
+  Tiene la opción de recordar sus credenciales (serán almacenadas en el local storage de su dispositivo) para que en sus siguientes visitas no sea necesario introducirlas de nuevo.
 
-### `npm run eject`
+![Público](/src/images/Public.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  ### Privado
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  Una vez el usuario ha metido sus credenciales y han sido autenticadas accede a su zona privada. En ella dispondrá de un listado de grupos a los que pertenece, a los cuales puede acceder clickando en ellos para visualizar todos los mensajes que se han enviado a dicho grupo.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Converasción de grupo](/src/images/Page-conversation.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  Existe una segunda página a la que el usuario accede cuando clicka en un mensaja para contestar sobre ese mismo; se abre la página del hilo de ese mensaje.
 
-## Learn More
+![Converasción de hilo](/src/images/Page-thread.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  El usuario puede cerrar su sesión en cualquiera de las páginas a través de un menu en la esquina superior derecha.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  ![modal-logOut](/src/images/Modal.png)
 
-### Code Splitting
+**Componentes:**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+![componentes](/src/images/Components.png)
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## TRABAJAR CON EL PROYECTO - CONTRIBUIR
 
-### Making a Progressive Web App
+Para poder trabajar en el proyecto deberás:
+  1. Clonar el repositorio en tu local
+  2. Instalar los paquetes necesarios: ejecutar *npm install*
+  3. Arrancar el proyecto para visualizarlo: ejecutar *npm start*
+  4. Subir proyecto a producción: ejecutar *npm run deploy*
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+  Puedes consultar la documentación completa en [página principal de React](https://reactjs.org/).
 
-### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Cualquier mejora o modificación que se te ocurra no dudes en abrirnos una pull requests a cualquiera de las autoras, estaremos encantadas!
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+
+

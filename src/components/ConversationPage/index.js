@@ -15,33 +15,58 @@ class ConversationPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      infoConversation: null,
+      infoConversation: null
     }
   }
 
   componentDidMount() {
-    const { token } = this.props;
+    this.bringMessages();
+    this.interval = setInterval(() => this.bringMessages(), 2000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  bringMessages() {
+    const {
+      token,
+      errorCatch
+    } = this.props;
     postConversFetch(token)
       .then(data => {
-        return (
-          this.setState({
-            infoConversation: data,
-          })
+        if(this && this.setState) {
+          return (
+            this.setState({
+              infoConversation: data
+            })
+          )
+        }
 
-        )
       })
+      .catch(error => errorCatch(error))
   }
 
   render() {
-    const { addModalClick, isHidden, cancelClickModal, handleLogOut } = this.props;
+    const {
+      addModalClick,
+      isHidden,
+      cancelClickModal,
+      handleLogOut,
+      currentGroup,
+      inputSendMessage,
+      inputGetMessage,
+      textInput
+    } = this.props;
     const { infoConversation } = this.state;
+
     if (!infoConversation) {
-      return (<Loading/>)
+      return (<Loading />)
     } else {
       return (
         <Fragment>
           <Header
-          addModalClick={addModalClick}>
+            addModalClick={addModalClick}>
             <div className="header__group__container">
               <img
                 className="header__group__image"
@@ -49,37 +74,44 @@ class ConversationPage extends Component {
                 alt="Icono grupo"
               />
               <span className="header__container__text">
-                <h2 className="header__group__title">Recetas y menús</h2>
-                <p className="header__group__persons">56 personas</p>
+                <h2 className="header__group__title">{currentGroup.name}</h2>
+                <p className="header__group__persons">5 personas</p>
               </span>
             </div>
           </Header>
-          <main>
+          <main className="container_main">
             <Link
-            className="style_link"
-            to="/">
+              className="style_link"
+              to="/">
               <GoBack />
             </Link>
             <ul>
-            {infoConversation.map(message => {
-              return (
-                <Link
-                key={message.id} className="style_link"
-                to="/conversation-threading">
-                <IndividualMessage
-                messageInfo={message}
-                />
-              </Link>
-              )
-            })}
+              {infoConversation
+                .filter(message => message.post_id === null)
+                .map(message => {
+                  return (
+                    <Link
+                      key={message.id}
+                      className="style_link"
+                      to={`/conversation-page/${message.id}`}>
+                      <IndividualMessage
+                        messageInfo={message}
+                      />
+                    </Link>
+                  )
+                })}
             </ul>
             <section
-            className="container__message">
-              <SendMessage />
+              className="container__message">
+              <SendMessage
+                inputSendMessage={inputSendMessage}
+                inputGetMessage={inputGetMessage}
+                textInput={textInput} />
             </section>
             <Modal
-            isHidden={isHidden}
-            cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
+              isHidden={isHidden}
+              cancelClickModal={cancelClickModal}
+              handleLogOut={handleLogOut} />
           </main>
         </Fragment>
       );
@@ -89,12 +121,8 @@ class ConversationPage extends Component {
 }
 
 ConversationPage.propTypes = {
-  addModalClick: PropTypes.func.isRequired,
-  isHidden: PropTypes.bool.isRequired,
-  cancelClickModal: PropTypes.func.isRequired,
-  handleLogOut: PropTypes.func.isRequired,
-  token: PropTypes.string.isRequired,
-  groups: PropTypes.array.isRequired
+  infoConversation: PropTypes.array,
+  currentGroup: PropTypes.object.isRequired,
 };
 
 export default ConversationPage;

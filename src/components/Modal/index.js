@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 
 class Modal extends Component {
   render() {
-    const {isHidden, cancelClickModal, handleLogOut } = this.props;
+    const {
+      isHidden,
+      cancelClickModal,
+      handleLogOut
+    } = this.props;
     let hidden = '';
     (isHidden)
       ? hidden = 'modal__hidden'
@@ -14,13 +18,13 @@ class Modal extends Component {
         <ul className="modal__list">
           <li className="modal__item-title">¿Qué quieres hacer?</li>
           <li
-          className="modal__item modal__item-sesion"
-          onClick={handleLogOut}>
+            className="modal__item modal__item-sesion"
+            onClick={handleLogOut}>
             Cerrar Sesión
           </li>
           <li
-          className="modal__item modal__item-cancel"
-          onClick={cancelClickModal}>Cancelar</li>
+            className="modal__item modal__item-cancel"
+            onClick={cancelClickModal}>Cancelar</li>
         </ul>
       </div>
     );

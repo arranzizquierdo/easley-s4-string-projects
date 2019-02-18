@@ -1,6 +1,5 @@
 .sendmessage__container {
   width: 100%;
-  margin-top: 25px;
   font-family: 'Heebo', sans-serif;
 }
 
@@ -10,6 +9,8 @@
   width: 90%;
   outline: none;
   font-size: 14px;
+  padding-top: 15px;
+  margin-bottom: 10px;
 }
 
 .sendmessage__button {
@@ -29,8 +30,8 @@
 
 @media all and (min-width: 768px) {
   .sendmessage__input {
-    width: 80%;
     font-size: 16px;
+    padding-top: 20px;
   }
 
   .paperplane__styles {
@@ -41,5 +42,8 @@
 @media all and (min-width: 1024px) {
   .paperplane__styles {
     font-size: 35px;
+  }
+  .sendmessage__input{
+    width: 92%;
   }
 }

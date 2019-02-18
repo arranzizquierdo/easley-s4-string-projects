@@ -10,6 +10,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fetchToken } from './components/services/TokenService';
 import { sendTokenFetch } from './components/services/SendToken';
 import { tokenDataFetch } from './components/services/TokenData';
+import { sendMessageFetch } from './components/services/SendMessage';
+import ErrorPage from './components/ErrorPage';
 import {
   faEllipsisH,
   faEyeSlash,
@@ -32,12 +34,13 @@ class App extends Component {
       dataUser: null,
       groups: null,
       token: "",
-      logIn: {
-        error: 0
-      },
+      error: 0,
       isChecked: false,
       isLoading: true,
-      isAuthenticated: false
+      isAuthenticated: false,
+      currentGroup: "",
+      textInput: "",
+      threadId: ""
     };
     this.addModalClick = this.addModalClick.bind(this);
     this.cancelClickModal = this.cancelClickModal.bind(this);
@@ -46,44 +49,45 @@ class App extends Component {
     this.getDataInfo = this.getDataInfo.bind(this);
     this.handleChecked = this.handleChecked.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
+    this.errorCatch = this.errorCatch.bind(this);
+    this.inputSendMessage = this.inputSendMessage.bind(this);
+    this.inputGetMessage = this.inputGetMessage.bind(this);
+    this.getThreadId = this.getThreadId.bind(this);
+    this.deleteThreadId = this.deleteThreadId.bind(this);
   }
 
   componentDidMount() {
     const tokenLs = JSON.parse(localStorage.getItem('token'));
 
     if (tokenLs) {
-      return (sendTokenFetch(tokenLs))
-        .then(data => {
-          if (data === true) {
-            return (
-              this.setState({
-                isAuthenticated: true
-              }),
-              tokenDataFetch(tokenLs)
-                .then(data => {
-                  return (
-                    this.setState({
-                      dataUser: data.user,
-                      groups: data.groups,
-                      token: data.user.auth_token,
-                      isLoading: false
-                    })
-                  )
-                })
-            )
-          } else {
-            return (
-              this.setState({
-                isAuthenticated: false
+      sendTokenFetch(tokenLs)
+        .then(() => {
+          return (
+            this.setState({
+              isAuthenticated: true
+            }),
+            tokenDataFetch(tokenLs)
+              .then(data => {
+                return (
+                  this.setState({
+                    dataUser: data.user,
+                    groups: data.groups,
+                    token: data.user.auth_token,
+                    isLoading: false,
+                    currentGroup: data.current_group
+                  })
+                )
               })
-            )
-          }
-        });
+              .catch(error => this.errorCatch(error))
+          )
+        })
+        .catch(error => this.errorCatch(error))
+
     } else {
       return (
         this.setState({
-          isAuthenticated: false,
-          isLoading: false
+          isLoading: false,
+          isAuthenticated: false
         })
       )
     }
@@ -101,9 +105,26 @@ class App extends Component {
     })
   }
 
+  inputGetMessage(event) {
+    const description = event.target.value;
+    this.setState({
+      textInput: description
+    })
+  }
+
   inputSendMessage(event) {
-    const sendMessageInputValue = event.target.value;
-    console.log("SendMessage input value:", sendMessageInputValue);
+    event.preventDefault();
+    const { token, textInput, threadId } = this.state;
+    sendMessageFetch(token, textInput, threadId)
+      .then(() => {
+        return (
+          this.setState({
+            textInput: ""
+          })
+        )
+      })
+      .catch(error => this.errorCatch(error))
+
   }
 
   addModalClick(event) {
@@ -137,7 +158,8 @@ class App extends Component {
               nickname: "",
               password: ""
             },
-            isAuthenticated: true
+            isAuthenticated: true,
+            currentGroup: data.current_group
           }),
           this.keepInLocalStorage()
         )
@@ -145,28 +167,43 @@ class App extends Component {
       .catch(error => {
         return (
           this.setState({
-            logIn: {
-              error: error.status
-            }
+            error: error.status
           })
         )
       })
   }
 
-  keepInLocalStorage() {
-    if (this.state.isChecked === false) {
-      return (localStorage.removeItem('token'))
+  errorCatch(error) {
+    if (error.status === 401) {
+      return (
+        localStorage.removeItem('token'),
+        this.setState({
+          isAuthenticated: false,
+          isLoading: false
+        })
+      )
     } else {
-      localStorage.setItem('token', JSON.stringify(this.state.token))
+      return (
+        localStorage.removeItem('token'),
+        this.setState({
+          error: error.status,
+          isAuthenticated: false,
+          isLoading: false
+        })
+      )
     }
+  }
+
+  keepInLocalStorage() {
+    this.state.isChecked === false
+      ? localStorage.removeItem('token')
+      : localStorage.setItem('token', JSON.stringify(this.state.token))
   }
 
   handleButton(event) {
     event.preventDefault();
     this.setState({
-      logIn: {
-        errorLogIn: 0
-      }
+      error: 0
     })
     this.getDataInfo();
   }
@@ -192,42 +229,75 @@ class App extends Component {
     localStorage.removeItem('token')
   }
 
+  getThreadId(threadId) {
+    this.setState({
+      threadId: threadId
+    })
+  }
+
+  deleteThreadId() {
+    this.setState({
+      threadId: ""
+    })
+  }
+
   render() {
-    const { logIn, isHidden, token, isAuthenticated, isLoading, dataUser, groups } = this.state;
+    const {
+      error,
+      isHidden,
+      token,
+      isAuthenticated,
+      isLoading,
+      dataUser,
+      groups,
+      currentGroup,
+      textInput
+    } = this.state;
     return (
       <Switch>
-
-        <Route exact path="/login" render={props =>
-          (<LandingPage
-            saveData={this.saveData}
-            handleButton={this.handleButton}
-            wrongCredentials={logIn.error}
-            handleChecked={this.handleChecked}
-            token={token}
-            isAuthenticated={isAuthenticated}
-            isLoading={isLoading}
-          />)} />
-        <Route exact path="/" render={() => {
-          if (isLoading === true) {
-            return <Loading />
-          } else if (isLoading === false && isAuthenticated === true) {
-            return <MainPage
-              addModalClick={this.addModalClick}
-              cancelClickModal={this.cancelClickModal}
-              isHidden={isHidden}
-              handleLogOut={this.handleLogOut}
-              dataUser={dataUser}
-              groups={groups}
+        <Route
+          exact
+          path="/login"
+          render={() => {
+            return <LandingPage
+              saveData={this.saveData}
+              handleButton={this.handleButton}
+              wrongCredentials={error}
+              handleChecked={this.handleChecked}
+              token={token}
+              isAuthenticated={isAuthenticated}
+              isLoading={isLoading}
             />
-          } else if (isLoading === false && isAuthenticated === false) {
-            return <Redirect to="/login" />
           }
-        }} />
+          } />
 
         <Route
-          path="/conversation-page"
+          exact
+          path="/"
           render={() => {
             if (isLoading === true) {
+              return <Loading />
+            } else if (isLoading === false && isAuthenticated === true) {
+              return <MainPage
+                addModalClick={this.addModalClick}
+                cancelClickModal={this.cancelClickModal}
+                isHidden={isHidden}
+                handleLogOut={this.handleLogOut}
+                dataUser={dataUser}
+                groups={groups}
+              />
+            } else if (isLoading === false && isAuthenticated === false) {
+              return <Redirect to="/login" />
+            }
+          }} />
+
+        <Route
+          exact
+          path="/conversation-page"
+          render={() => {
+            if (error !== 0) {
+              return <ErrorPage />
+            } else if (isLoading === true) {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationPage
@@ -236,19 +306,22 @@ class App extends Component {
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
                 handleLogOut={this.handleLogOut}
+                currentGroup={currentGroup}
+                inputGetMessage={this.inputGetMessage}
+                textInput={textInput}
+                errorCatch={this.errorCatch}
                 token={this.state.token}
-                isLoading={isLoading}
-                dataUser={dataUser}
-                groups={groups}
               />
             } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />
             }
           }} />
         <Route
-          path="/conversation-threading"
-          render={() => {
-            if (isLoading === true) {
+          path="/conversation-page/:id"
+          render={props => {
+            if (error !== 0) {
+              return <ErrorPage />
+            } else if (isLoading === true) {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationThreading
@@ -257,8 +330,13 @@ class App extends Component {
                 cancelClickModal={this.cancelClickModal}
                 isHidden={isHidden}
                 handleLogOut={this.handleLogOut}
-                isLoading={isLoading}
-                dataUser={dataUser}
+                inputGetMessage={this.inputGetMessage}
+                textInput={textInput}
+                getThreadId={this.getThreadId}
+                deleteThreadId={this.deleteThreadId}
+                errorCatch={this.errorCatch}
+                token={this.state.token}
+                match = {props.match}
               />
             } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />
