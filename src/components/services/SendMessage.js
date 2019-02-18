@@ -6,14 +6,18 @@ const postEndpoint = ENDPOINT + "posts";
 const sendMessageFetch = ((token, textInput, threadId) => {
   let description;
   if (threadId) {
-    description = {"post": {
-      "description": `${textInput}`,
-      "post_id": `${threadId}`
-    }};
+    description = {
+      "post": {
+        "description": `${textInput}`,
+        "post_id": `${threadId}`
+      }
+    };
   } else {
-    description = {"post": {
-      "description": `${textInput}`
-    }};
+    description = {
+      "post": {
+        "description": `${textInput}`
+      }
+    };
   }
 
   return fetch(postEndpoint, {
@@ -24,7 +28,7 @@ const sendMessageFetch = ((token, textInput, threadId) => {
       "AUTH-TOKEN": token
     }
   })
-  .then(manageRes)
+    .then(manageRes)
 })
 
 export { sendMessageFetch };

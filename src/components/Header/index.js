@@ -8,11 +8,19 @@ import PropTypes from "prop-types";
 class Header extends Component {
 
   render() {
-    const { showNav, children, addModalClick } = this.props;
+    const {
+      showNav,
+      children,
+      addModalClick
+    } = this.props;
     return (
       <header className="header">
         <div className="header__container-logo">
-          <img className="logo" src={Logo} alt="We." />
+          <img
+            className="logo"
+            src={Logo}
+            alt="We."
+          />
         </div>
         {children}
         {showNav && (
@@ -33,7 +41,8 @@ Header.defaultProps = {
 
 Header.propTypes = {
   children: PropTypes.object,
-  showNav: PropTypes.bool.isRequired
+  showNav: PropTypes.bool.isRequired,
+  addModalClick: PropTypes.func,
 }
 
 export default Header;

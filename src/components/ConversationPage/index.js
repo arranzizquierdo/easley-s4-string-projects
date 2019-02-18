@@ -16,20 +16,22 @@ class ConversationPage extends Component {
     super(props);
     this.state = {
       infoConversation: null
-
     }
   }
 
   componentDidMount() {
-   this.interval = setInterval(() => this.bringMessages(), 2000);
+    this.interval = setInterval(() => this.bringMessages(), 2000);
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
   }
 
-  bringMessages(){
-    const { token , errorCatch } = this.props;
+  bringMessages() {
+    const {
+      token,
+      errorCatch
+    } = this.props;
     postConversFetch(token)
       .then(data => {
         return (
@@ -43,7 +45,16 @@ class ConversationPage extends Component {
   }
 
   render() {
-    const { addModalClick, isHidden, cancelClickModal, handleLogOut, currentGroup, inputSendMessage, inputGetMessage, textInput } = this.props;
+    const {
+      addModalClick,
+      isHidden,
+      cancelClickModal,
+      handleLogOut,
+      currentGroup,
+      inputSendMessage,
+      inputGetMessage,
+      textInput
+    } = this.props;
     const { infoConversation } = this.state;
 
     if (!infoConversation) {
@@ -72,28 +83,32 @@ class ConversationPage extends Component {
               <GoBack />
             </Link>
             <ul>
-            {infoConversation
-            .filter(message => message.post_id === null)
-            .map(message => {
-              return (
-                <Link
-                key={message.id}
-                className="style_link"
-                to={`/conversation-page/${message.id}`}>
-                <IndividualMessage
-                messageInfo={message}
-                />
-              </Link>
-              )
-            })}
+              {infoConversation
+                .filter(message => message.post_id === null)
+                .map(message => {
+                  return (
+                    <Link
+                      key={message.id}
+                      className="style_link"
+                      to={`/conversation-page/${message.id}`}>
+                      <IndividualMessage
+                        messageInfo={message}
+                      />
+                    </Link>
+                  )
+                })}
             </ul>
             <section
               className="container__message">
-              <SendMessage inputSendMessage={inputSendMessage} inputGetMessage={inputGetMessage} textInput={textInput}/>
+              <SendMessage
+                inputSendMessage={inputSendMessage}
+                inputGetMessage={inputGetMessage}
+                textInput={textInput} />
             </section>
             <Modal
               isHidden={isHidden}
-              cancelClickModal={cancelClickModal} handleLogOut={handleLogOut} />
+              cancelClickModal={cancelClickModal}
+              handleLogOut={handleLogOut} />
           </main>
         </Fragment>
       );
@@ -103,12 +118,8 @@ class ConversationPage extends Component {
 }
 
 ConversationPage.propTypes = {
-  addModalClick: PropTypes.func.isRequired,
-  isHidden: PropTypes.bool.isRequired,
-  cancelClickModal: PropTypes.func.isRequired,
-  handleLogOut: PropTypes.func.isRequired,
-  token: PropTypes.string.isRequired,
-  groups: PropTypes.array.isRequired
+  infoConversation: PropTypes.array.isRequired,
+  currentGroup: PropTypes.object.isRequired
 };
 
 export default ConversationPage;

@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 
 class Modal extends Component {
   render() {
-    const {isHidden, cancelClickModal, handleLogOut } = this.props;
+    const {
+      isHidden,
+      cancelClickModal,
+      handleLogOut
+    } = this.props;
     let hidden = '';
     (isHidden)
       ? hidden = 'modal__hidden'
