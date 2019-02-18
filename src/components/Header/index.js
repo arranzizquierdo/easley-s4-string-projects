@@ -3,7 +3,7 @@ import Logo from '../../images/We..png';
 import './Header.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from "prop-types";
-
+import { Link } from "react-router-dom";
 
 class Header extends Component {
 
@@ -15,13 +15,14 @@ class Header extends Component {
     } = this.props;
     return (
       <header className="header">
-        <div className="header__container-logo">
+        <Link
+          className="header__container-logo"
+          to="/">
           <img
-            className="logo"
-            src={Logo}
-            alt="We."
-          />
-        </div>
+          className="logo"
+          src={Logo}
+          alt="We." />
+        </Link>
         {children}
         {showNav && (
           <FontAwesomeIcon

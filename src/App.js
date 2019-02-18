@@ -11,6 +11,7 @@ import { fetchToken } from './components/services/TokenService';
 import { sendTokenFetch } from './components/services/SendToken';
 import { tokenDataFetch } from './components/services/TokenData';
 import { sendMessageFetch } from './components/services/SendMessage';
+import ErrorPage from './components/ErrorPage';
 import {
   faEllipsisH,
   faEyeSlash,
@@ -33,9 +34,7 @@ class App extends Component {
       dataUser: null,
       groups: null,
       token: "",
-      logIn: {
-        error: 0
-      },
+      error: 0,
       isChecked: false,
       isLoading: true,
       isAuthenticated: false,
@@ -114,6 +113,7 @@ class App extends Component {
   }
 
   inputSendMessage(event) {
+    event.preventDefault();
     const { token, textInput, threadId } = this.state;
     sendMessageFetch(token, textInput, threadId)
       .then(() => {
@@ -167,19 +167,26 @@ class App extends Component {
       .catch(error => {
         return (
           this.setState({
-            logIn: {
-              error: error.status
-            }
+            error: error.status
           })
         )
       })
   }
 
   errorCatch(error) {
-    if (error && error.status === 401) {
+    if (error.status === 401) {
       return (
         localStorage.removeItem('token'),
         this.setState({
+          isAuthenticated: false,
+          isLoading: false
+        })
+      )
+    } else {
+      return (
+        localStorage.removeItem('token'),
+        this.setState({
+          error: error.status,
           isAuthenticated: false,
           isLoading: false
         })
@@ -196,9 +203,7 @@ class App extends Component {
   handleButton(event) {
     event.preventDefault();
     this.setState({
-      logIn: {
-        errorLogIn: 0
-      }
+      error: 0
     })
     this.getDataInfo();
   }
@@ -238,7 +243,7 @@ class App extends Component {
 
   render() {
     const {
-      logIn,
+      error,
       isHidden,
       token,
       isAuthenticated,
@@ -257,15 +262,34 @@ class App extends Component {
             return <LandingPage
               saveData={this.saveData}
               handleButton={this.handleButton}
-              wrongCredentials={logIn.error}
+              wrongCredentials={error}
               handleChecked={this.handleChecked}
               token={token}
               isAuthenticated={isAuthenticated}
               isLoading={isLoading}
             />
-
           }
           } />
+        <Route
+          exact
+          path="/"
+          render={() => {
+            if (error !== 0) {
+              return <ErrorPage />
+            } else if (isLoading === true) {
+              return <Loading />
+            } else if (isLoading === false && isAuthenticated === true) {
+              return <MainPage
+                addModalClick={this.addModalClick}
+                cancelClickModal={this.cancelClickModal}
+                isHidden={isHidden}
+                handleLogOut={this.handleLogOut}
+                dataUser={dataUser}
+                groups={groups}
+              />
+
+            }
+          }} />
         <Route
           exact
           path="/"
@@ -290,7 +314,9 @@ class App extends Component {
           exact
           path="/conversation-page"
           render={() => {
-            if (isLoading === true) {
+            if (error !== 0) {
+              return <ErrorPage />
+            } else if (isLoading === true) {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationPage
@@ -311,7 +337,9 @@ class App extends Component {
         <Route
           path="/conversation-page/:id"
           render={props => {
-            if (isLoading === true) {
+            if (error !== 0) {
+              return <ErrorPage />
+            } else if (isLoading === true) {
               return <Loading />
             } else if (isLoading === false && isAuthenticated === true) {
               return <ConversationThreading

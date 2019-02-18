@@ -11,7 +11,7 @@ class SendMessage extends Component {
       textInput
     } = this.props;
     return (
-      <div className="sendmessage__container">
+      <form className="sendmessage__container">
         <label htmlFor="input" />
         <input
           id="input"
@@ -26,7 +26,7 @@ class SendMessage extends Component {
             icon="paper-plane"
             className="paperplane__styles" />
         </button>
-      </div>
+      </form>
     );
   }
 }

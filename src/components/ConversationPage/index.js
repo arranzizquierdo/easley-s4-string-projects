@@ -118,8 +118,8 @@ class ConversationPage extends Component {
 }
 
 ConversationPage.propTypes = {
-  infoConversation: PropTypes.array.isRequired,
-  currentGroup: PropTypes.object.isRequired
+  infoConversation: PropTypes.array,
+  currentGroup: PropTypes.object.isRequired,
 };
 
 export default ConversationPage;

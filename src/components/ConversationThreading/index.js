@@ -21,6 +21,7 @@ class ConversationThreading extends Component {
   }
 
   componentDidMount() {
+    this.bringMessagesThread();
     this.interval = setInterval(() => this.bringMessagesThread(), 2000);
   }
 
@@ -115,10 +116,10 @@ class ConversationThreading extends Component {
 }
 
 ConversationThreading.propTypes = {
-  addModalClick: PropTypes.func.isRequired,
-  isHidden: PropTypes.bool.isRequired,
-  cancelClickModal: PropTypes.func.isRequired,
-  handleLogOut: PropTypes.func.isRequired,
+  deleteThreadId: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
+  errorCatch: PropTypes.func.isRequired,
+  getThreadId: PropTypes.func.isRequired,
 }
 
 export default ConversationThreading;
