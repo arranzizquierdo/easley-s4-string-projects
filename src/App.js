@@ -270,26 +270,7 @@ class App extends Component {
             />
           }
           } />
-        <Route
-          exact
-          path="/"
-          render={() => {
-            if (error !== 0) {
-              return <ErrorPage />
-            } else if (isLoading === true) {
-              return <Loading />
-            } else if (isLoading === false && isAuthenticated === true) {
-              return <MainPage
-                addModalClick={this.addModalClick}
-                cancelClickModal={this.cancelClickModal}
-                isHidden={isHidden}
-                handleLogOut={this.handleLogOut}
-                dataUser={dataUser}
-                groups={groups}
-              />
 
-            }
-          }} />
         <Route
           exact
           path="/"
