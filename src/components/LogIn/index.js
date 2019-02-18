@@ -35,8 +35,7 @@ class LogIn extends Component {
     }
     if(isLoading === false && token && isAuthenticated){
       return <Redirect to="/" />
-    }else {
-
+    } else {
     return (
       <div className="logIn__container">
         <h1 className="logIn__title">Inicia sesión</h1>
