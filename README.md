@@ -1,4 +1,4 @@
-![Logo We](/images/We..png)
+![Logo We](/src/images/We..png)
 # WE.
 ## Aplicación de mensajería para empresas
 
@@ -24,6 +24,7 @@ El proyecta ha sido desarrollado con las siguientes herramientas:
   2. React
   3. HTML5
   4. SASS
+  5. Consumo de datos a través de una API REST
 
 La estrucutura del proyecto se basa en componentes englobados en dos grandes bloques:
 
@@ -32,6 +33,8 @@ La estrucutura del proyecto se basa en componentes englobados en dos grandes blo
   Página inicial en la que el usuario debe meter sus credenciales (nombre y contraseña) para poder acceder a su zona privada.
   Tiene la opción de recordar sus credenciales (serán almacenadas en el local storage de su dispositivo) para que en sus siguientes visitas no sea necesario introducirlas de nuevo.
 
+![Público](/src/images/Public.png)
+
   ### Privado
 
   Una vez el usuario ha metido sus credenciales y han sido autenticadas accede a su zona privada. En ella dispondrá de un listado de grupos a los que pertenece, a los cuales puede acceder clickando en ellos para visualizar todos los mensajes que se han enviado a dicho grupo.
@@ -39,6 +42,9 @@ La estrucutura del proyecto se basa en componentes englobados en dos grandes blo
   Existe una segunda página a la que el usuario accede cuando clicka en un mensaja para contestar sobre ese mismo; se abre la página del hilo de ese mensaje.
 
   El usuario puede cerrar su sesión en cualquiera de las páginas a través de un menu en la esquina superior derecha.
+
+**Componentes:**
+![componentes](/src/images/Components.png)
 
 
 ## TRABAJAR CON EL PROYECTO - CONTRIBUIR
@@ -49,8 +55,12 @@ Para poder trabajar en el proyecto deberás:
   3. Arrancar el proyecto para visualizarlo: ejecutar *npm start*
   4. Subir proyecto a producción: ejecutar *npm run deploy*
 
+  Puedes consultar la documentación completa en [página principal de React](https://reactjs.org/).
 
-Puedes consultar la documentación completa en [página principal de React](https://reactjs.org/).
+
+Cualquier mejora o modificación que se te ocurra no dudes en abrirnos una pull requests a cualquiera de las autoras, estaremos encantadas!
+
+
 
 
 
