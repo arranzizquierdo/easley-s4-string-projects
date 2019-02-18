@@ -10,7 +10,7 @@ class IndividualMessage extends Component {
       <section className="individualMessage__container">
         <img
           className="individualMessage__image"
-          src={messageInfo.avatar_url}
+          src={messageInfo.avatar_url || ""}
           alt={messageInfo.username}
         />
         <div className="individualMessage__data">
