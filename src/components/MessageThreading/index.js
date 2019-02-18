@@ -17,6 +17,7 @@ class MessageThreading extends Component {
           <p className="messageThreading__message">
             {messageInfo.description}
           </p>
+          <small className="messageThreading__date">{messageInfo.date}</small>
         </div>
       </section>
     );

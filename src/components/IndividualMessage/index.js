@@ -14,6 +14,7 @@ class IndividualMessage extends Component {
           <p className="individualMessage__message">
             {messageInfo.description}
           </p>
+          <small className="individualMessage__date">{messageInfo.date}</small>
         </div>
       </section>
 

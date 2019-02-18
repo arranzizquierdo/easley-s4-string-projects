@@ -53,13 +53,15 @@ class ConversationThreading extends Component {
     if(!infoThread){
       return (<Loading />)
     } else {
+      const answersMessage = infoThread.length - 1;
+
       return (
         <React.Fragment>
           <Header addModalClick={addModalClick}>
             <div className="header__group__container">
               <span className="header__container__thread">
                 <h2 className="header__group__title-thread">Hilo</h2>
-                <h3 className="header__group__persons-thread">Recetas y menús</h3>
+                <h3 className="header__group__persons-thread">Adalab Easley Group</h3>
               </span>
             </div>
           </Header>
@@ -70,7 +72,7 @@ class ConversationThreading extends Component {
             <IndividualMessage
               messageInfo={infoThread[0]}
             />
-            <div className="answers">Respuestas</div>
+            <div className="answers">{answersMessage} Respuestas</div>
             <ul>
               {infoThread
               .filter(message=> message.post_id !== null)
