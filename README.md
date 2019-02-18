@@ -1,5 +1,5 @@
 ![Logo We](/src/images/We..png)
-# WE.
+
 ## Aplicación de mensajería para empresas
 
 Proyecto desarrollado para la empresa String-Projects.
@@ -44,6 +44,7 @@ La estrucutura del proyecto se basa en componentes englobados en dos grandes blo
   El usuario puede cerrar su sesión en cualquiera de las páginas a través de un menu en la esquina superior derecha.
 
 **Componentes:**
+
 ![componentes](/src/images/Components.png)
 
 
