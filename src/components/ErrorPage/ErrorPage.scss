@@ -1,0 +1,32 @@
+.errorPage__container{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  border: solid 1px #5271ff;
+  background-color: #5271ff;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.35);
+}
+.errorPage__text{
+  font-family: "Heebo", sans-serif;
+  font-size: 16px;
+  text-align: center;
+}
+
+@media all and (min-width: 768px) {
+  .errorPage__container{
+    width: 350px;
+    height: 350px;
+  }
+
+  .errorPage__text{
+    font-size: 20px;
+  }
+}
