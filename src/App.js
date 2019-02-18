@@ -311,7 +311,6 @@ class App extends Component {
                 textInput={textInput}
                 errorCatch={this.errorCatch}
                 token={this.state.token}
-
               />
             } else if (isLoading === false && isAuthenticated === false) {
               return <Redirect to="/login" />
