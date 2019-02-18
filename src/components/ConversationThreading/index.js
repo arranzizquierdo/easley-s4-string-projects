@@ -27,12 +27,16 @@ class ConversationThreading extends Component {
 
   componentWillUnmount() {
     clearInterval(this.interval);
-    const { deleteThreadId }= this.props;
+    const { deleteThreadId } = this.props;
     deleteThreadId();
   }
 
-  bringMessagesThread(){
-    const { token, errorCatch, getThreadId } = this.props;
+  bringMessagesThread() {
+    const {
+      token,
+      errorCatch,
+      getThreadId
+    } = this.props;
     const idMessage = this.props.match.params.id;
     getThreadId(idMessage);
     tokenThreadFetch(token, idMessage)
@@ -43,14 +47,22 @@ class ConversationThreading extends Component {
           })
         )
       })
-    .catch(error => errorCatch(error))
+      .catch(error => errorCatch(error))
   }
 
   render() {
-    const { addModalClick, isHidden, cancelClickModal, handleLogOut, inputGetMessage, inputSendMessage, textInput } = this.props;
+    const {
+      addModalClick,
+      isHidden,
+      cancelClickModal,
+      handleLogOut,
+      inputGetMessage,
+      inputSendMessage,
+      textInput
+    } = this.props;
     const { infoThread } = this.state;
 
-    if(!infoThread){
+    if (!infoThread) {
       return (<Loading />)
     } else {
       const answersMessage = infoThread.length - 1;
@@ -66,31 +78,33 @@ class ConversationThreading extends Component {
             </div>
           </Header>
           <main className="main__conversationThreading">
-            <Link className="style_link" to="/conversation-page">
+            <Link
+              className="style_link"
+              to="/conversation-page"
+            >
               <GoBack />
             </Link>
-            <IndividualMessage
-              messageInfo={infoThread[0]}
+            <IndividualMessage messageInfo={infoThread[0]}
             />
             <div className="answers">{answersMessage} Respuestas</div>
             <ul>
               {infoThread
-              .filter(message=> message.post_id !== null)
-              .map(message =>{
-                return(
-                  <li key={message.id}>
-                    <MessageThreading
-                    messageInfo = {message}
-                    />
-                  </li>
-                )
-              })}
+                .filter(message => message.post_id !== null)
+                .map(message => {
+                  return (
+                    <li key={message.id}>
+                      <MessageThreading
+                        messageInfo={message}
+                      />
+                    </li>
+                  )
+                })}
             </ul>
             <section className="container__message">
               <SendMessage
-              inputGetMessage={inputGetMessage}
-              inputSendMessage={inputSendMessage}
-              textInput={textInput} />
+                inputGetMessage={inputGetMessage}
+                inputSendMessage={inputSendMessage}
+                textInput={textInput} />
             </section>
             <Modal
               isHidden={isHidden}
@@ -104,11 +118,10 @@ class ConversationThreading extends Component {
 }
 
 ConversationThreading.propTypes = {
-  addModalClick: PropTypes.func.isRequired,
-  isHidden: PropTypes.bool.isRequired,
-  cancelClickModal: PropTypes.func.isRequired,
-  handleLogOut: PropTypes.func.isRequired,
-  dataUser: PropTypes.object.isRequired
+  deleteThreadId: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
+  errorCatch: PropTypes.func.isRequired,
+  getThreadId: PropTypes.func.isRequired,
 }
 
 export default ConversationThreading;

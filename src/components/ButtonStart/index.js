@@ -6,8 +6,8 @@ class ButtonStart extends Component {
   render() {
     const { handleButton } = this.props;
     return <button
-    className="button__styles"
-    onClick={handleButton}
+      className="button__styles"
+      onClick={handleButton}
     >Inicia sesión</button>;
   }
 }

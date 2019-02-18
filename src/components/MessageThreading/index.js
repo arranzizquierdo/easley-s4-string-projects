@@ -4,7 +4,6 @@ import './MessageThreading.scss';
 class MessageThreading extends Component {
   render() {
     const { messageInfo } = this.props;
-
     return (
       <section className="messageThreading__container">
         <img
