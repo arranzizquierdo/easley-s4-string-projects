@@ -27,8 +27,6 @@ class ConversationThreading extends Component {
 
   componentWillUnmount() {
     clearInterval(this.interval);
-    const { deleteThreadId } = this.props;
-    deleteThreadId();
   }
 
   bringMessagesThread() {
