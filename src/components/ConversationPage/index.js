@@ -35,12 +35,14 @@ class ConversationPage extends Component {
     } = this.props;
     postConversFetch(token)
       .then(data => {
-        return (
-          this.setState({
-            infoConversation: data
-          })
+        if(this && this.setState) {
+          return (
+            this.setState({
+              infoConversation: data
+            })
+          )
+        }
 
-        )
       })
       .catch(error => errorCatch(error))
   }
@@ -77,7 +79,7 @@ class ConversationPage extends Component {
               </span>
             </div>
           </Header>
-          <main className = "container_main">
+          <main className="container_main">
             <Link
               className="style_link"
               to="/">

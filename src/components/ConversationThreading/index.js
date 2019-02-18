@@ -26,6 +26,7 @@ class ConversationThreading extends Component {
   }
 
   componentWillUnmount() {
+
     clearInterval(this.interval);
     const { deleteThreadId } = this.props;
     deleteThreadId();
@@ -41,11 +42,13 @@ class ConversationThreading extends Component {
     getThreadId(idMessage);
     tokenThreadFetch(token, idMessage)
       .then(data => {
-        return (
-          this.setState({
-            infoThread: data
-          })
-        )
+        if(this && this.setState) {
+          return (
+            this.setState({
+              infoThread: data
+            })
+          )
+        }
       })
       .catch(error => errorCatch(error))
   }
@@ -86,21 +89,21 @@ class ConversationThreading extends Component {
             </Link>
             <IndividualMessage messageInfo={infoThread[0]}
             />
-            <main className = "container_main">
-            <div className="answers">{answersMessage} Respuestas</div>
-            <ul>
-              {infoThread
-                .filter(message => message.post_id !== null)
-                .map(message => {
-                  return (
-                    <li key={message.id}>
-                      <MessageThreading
-                        messageInfo={message}
-                      />
-                    </li>
-                  )
-                })}
-            </ul>
+            <main className="container_main">
+              <div className="answers">{answersMessage} Respuestas</div>
+              <ul>
+                {infoThread
+                  .filter(message => message.post_id !== null)
+                  .map(message => {
+                    return (
+                      <li key={message.id}>
+                        <MessageThreading
+                          messageInfo={message}
+                        />
+                      </li>
+                    )
+                  })}
+              </ul>
             </main>
             <section className="container__message">
               <SendMessage
